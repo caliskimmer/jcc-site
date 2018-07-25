@@ -1,0 +1,38 @@
+<div [@moveDown]="state" id="hidden-header-background" class="bg-white w-100">Test</div>
+<header class="container-fluid pt-3 pb-3">
+  <div [@shiftUp]="state" class="row w-75 align-items-center">
+    <div class="col">
+      <nav class="navbar justify-content-center">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a [@recolor]="state" class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item active">
+            <a [@recolor]="state" class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item active">
+            <a [@recolor]="state" class="nav-link" href="#">Results</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col d-flex justify-content-center">
+      <img [@swapLogo]="state" src="../../assets/jcc-logo-sm-black.png" alt="Joga Chiropractic Center" />
+    </div>
+    <div class="col">
+      <nav class="navbar justify-content-center">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a [@recolor]="state" class="nav-link" href="#">Test1</a>
+          </li>
+          <li class="nav-item active">
+            <a [@recolor]="state" class="nav-link" href="#">Test2</a>
+          </li>
+          <li class="nav-item active">
+            <a [@recolor]="state" class="nav-link" href="#">Test3</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

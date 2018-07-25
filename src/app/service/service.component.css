@@ -1,0 +1,10 @@
+.container-fluid {
+  height: 45vh;
+  background: url("../../assets/service-test-photo.jpg") no-repeat fixed;
+  background-size: cover;
+}
+
+.btn-outline-dark {
+  border-radius: 0;
+  border-style: solid;
+}
