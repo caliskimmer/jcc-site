@@ -1,39 +1,51 @@
-<div [@moveDown]="state" id="hidden-header-background" class="bg-white w-100">Test</div>
+<div [@moveDown]="state" id="hidden-header-background" class="bg-white w-100"></div>
 <header class="container-fluid pt-3 pb-3">
-  <nav [@shiftUp]="state" class="d-none d-md-flex navbar align-items-center">
-    <ul class="nav col-5 d-flex justify-content-center">
+  <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
+    <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link" href="#">About</a>
+        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">About Us</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link" href="#">Services</a>
+        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Chiropractic Services</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link" href="#">Results</a>
+        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Conditions Treated</a>
       </li>
     </ul>
-    <div class="nav col-2 d-flex justify-content-center">
+    <div class="nav col-2 justify-content-center">
       <img [@swapLogo]="state" src="../../assets/jcc-logo-sm-black.png" alt="Joga Chiropractic Center" />
     </div>
-    <ul class="nav col-5 d-flex justify-content-center">
+    <ul class="nav col justify-content-start text-nowrap flex-nowrap">
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link" href="#">Test1</a>
+        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">New Patient Center</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link" href="#">Test2</a>
+        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Blog</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link" href="#">Test3</a>
+        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Community Content</a>
       </li>
     </ul>
   </nav>
 
   <!-- small devices -->
-  <nav [@shiftUp]="state" class="d-sm-flex d-md-none navbar align-items-center">
-    <button type="button" class="nav d-flex btn-default col justify-content-center">Test!</button>
-    <div class="nav col d-flex justify-content-center">
+  <nav [@shiftUp]="state" class="d-sm-flex d-xl-none navbar align-items-center">
+    <a href="#" class="nav col">
+      <img id="hamburger" src="../../assets/menu.png" alt="menu" />
+    </a> 
+    <div class="nav col justify-content-center">
       <img [@swapLogo]="state" src="../../assets/jcc-logo-sm-black.png" alt="Joga Chiropractic Center" />
     </div>
-    <button type="button" class="nav d-flex btn-default col justify-content-center">Test2!</button>
+    <div class="nav col justify-content-center">
+      <a href="#">
+        <img src="../../assets/fb-icon.png" alt="Facebook">
+      </a>
+      <a href="#">
+        <img src="../../assets/instagram-icon.png" alt="Instagram" />
+      </a>
+      <a href="#">
+        <img src="../../assets/yelp-icon.png" alt="Yelp" />
+      </a>
+    </div> 
   </nav>
 </header>

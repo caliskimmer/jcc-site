@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { ServiceComponent } from './service/service.component';
 import { HeaderComponent } from './header/header.component';
 import { AddBackgroundOnScrollDirective } from './directives/add-background-on-scroll.directive';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddBackgroundOnScrollDirective } from './directives/add-background-on-s
     MainComponent,
     ServiceComponent,
     HeaderComponent,
-    AddBackgroundOnScrollDirective
+    AddBackgroundOnScrollDirective,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ export const animations = [
     transform: 'translateY(0px)'
   })),
   transition('* <=> below',
-            group([query('@recolor', animateChild()),
+            group([query('@recolor', animateChild(), { optional: true }),
                    query('@swapLogo', animateChild()),
                    animate('300ms linear')]))
  ])

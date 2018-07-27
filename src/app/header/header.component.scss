@@ -18,3 +18,12 @@ a {
   height: 80px;
   top: -80px;
 }
+
+#hamburger {
+  height: 50px;
+  width: 50px;
+}
+
+#hamburger:hover {
+  filter: invert(100%);
+}
