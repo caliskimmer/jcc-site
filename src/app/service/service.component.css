@@ -1,10 +1,18 @@
-.container-fluid {
+.service-section {
   height: 45vh;
-  background: url("../../assets/service-test-photo.jpg") no-repeat fixed;
-  background-size: cover;
 }
 
-.btn-outline-dark {
+.btn-lg {
   border-radius: 0;
   border-style: solid;
+}
+
+#massage-therapy {
+  background: url("../../assets/service-test-photo.jpg") no-repeat fixed;
+  background-size:cover;
+}
+
+#wellness-care {
+  background: url("../../assets/wellness-care.jpg") no-repeat fixed;
+  background-size: cover;
 }

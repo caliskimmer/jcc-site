@@ -1,11 +1,22 @@
-<div class="container-fluid">
-  <div class="row h-100">
-    <div class="col d-flex h-100 align-items-center justify-content-center bg-white">
-        <div class="text-center">
-          <h1>Chiropractic Services</h1>
-          <button type="button" class="btn-lg btn-outline-dark">Go!</button>
-        </div>
+<ng-template #buttonBlock let-service let-index="index">
+    <div class="col d-flex h-100 align-items-center justify-content-center {{index%2 === 0 ? 'bg-white' : 'bg-jcc-green'}}">
+      <div class="text-center">
+        <h1>{{service.name}}</h1>
+        <button type="button" class="btn-lg btn-outline-dark">Go!</button>
+      </div>
     </div>
-    <div class="col bg-black px-0"></div>
+</ng-template>
+<ng-template #pictureBlock>
+  <div class="col bg-black d-none d-sm-flex"></div>
+</ng-template>
+
+<div class="container-fluid">
+  <div id="{{service.id}}" class="row service-section" *ngFor="let service of services,
+                                                                index as index">
+    <ng-container [ngTemplateOutlet]="buttonBlock" 
+                  [ngTemplateOutletContext]="{$implicit: service, index: index}"></ng-container>
+
+    <div *ngIf="index%2 === 0; then buttonBlock; else pictureBlock"></div>
+    <div *ngIf="index%2 === 0; then pictureBlock; else buttonBlock"></div>
   </div>
-</div>
+</div>]

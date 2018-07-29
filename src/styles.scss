@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
 
 /* You can add global styles to this file, and also import other style files */
 html, body {
@@ -12,4 +12,14 @@ html, body {
 
 .row {
   margin: auto;
+}
+
+.bg-jcc-green {
+  background-color: rgb(3, 63, 45);
+}
+
+@include media-breakpoint-down(xs) {
+  h1 {
+    font-size: 7vw;
+  }
 }

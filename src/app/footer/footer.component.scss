@@ -1,0 +1,41 @@
+@import "~bootstrap/scss/bootstrap";
+
+#social-media {
+  padding-left: 0;
+}
+
+#social-media > a {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#copyright > span {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+}
+
+.row {
+  position: relative;
+}
+
+@include media-breakpoint-down(xs) {
+  #copyright {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  #copyright > span {
+    position: relative;
+  }
+
+  #social-media > a {
+    position: relative;
+    display: inline-block;
+    margin-top: -10px;
+  }
+
+  img {
+    transform: scale(0.8);
+  }
+}
