@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
 .navbar {
   background: none;
 }
@@ -5,7 +7,7 @@
 header {
   background-color: transparent;
   position: fixed;
-  z-index: 400;
+  z-index: $zindex-fixed;
   height: 100px;
 }
 
@@ -17,6 +19,7 @@ a {
   position: fixed;
   height: 80px;
   top: -80px;
+  z-index: $zindex-sticky;
 }
 
 #hamburger {

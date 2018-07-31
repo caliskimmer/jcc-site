@@ -8,11 +8,36 @@
 }
 
 #massage-therapy {
-  background: url("../../assets/service-test-photo.jpg") no-repeat fixed;
+  background: url("../../assets/massage-therapy.jpg") no-repeat fixed;
   background-size:cover;
 }
 
 #wellness-care {
   background: url("../../assets/wellness-care.jpg") no-repeat fixed;
+  background-size: cover;
+}
+
+#sports-chiro {
+  background: url("../../assets/sports-chiro.jpg") no-repeat fixed;
+  background-size: cover;
+}
+
+#prenatal-care {
+  background: url("../../assets/prenatal-care.jpg") no-repeat fixed;
+  background-size: cover;
+}
+
+#graston-technique {
+  background: url("../../assets/graston-technique.jpg") no-repeat fixed;
+  background-size: cover;
+}
+
+#rocktape {
+  background: url("../../assets/rocktape.jpg") no-repeat fixed;
+  background-size: cover;
+}
+
+#senior-care {
+  background: url("../../assets/senior-care.jpg") no-repeat fixed;
   background-size: cover;
 }

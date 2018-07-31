@@ -3,13 +3,14 @@
   <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">About Us</a>
+        <a #headerLink [@recolor]="state" class="nav-link font-weight-bold" tabindex=0 href="#" (mouseenter)="mouseEnter($event)"
+           (mouseleave)="mouseLeave($event)">About Us</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Chiropractic Services</a>
+        <a #headerLink [@recolor]="state" class="nav-link font-weight-bold" href="#">Chiropractic Services</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Conditions Treated</a>
+        <a #headerLink [@recolor]="state" class="nav-link font-weight-bold" href="#">Conditions Treated</a>
       </li>
     </ul>
     <div class="nav col-2 justify-content-center">
@@ -17,29 +18,34 @@
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">New Patient Center</a>
+        <a #headerLink [@recolor]="state" class="nav-link font-weight-bold" href="#">New Patient Center</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Blog</a>
+        <a #headerLink [@recolor]="state" class="nav-link font-weight-bold" href="#">Blog</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-bold" href="#">Community Content</a>
+        <a #headerLink [@recolor]="state" class="nav-link font-weight-bold" href="#">Community Content</a>
       </li>
     </ul>
   </nav>
 
   <!-- small devices -->
   <nav [@shiftUp]="state" class="d-sm-flex d-xl-none navbar align-items-center">
-    <a href="#" class="nav col">
+    <a #headerLink href="#" class="nav col">
       <img id="hamburger" src="../../assets/menu.png" alt="menu" />
     </a> 
     <div class="nav col justify-content-center">
       <img [@swapLogo]="state" src="../../assets/jcc-logo-md.png" alt="Joga Chiropractic Center" />
     </div>
     <div class="nav col justify-content-center">
-      <a href="tel:+14248002488">
+      <a #headerLink href="tel:+14248002488">
         <img src="../../assets/phone-icon.png" alt="telephone" />
       </a>
     </div> 
   </nav>
+
+  <!-- test -->
+  <div #popper  class="invisible bg-dark">
+    Test
+  </div>
 </header>
