@@ -2,11 +2,6 @@
   height: 45vh;
 }
 
-.btn-lg {
-  border-radius: 0;
-  border-style: solid;
-}
-
 #massage-therapy {
   background: url("../../assets/massage-therapy.jpg") no-repeat fixed;
   background-size:cover;

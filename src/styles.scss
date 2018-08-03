@@ -18,6 +18,11 @@ html, body {
   background-color: rgb(3, 63, 45);
 }
 
+.btn-lg {
+  border-radius: 0;
+  border-style: solid;
+}
+
 @include media-breakpoint-down(xs) {
   h1 {
     font-size: 7vw;

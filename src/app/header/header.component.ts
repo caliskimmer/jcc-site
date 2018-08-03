@@ -1,38 +1,34 @@
-import { Component, AfterViewInit, ViewChild, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ViewChildren, ElementRef } from '@angular/core';
 import { animations } from './header.animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: animations 
+  animations: animations
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent { 
   state:string = ''
-  poppers:Popper[] = []
-  @ViewChild('popper') popperDiv: ElementRef;
-  @ViewChildren('headerLink') links:QueryList<ElementRef>
+  navListLeft: string[] = ['About Us', 'Services', 'Conditions Treated']
+  navListRight: string[] = ['New Patient Center', 'Blog', 'FAQs']
+  navList: string[] = this.navListLeft.concat(this.navListRight)
+  currPopIndex: number = -1
 
-  constructor(private renderer: Renderer2) { }
+  @ViewChildren('p') popovers: QueryList<ngbPopover>
 
-  ngAfterViewInit() {
-    this.links.forEach((link) => {
-      this.poppers.push(new Popper(link.nativeElement, this.popperDiv.nativeElement, {placement: 'bottom'}));
-    }
-    console.log(this.poppers);
-  }
-
-  mouseEnter(e) {
-    this.renderer.removeClass(this.popperDiv.nativeElement, "invisible");
-  }
-
-  mouseLeave(e) {
-    this.renderer.addClass(this.popperDiv.nativeElement, "invisible");
-  }
+  constructor() { }
     
+  mouseenter(e) {
+    this.currPopIndex = this.navList.indexOf(e.target.innerText);
+    this.popovers.toArray()[this.currPopIndex].open();
+  }
+
+  mouseleave(e) {
+    this.popovers.toArray()[this.currPopIndex].close();
+  }
+
   //called on window scroll event
   moveDown() {
-     this.state = (this.state === 'below') ? 'above' : 'below';
+     this.state = (this.state === 'below') ? 'above' : 'below'
   }
-
 }
