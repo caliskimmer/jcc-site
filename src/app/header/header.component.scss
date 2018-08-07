@@ -1,4 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
+@import "../../styles.scss";
+
+#logo {
+  height: 100px;
+  width: 100px;
+  background-image: url('../../assets/jcc-logo-md.png');
+}
 
 .navbar {
   background: none;
@@ -34,3 +41,22 @@ li {
 #hamburger:hover {
   filter: invert(100%);
 }
+
+/*Don't own ngb popover el, so must access through shadow DOM*/
+:host {
+  /deep/ .popover {
+    max-width: 100%;
+    border-radius: 0;
+    border-style: normal;
+    box-shadow: inset 0 0 0 10px $jcc-green;
+  }
+
+ /deep/ .arrow::after {
+   border-bottom-color: $jcc-green;
+ }
+
+ /deep/ .arrow::before {
+   opacity: 0;
+ }
+}
+

@@ -2,6 +2,14 @@
   height: 45vh;
 }
 
+#quote-text {
+  font-size: 1.1em;
+}
+
+#quote-author {
+  font-size: 0.7em;
+}
+
 #massage-therapy {
   background: url("../../assets/massage-therapy.jpg") no-repeat fixed;
   background-size:cover;

@@ -3,15 +3,15 @@
   <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">
-        <a [@recolor]="state" class="nav-link font-weight-bold" tabindex=0 [ngbPopover]="popover" popoverTitle="Test" triggers="manual" placement="bottom" #p="ngbPopover"  href="#">{{item}}</a>
+        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover"  href="#">{{item}}</a>
       </li>
     </ul>
     <div class="nav col-2 justify-content-center">
-      <img [@swapLogo]="state" src="../../assets/jcc-logo-md.png" alt="Joga Chiropractic Center" />
+      <div id="logo" [@swapLogo]="state"></div>
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListRight; let index of i">
-        <a [@recolor]="state" class="nav-link font-weight-bold" tabindex=0 [ngbPopover]="popover" popoverTitle="Test" triggers="manual" placement="bottom" #p="ngbPopover"  href="#">{{item}}</a>
+        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover"  href="#">{{item}}</a>
       </li>
     </ul>
   </nav>

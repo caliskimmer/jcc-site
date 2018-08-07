@@ -13,7 +13,7 @@ export const animations = [
   ]),
  trigger('recolor', [
   state('below', style({
-    color: 'rgb(3, 63, 45)'
+    color: 'rgb(52, 58, 64)'
   })),
   state('above', style({
     color: 'white'
@@ -22,10 +22,12 @@ export const animations = [
  ]),
  trigger('swapLogo', [
   state('below', style({
-   transform: 'scale(0.7)',
+    transform: 'scale(0.7)',
+    'background-image': 'url(../../assets/jcc-logo-md-black.png)',
   })),
   state('above', style({
     transform: 'scale(1.0)',
+    'background-image': 'url(../../assets/jcc-logo-md.png)'
   })),
   transition('* <=> below', animate('300ms linear')),
   ]),

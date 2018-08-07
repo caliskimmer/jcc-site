@@ -1,4 +1,5 @@
-import { Component, ViewChildren, ElementRef } from '@angular/core';
+import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { animations } from './header.animations';
 
 @Component({
@@ -8,19 +9,20 @@ import { animations } from './header.animations';
   animations: animations
 })
 export class HeaderComponent { 
-  state:string = ''
-  navListLeft: string[] = ['About Us', 'Services', 'Conditions Treated']
-  navListRight: string[] = ['New Patient Center', 'Blog', 'FAQs']
-  navList: string[] = this.navListLeft.concat(this.navListRight)
-  currPopIndex: number = -1
+  state:string = '';
+  navListLeft: string[] = ['About Us', 'Services', 'Conditions Treated'];
+  navListRight: string[] = ['New Patient Center', 'Blog', 'FAQs'];
+  navList: string[] = this.navListLeft.concat(this.navListRight);
+  currPopIndex: number = -1;
 
-  @ViewChildren('p') popovers: QueryList<ngbPopover>
+  @ViewChildren('p') popovers: QueryList<NgbPopover>;
 
   constructor() { }
     
   mouseenter(e) {
     this.currPopIndex = this.navList.indexOf(e.target.innerText);
-    this.popovers.toArray()[this.currPopIndex].open();
+    let currPopover:NgbPopover = this.popovers.toArray()[this.currPopIndex];
+    currPopover.open();
   }
 
   mouseleave(e) {

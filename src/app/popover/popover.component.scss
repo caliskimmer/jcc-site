@@ -1,5 +1,19 @@
 @import "~bootstrap/scss/bootstrap";
+@import "../../styles.scss";
 
-.container-fluid {
-  background-color: green;
+.items {
+  font-size: 1.1em;
+}
+
+a {
+  color: black;
+  font-size: 1em;
+}
+
+a:hover {
+  color: $jcc-green;
+}
+
+#popover-title {
+  font-size: 0.9em;
 }
