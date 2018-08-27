@@ -2,7 +2,7 @@
   <ul class="navbar-nav d-inline-block p-5 pt-4">
     <li id="popover-title" class="nav-item active text-secondary text-uppercase mb-1 p-1">{{linkName}}</li>
     <li class="nav-item active items text-nowrap p-0" *ngFor="let item of displayContent()">
-      <a class="nav-link p-1 font-weight-bold text-dark" href="#">{{item}}</a>
+      <a class="nav-link p-1 font-weight-bold text-dark" href="{{linkName.replace(' ', '-') | lowercase}}/{{item.replace(' ', '-') | lowercase}}">{{item}}</a>
     </li>
   </ul>
 </div>

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { QuoteComponent } from './quote/quote.component';
@@ -12,6 +14,17 @@ import { AddBackgroundOnScrollDirective } from './directives/add-background-on-s
 import { FooterComponent } from './footer/footer.component';
 import { PopoverComponent } from './popover/popover.component';
 import { LocationComponent } from './location/location.component';
+import { AdminBlogComponent } from './admin-blog/admin-blog.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { HomeComponent } from './home/home.component';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'services/:service', component: ServiceDetailComponent }
+];
+
 
 @NgModule({
   declarations: [
@@ -23,12 +36,20 @@ import { LocationComponent } from './location/location.component';
     AddBackgroundOnScrollDirective,
     FooterComponent,
     PopoverComponent,
-    LocationComponent
+    LocationComponent,
+    AdminBlogComponent,
+    AdminLoginComponent,
+    HomeComponent,
+    ServiceDetailComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot()
+    HttpClientModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

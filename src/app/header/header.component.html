@@ -7,7 +7,9 @@
       </li>
     </ul>
     <div class="nav col-2 justify-content-center">
-      <div id="logo" [@swapLogo]="state"></div>
+      <a href="/home">
+        <div id="logo" [@swapLogo]="state"></div>
+      </a>
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListRight; let index of i">

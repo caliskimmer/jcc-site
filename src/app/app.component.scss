@@ -1,23 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
-
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
   background-color: transparent;
   width: 100%;
-}
-
-#slider-text {
-  position: absolute;
-  font-size: 100px;
-  left: 50%;
-  color: white;
-  opacity: 0.75;
-  transform: translate(-50%, -53%);
-}
-
-@include media-breakpoint-down(xs) {
-  #slider-text {
-    font-size: 17vw;
-  } 
 }
