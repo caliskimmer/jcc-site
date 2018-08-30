@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     AdminBlogComponent,
     AdminLoginComponent,
     HomeComponent,
-    ServiceDetailComponent
+    ServiceDetailComponent,
   ],
   imports: [
     BrowserModule,

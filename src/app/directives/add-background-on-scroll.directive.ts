@@ -8,9 +8,7 @@ import { HeaderComponent } from '../header/header.component'
 
 export class AddBackgroundOnScrollDirective {
 
-  constructor(private header: HeaderComponent) {
-    console.log("Test!");
-  }
+  constructor(private header: HeaderComponent) {}
   
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, true);    

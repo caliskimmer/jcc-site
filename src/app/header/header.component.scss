@@ -1,14 +1,22 @@
 @import "~bootstrap/scss/bootstrap";
 @import "../../styles.scss";
 
-#logo {
+.logo {
   height: 100px;
   width: 100px;
   background-image: url('../../assets/jcc-logo-md.png');
 }
 
+.logo-detail {
+  height: 100px;
+  width: 100px;
+  background-image: url('../../assets/jcc-logo-md.png');
+  transform: scale(0.8);
+}
+
 .navbar {
   background: none;
+  padding: 0;
 }
 
 header {
@@ -18,12 +26,18 @@ header {
   height: 100px;
 }
 
+.header-recolor {
+  background-color: rgb(108, 117, 125);
+}
+
 a {
   color: white;
 }
 
 li {
+  display: flex;
   height: 50px;
+  align-items: center;
 }
 
 #hidden-header-background {

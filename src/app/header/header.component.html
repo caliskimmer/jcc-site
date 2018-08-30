@@ -1,5 +1,5 @@
 <div [@moveDown]="state" id="hidden-header-background" class="bg-white shadow w-100"></div>
-<header class="container-fluid pt-3 pb-3">
+<header [ngClass] = "{'header-recolor': onDetail, shadow: onDetail, 'pt-3': !onDetail, 'pb-3': !onDetail}" class="container-fluid">
   <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">
@@ -8,7 +8,7 @@
     </ul>
     <div class="nav col-2 justify-content-center">
       <a href="/home">
-        <div id="logo" [@swapLogo]="state"></div>
+        <div [class]="onDetail ? 'logo-detail': 'logo'" [@swapLogo]="state"></div>
       </a>
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">

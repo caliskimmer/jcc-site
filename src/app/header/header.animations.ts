@@ -33,7 +33,7 @@ export const animations = [
   ]),
  trigger('shiftUp', [
   state('below', style({
-    transform: 'translateY(-30px)'
+    transform: 'translateY(-25px)'
   })),
   state('above', style({
     transform: 'translateY(0px)'

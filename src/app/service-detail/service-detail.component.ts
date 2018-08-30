@@ -21,8 +21,8 @@ export class ServiceDetailComponent implements OnInit {
   getChiroService(): void {
     const currentService = this.route.snapshot.paramMap.get('service');
     this.http.get("assets/docs/service-detail/" + currentService + ".html", {responseType: 'html'})
-             .subscribe(content => this.detailContent = content,
-                        error => if (error.error) console.log(error));
+    .subscribe(content => {this.detailContent = content,
+        error => if (error.error) {console.log(error)});
   }
 
 }
