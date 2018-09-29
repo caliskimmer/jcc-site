@@ -18,8 +18,8 @@ export class DetailComponent implements OnInit {
   }
 
   getDetail() {
-    const detailCategory: any = this.route.snapshot.paramMap.keys[0];
-    const currentDetail: string = this.route.snapshot.paramMap.get(detailCategory);
+    var detailCategory: any = this.route.snapshot.paramMap.keys[0];
+    var currentDetail: string = this.route.snapshot.paramMap.get(detailCategory);
 
     if (!detailCategory) {
       detailCategory = "about";
