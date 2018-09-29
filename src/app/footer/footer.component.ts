@@ -14,4 +14,8 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
+  urlName(linkName: string): string {
+    return linkName.replace(/ /g, '-').replace(/&/g, 'and').toLowerCase();
+  }
+
 }

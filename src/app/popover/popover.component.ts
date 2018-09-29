@@ -12,6 +12,10 @@ export class PopoverComponent {
   @Input() linkName: string;
 
   constructor() { }
+  
+  urlName(linkName: string): string {
+    return linkName.replace(/ /g, '-').replace(/&/g, 'and').toLowerCase();
+  }
 
   displayContent(): any[] {
     return (this.linkName in popoverSections) ? popoverSections[this.linkName] : [];

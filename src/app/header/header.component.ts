@@ -22,11 +22,11 @@ export class HeaderComponent {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.events.subscribe((event: Event) => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.onDetail = (this.router.url !== '/home' && this.router.url !== '/');
       }
-    }
+    });
   }
 
   mouseenter(e) {
@@ -42,7 +42,7 @@ export class HeaderComponent {
   //called on window scroll event
   moveDown() {
      if (!this.onDetail) {
-        this.state = (this.state === 'below') ? 'above' : 'below'
+        this.state = (this.state === 'below') ? 'above' : 'below';
      }
   }
 

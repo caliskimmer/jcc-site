@@ -1,28 +1,31 @@
 <div class="container-fluid">
-  <div class="row font-weight-bold pt-3 mt-5 pb-3 w-75 mx-auto">Jogachiropractic.com</div>
+  <div class="row font-weight-bold pt-4 w-75 mx-auto">Jogachiropractic.com</div>
   <div class="row pb-4 pt-4 w-75 mx-auto">
     <ul class="col navbar-nav" *ngFor="let list of lists | keyvalue">
       <li class="nav-title nav-item active text-secondary text-uppercase pb-2">{{list.key}}</li>
       <li class="nav-item active pb-1" *ngFor="let item of lists[list.key]">
-        <a class="text-dark font-weight-bold" href="#">{{item}}</a>
+        <a class="text-dark font-weight-bold" href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
       </li>
     </ul>
   </div>
-  <div class="row pb-4 w-75 pt-3 border-top mx-auto">
+  <div class="row pb-4 w-75 pt-2 border-top mx-auto">
     <div id="social-media" class="col-12 col-sm text-center text-sm-left">
-      <span class="d-block h-50 font-weight-bold pt-3 pb-3">We're on social media!</span>
-      <a href="#">
+      <span class="d-block h-50 font-weight-bold pt-3 pb-4">We're on social media!</span>
+      <a target="_blank" href="https://www.facebook.com/jogachiropractic/">
         <img src="../../assets/fb-icon.png" alt="Facebook">
       </a>
-      <a href="#">
+      <a target="_blank" href="https://www.instagram.com/jogachiropractic/">
         <img src="../../assets/instagram-icon.png" alt="Instagram" />
       </a>
-      <a href="#">
+      <a target="_blank" href="https://www.yelp.com/biz/joga-chiropractic-center-los-angeles">
         <img src="../../assets/yelp-icon.png" alt="Yelp" />
       </a>
     </div>
     <div id="copyright" class="col-12 col-sm text-center text-sm-right">
-      <span>© 2018 Joga Chiropractic Center - all rights reserved.</span>
+      <div class="d-flex align-items-end">
+        © 2018 Joga Chiropractic Center - all rights reserved.
+        <img class="d-inline-block ml-3" src="../../assets/jcc-logo-sm-black.png" alt="Joga Chiropractic Logo" />
+      </div>
     </div>
   </div>
 </div>

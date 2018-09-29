@@ -17,12 +17,17 @@ import { LocationComponent } from './location/location.component';
 import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomeComponent } from './home/home.component';
-import { ServiceDetailComponent } from './service-detail/service-detail.component';
+import { DetailComponent } from './detail/detail.component';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'services/:service', component: ServiceDetailComponent }
+  { path: 'services/:service', component: DetailComponent },
+  { path: 'conditions-treated/:condition', component: DetailComponent },
+  { path: 'about-us/meet-the-team', component: AboutComponent},
+  { path: 'about-us/philosophy', component: DetailComponent},
+  { path: 'new-patient-center/:info', component: DetailComponent}
 ];
 
 
@@ -40,7 +45,8 @@ const appRoutes: Routes = [
     AdminBlogComponent,
     AdminLoginComponent,
     HomeComponent,
-    ServiceDetailComponent,
+    DetailComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

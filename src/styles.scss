@@ -7,6 +7,11 @@ html, body {
   height: 100%;
 }
 
+.content-wrapper {
+  position: relative;
+  margin-top: 125px;
+}
+
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -20,10 +25,48 @@ html, body {
   background-color: rgb(3, 63, 45);
 }
 
+.text-jcc-green {
+  color: rgb(3, 63, 45);
+}
+
 .btn-lg {
   border-radius: 0;
   border-style: solid;
 }
+
+.phil {
+  background-color: rgb(128, 197, 184);
+}
+
+.dot, .dot::before, .dot::after {
+  position: relative;
+  background-color: white;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+}
+
+.dot {
+  border-top: 0;
+  border-bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dot::before  {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: -14px;
+}
+
+.dot::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: -14px;
+}
+
 
 @include media-breakpoint-down(xs) {
   h1 {

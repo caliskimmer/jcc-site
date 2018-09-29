@@ -4,7 +4,7 @@
       <h1 class="mb-3">{{service.name}}</h1>
       <span id="quote-text" class="d-block pb-0">{{service.quote.text}}</span>
       <span id="quote-author" class="d-block font-italic pb-4">{{service.quote.author}}</span>
-      <button type="button" class="btn-lg {{index%2 === 0 ? 'btn-outline-dark' : 'btn-outline-light'}}">Learn More</button>
+      <button type="button" (click)="goToService(service.id)" class="btn-lg {{index%2 === 0 ? 'btn-outline-dark' : 'btn-outline-light'}}">Learn More</button>
     </div>
   </div>
 </ng-template>
