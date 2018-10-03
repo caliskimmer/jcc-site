@@ -24,5 +24,8 @@ export var popoverSections = {
   'New Patient Center': [
     'Online Forms',
     'Payment Options'
+  ],
+  'Blog': [
+    'Coming Soon'
   ]
 };

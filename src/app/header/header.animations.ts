@@ -42,5 +42,17 @@ export const animations = [
             group([query('@recolor', animateChild(), { optional: true }),
                    query('@swapLogo', animateChild()),
                    animate('300ms linear')]))
+ ]),
+ trigger('mobile-menu-slide', [
+  state('menu-on', style({
+    display: 'block',
+    left: '0',
+  })),
+  state('menu-off', style({
+    left: '-100%',
+    display: 'hidden'
+  })),
+   transition('menu-off => menu-on', animate('500ms ease-out')),
+   transition('menu-on => menu-off', animate('500ms ease-in'))
  ])
 ];

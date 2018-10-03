@@ -19,10 +19,13 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { AboutComponent } from './about/about.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'faqs', component: FaqsComponent },
   { path: 'services/:service', component: DetailComponent },
   { path: 'conditions-treated/:condition', component: DetailComponent },
   { path: 'about-us/meet-the-team', component: AboutComponent},
@@ -47,6 +50,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DetailComponent,
     AboutComponent,
+    FaqsComponent,
+    MobileMenuComponent,
   ],
   imports: [
     BrowserModule,

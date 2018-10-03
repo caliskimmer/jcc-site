@@ -1,9 +1,10 @@
 <div [@moveDown]="state" id="hidden-header-background" class="bg-white shadow w-100"></div>
+<ng-container *ngTemplateOutlet="mobilemenu"></ng-container> 
 <header [ngClass] = "{'header-recolor': onDetail, shadow: onDetail, 'pt-3': !onDetail, 'pb-3': !onDetail}" class="container-fluid">
   <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">
-        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover"  href="#">{{item}}</a>
+        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
       </li>
     </ul>
     <div class="nav col-2 justify-content-center">
@@ -13,14 +14,17 @@
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListRight; let index of i">
-        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover"  href="#">{{item}}</a>
+        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
+      </li>
+      <li class="nav-item active">
+        <a [@recolor]="state" class="nav-link font-weight-light" href="faqs">FAQs</a>
       </li>
     </ul>
   </nav>
 
   <!-- small devices -->
   <nav [@shiftUp]="state" class="d-sm-flex d-xl-none navbar align-items-center">
-    <a href="#" class="nav col">
+    <a (click)=moveMenu() class="nav col">
       <img id="hamburger" src="../../assets/menu.png" alt="menu" />
     </a> 
     <div class="nav col justify-content-center">
@@ -33,6 +37,10 @@
     </div> 
   </nav>
 </header>
+
+<ng-template #mobilemenu>
+  <app-mobile-menu [@mobile-menu-slide]="menuState" [header]="header" id="mobile-menu"></app-mobile-menu>
+</ng-template>
 
 <ng-template #popover>
   <app-popover [linkName]="navList[currPopIndex]"></app-popover>

@@ -56,6 +56,20 @@ li {
   filter: invert(100%);
 }
 
+.modal-open {
+  overflow: hidden;
+}
+
+#mobile-menu {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: -100%;
+  background-color: white;
+  z-index: $zindex-modal;
+}
+
 /*Don't own ngb popover el, so must access through shadow DOM*/
 :host {
   /deep/ .popover {

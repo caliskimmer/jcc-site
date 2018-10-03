@@ -1,5 +1,5 @@
 import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
-import { Component, ViewChildren, QueryList, OnInit} from '@angular/core';
+import { Component, ViewChildren, QueryList, Renderer2, OnInit} from '@angular/core';
 import { animations } from './header.animations';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -11,15 +11,17 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class HeaderComponent { 
   state:string = '';
+  menuState:string = 'menu-off';
+  header:HeaderComponent = this;
   onDetail:boolean = false;
   navListLeft: string[] = ['About Us', 'Services', 'Conditions Treated'];
-  navListRight: string[] = ['New Patient Center', 'Blog', 'FAQs'];
+  navListRight: string[] = ['New Patient Center', 'Blog'];
   navList: string[] = this.navListLeft.concat(this.navListRight);
   currPopIndex: number = -1;
 
   @ViewChildren('p') popovers: QueryList<NgbPopover>;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private renderer: Renderer2) { }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -44,6 +46,11 @@ export class HeaderComponent {
      if (!this.onDetail) {
         this.state = (this.state === 'below') ? 'above' : 'below';
      }
+  }
+
+  moveMenu() {
+    this.menuState = (this.menuState === 'menu-off') ? 'menu-on' : 'menu-off';
+    this.renderer.addClass(document.body, 'modal-open');
   }
 
   // Determines when to enable or disable animations
