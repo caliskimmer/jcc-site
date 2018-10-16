@@ -12,7 +12,6 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("TEST: " + this.router);
   }
 
 }
