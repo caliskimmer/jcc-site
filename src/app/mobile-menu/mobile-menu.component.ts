@@ -5,7 +5,7 @@ import { popoverSections } from '../data/navigation-links.js';
 @Component({
   selector: 'app-mobile-menu',
   templateUrl: './mobile-menu.component.html',
-  styleUrls: ['./mobile-menu.component.css']
+  styleUrls: ['./mobile-menu.component.scss']
 })
 export class MobileMenuComponent implements OnChanges{
   @Input() header:HeaderComponent;

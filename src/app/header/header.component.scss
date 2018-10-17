@@ -1,6 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 @import "../../styles.scss";
 
+.nav {
+  padding: 0;
+}
+
 .logo {
   height: 100px;
   width: 100px;
@@ -12,6 +16,21 @@
   width: 100px;
   background-image: url('../../assets/jcc-logo-md.png');
   transform: scale(0.8);
+}
+
+@include media-breakpoint-down(sm) {
+  .logo {
+    height: 75px;
+    width: 75px;
+    background-image: url('../../assets/jcc-logo-sm-white.png');
+  }
+
+  .logo-detail {
+    height: 75px;
+    width: 75px;
+    background-image: url('../../assets/jcc-logo-sm-white.png');
+    transform: scale(0.8);
+  }
 }
 
 .navbar {
@@ -48,12 +67,19 @@ li {
 }
 
 #hamburger {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
+  background-image: url('../../assets/menu.png');
 }
 
 #hamburger:hover {
   filter: invert(100%);
+}
+
+#telephone {
+  height: 40px;
+  width: 40px;
+  background-image: url('../../assets/phone-icon-sm-white.png');
 }
 
 .modal-open {

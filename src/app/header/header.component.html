@@ -23,16 +23,18 @@
   </nav>
 
   <!-- small devices -->
-  <nav [@shiftUp]="state" class="d-sm-flex d-xl-none navbar align-items-center">
-    <a (click)=moveMenu() class="nav col">
-      <img id="hamburger" src="../../assets/menu.png" alt="menu" />
+  <nav [@shiftUpMobile]="state" class="d-sm-flex d-xl-none navbar align-items-center">
+    <a (click)=moveMenu() class="nav col justify-content-center">
+      <div id="hamburger" [@recolor]="state"></div>
     </a> 
     <div class="nav col justify-content-center">
-      <img [@swapLogo]="state" src="../../assets/jcc-logo-md.png" alt="Joga Chiropractic Center" />
+      <a href="/home">
+        <div [class]="onDetail ? 'logo-detail': 'logo'" [@swapLogoMobile]="state"></div>
+      </a>
     </div>
     <div class="nav col justify-content-center">
       <a href="tel:+14248002488">
-        <img src="../../assets/phone-icon.png" alt="telephone" />
+        <div id="telephone" [@recolor]="state"></div>
       </a>
     </div> 
   </nav>
