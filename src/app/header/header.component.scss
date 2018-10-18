@@ -88,10 +88,10 @@ li {
 
 #mobile-menu {
   display: block;
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
-  left: -100%;
+  bottom: -100%;
   background-color: white;
   z-index: $zindex-modal;
 }

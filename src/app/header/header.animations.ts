@@ -70,11 +70,11 @@ export const animations = [
  trigger('mobile-menu-slide', [
   state('menu-on', style({
     display: 'block',
-    left: '0',
+    top: '75px' 
   })),
   state('menu-off', style({
-    left: '-100%',
-    display: 'hidden',
+    bottom: '-100%',
+    display: 'hidden'
   })),
    transition('menu-off => menu-on', animate('500ms ease-out')),
    transition('menu-on => menu-off', animate('500ms ease-in'))
