@@ -22,7 +22,7 @@
           <div class="card-body pb-0 pt-0">
             <ul class="mb-0">
               <li class="pb-2 pt-2" *ngFor="let child of menuItem.children">
-                <a class="text-white font-weight-bold">{{child}}</a>
+                <a href="{{popoverService.urlName(menuItem.item)}}/{{popoverService.urlName(child)}}" class="text-white font-weight-bold">{{child}}</a>
               </li>
             </ul>
           </div>

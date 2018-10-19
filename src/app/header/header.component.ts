@@ -11,6 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class HeaderComponent { 
   state:string = '';
+  prevHeaderState:string = '';
   menuState:string = 'menu-off';
   header:HeaderComponent = this;
   onDetail:boolean = false;
@@ -50,6 +51,12 @@ export class HeaderComponent {
 
   moveMenu() {
     this.menuState = (this.menuState === 'menu-off') ? 'menu-on' : 'menu-off';
+    this.prevHeaderState = this.state;
+
+    if (!this.onDetail) {
+      this.state = 'below';
+    }
+
     this.renderer.addClass(document.body, 'modal-open');
   }
 

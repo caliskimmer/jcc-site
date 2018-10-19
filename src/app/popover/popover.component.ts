@@ -1,7 +1,7 @@
 import {Component, Input}  from '@angular/core';
 import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
-
 import {popoverSections} from '../data/navigation-links';
+import {PopoverService} from '../popover-service/popover-service.service';
 
 @Component({
   selector: 'app-popover',
@@ -11,12 +11,8 @@ import {popoverSections} from '../data/navigation-links';
 export class PopoverComponent {
   @Input() linkName: string;
 
-  constructor() { }
+  constructor(private popoverService: PopoverService) { }
   
-  urlName(linkName: string): string {
-    return linkName.replace(/ /g, '-').replace(/&/g, 'and').toLowerCase();
-  }
-
   displayContent(): any[] {
     return (this.linkName in popoverSections) ? popoverSections[this.linkName] : [];
   }

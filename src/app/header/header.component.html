@@ -1,6 +1,6 @@
 <div [@moveDown]="state" id="hidden-header-background" class="bg-white shadow w-100"></div>
 <ng-container *ngTemplateOutlet="mobilemenu"></ng-container> 
-<header [ngClass] = "{'header-recolor': onDetail, shadow: onDetail, 'pt-3': !onDetail, 'pb-3': !onDetail}" class="container-fluid">
+<header [ngClass] = "{'header-detail': onDetail, shadow: onDetail, 'pt-3': !onDetail, 'pb-3': !onDetail}" class="container-fluid">
   <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">

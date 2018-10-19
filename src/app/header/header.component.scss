@@ -45,8 +45,14 @@ header {
   height: 100px;
 }
 
-.header-recolor {
+.header-detail {
   background-color: rgb(128, 197, 184);
+}
+
+@include media-breakpoint-down(sm) {
+  .header-detail {
+    height: 80px;
+  }
 }
 
 a {

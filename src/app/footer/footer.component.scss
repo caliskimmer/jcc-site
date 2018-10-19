@@ -29,13 +29,12 @@
   position: relative;
 }
 
-@include media-breakpoint-down(xs) {
+@include media-breakpoint-down(sm) {
   #copyright {
-    position: relative;
-    margin-top: 10px;
+    display: block;
   }
 
-  #copyright > span {
+  #copyright > div {
     position: relative;
   }
 
