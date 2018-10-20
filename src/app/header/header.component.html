@@ -1,7 +1,7 @@
 <div [@moveDown]="state" id="hidden-header-background" class="bg-white shadow w-100"></div>
 <ng-container *ngTemplateOutlet="mobilemenu"></ng-container> 
 <header [ngClass] = "{'header-detail': onDetail, shadow: onDetail, 'pt-3': !onDetail, 'pb-3': !onDetail}" class="container-fluid">
-  <nav [@shiftUp]="state" class="d-none d-xl-flex flex-nowrap mx-auto navbar align-items-center">
+  <nav [@shiftUp]="state" class="d-none d-lg-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">
         <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
@@ -23,13 +23,14 @@
   </nav>
 
   <!-- small devices -->
-  <nav [@shiftUpMobile]="state" class="d-sm-flex d-xl-none navbar align-items-center">
+  <nav [@shiftUpMobile]="state" class="d-sm-flex d-lg-none navbar align-items-center">
     <a (click)=moveMenu() class="nav col justify-content-center">
       <div id="hamburger" [@recolor]="state"></div>
     </a> 
     <div class="nav col justify-content-center">
       <a href="/home">
-        <div [class]="onDetail ? 'logo-detail': 'logo'" [@swapLogoMobile]="state"></div>
+        <div [ngClass]="{'logo-detail': onDetail, 'logo': !onDetail}" class="d-block d-md-none" [@swapLogoMobile]="state"></div>
+        <div class="d-none d-md-block" [ngClass]="{'logo-detail': onDetail, 'logo': !onDetail}" [@swapLogo]="state"></div>
       </a>
     </div>
     <div class="nav col justify-content-center">

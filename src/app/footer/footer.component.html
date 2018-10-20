@@ -1,13 +1,27 @@
-<div class="container-fluid w-75">
-  <div class="row font-weight-bold pt-4 mx-auto">Jogachiropractic.com</div>
-  <div class="row pb-4 pt-4 mx-auto">
-    <ul class="col navbar-nav" *ngFor="let list of lists | keyvalue">
-      <li class="nav-title nav-item active text-secondary text-uppercase pb-2">{{list.key}}</li>
-      <li class="nav-item active pb-1" *ngFor="let item of lists[list.key]">
-        <a class="text-dark font-weight-bold" href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
-      </li>
+<div class="container-fluid">
+    <div class="d-none d-md-flex row font-weight-bold pt-4 pl-4 pr-4 pb-3">Jogachiropractic.com</div>
+    <div class="d-none d-md-flex row p-4">
+      <ul class="col navbar-nav" *ngFor="let list of lists | keyvalue">
+        <li class="nav-title nav-item active text-secondary text-uppercase pb-2">{{list.key}}</li>
+        <li class="nav-item active pb-2" *ngFor="let item of lists[list.key]">
+          <a class="text-dark font-weight-bold" href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
+        </li>
+      </ul>
+    </div>
+ 
+  <!-- mobile -->
+  <div class="d-xs-flex d-md-none pt-3">
+    <ul class="row p-0" *ngFor="let list of lists | keyvalue">
+      <div class="col text-center">
+        <li class="active text-secondary text-uppercase font-weight-bold pb-2">{{list.key}}</li>
+        <li id="mobile-list-items" class="active pb-2" *ngFor="let item of lists[list.key]">
+          <a class="text-dark font-weight-bold" href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
+        </li>
+      </div>
     </ul>
   </div>
+  <!-- end mobile -->
+
   <div class="row pb-4 pt-3 border-top mx-auto text-center align-items-center">
     <div id="social-media" class="d-block col-md text-sm-left pb-2">
       <span class="d-block h-50 font-weight-bold pb-2 pb-md-3">We're on social media!</span>

@@ -1,5 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
+.container-fluid {
+  width: 75%;
+}
 
 .nav-item {
   font-size: 0.9em;
@@ -25,11 +28,25 @@
   right: 5px;
 }
 
-.row {
-  position: relative;
+ul {
+  list-style: none;
+}
+
+#mobile-list-items {
+  font-size: 0.9em;
+}
+
+@include media-breakpoint-down(md) {
+  .container-fluid {
+    width: 100%;
+  }
 }
 
 @include media-breakpoint-down(sm) {
+  li {
+    font-size: 0.8em;
+  }
+
   #copyright {
     display: block;
   }

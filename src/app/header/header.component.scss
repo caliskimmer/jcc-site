@@ -18,7 +18,7 @@
   transform: scale(0.8);
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .logo {
     height: 75px;
     width: 75px;
@@ -49,7 +49,7 @@ header {
   background-color: rgb(128, 197, 184);
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .header-detail {
     height: 80px;
   }

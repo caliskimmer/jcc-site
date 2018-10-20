@@ -5,8 +5,15 @@ h1 {
 }
 
 #map {
-  height: 350px;
-  width: 750px;
+  height: 250px;
+  width: 100%;
+}
+
+@include media-breakpoint-up(lg) {
+  #map {
+    height: 350px;
+    width: 750px;
+  }
 }
 
 span {
