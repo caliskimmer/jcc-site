@@ -27,7 +27,7 @@ export class HeaderComponent {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.onDetail = (this.router.url !== '/home' && this.router.url !== '/');
+        this.onDetail = (!this.router.url.includes('home'));
       }
     });
   }

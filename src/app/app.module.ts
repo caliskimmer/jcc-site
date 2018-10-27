@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { QuoteComponent } from './quote/quote.component';
@@ -21,6 +22,8 @@ import { DetailComponent } from './detail/detail.component';
 import { AboutComponent } from './about/about.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
+import { ContactComponent } from './contact/contact.component';
+import { BookApptComponent } from './book-appt/book-appt.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -52,11 +55,14 @@ const appRoutes: Routes = [
     AboutComponent,
     FaqsComponent,
     MobileMenuComponent,
+    ContactComponent,
+    BookApptComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FontAwesomeModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes

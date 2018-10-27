@@ -8,10 +8,29 @@
   width: 100%;
 }
 
+#contact-modal {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  z-index: $zindex-modal;
+}
+
+#book-appt-modal {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  z-index: $zindex-modal;
+}
+
 #main-content {
   position: relative;
   height: 100px;
   top: 23%;
+}
+
+.hide-scrollbar {
+  height: 0;
+  overflow: hidden;
 }
 
 .btn {
