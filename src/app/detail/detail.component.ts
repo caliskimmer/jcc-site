@@ -22,11 +22,11 @@ export class DetailComponent implements OnInit {
     var currentDetail: string = this.route.snapshot.paramMap.get(detailCategory);
 
     if (!detailCategory) {
-      detailCategory = "about";
-      currentDetail = "philosophy";
+      detailCategory = 'about';
+      currentDetail = 'philosophy';
     }
 
-    const fileLoc = "assets/docs/detail/" + detailCategory + "/" + currentDetail + ".html";
+    const fileLoc = `assets/docs/detail/${detailCategory}/${currentDetail}.html`;
     const httpResponse = this.http.get(fileLoc, {responseType: 'html' as 'text'});
     httpResponse.subscribe(content => this.detailContent = content);
   }

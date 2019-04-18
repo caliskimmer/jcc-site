@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, OnInit, OnDestroy } from '@angular/core';
 import { HeaderComponent } from '../header/header.component'
 
 @Directive({
@@ -6,12 +6,12 @@ import { HeaderComponent } from '../header/header.component'
   selector: '[addBackgroundOnScroll]'
 })
 
-export class AddBackgroundOnScrollDirective {
+export class AddBackgroundOnScrollDirective implements OnInit, OnDestroy {
 
   constructor(private header: HeaderComponent) {}
-  
+
   ngOnInit() {
-    window.addEventListener('scroll', this.scroll, true);    
+    window.addEventListener('scroll', this.scroll, true);
   }
 
   ngOnDestroy() {
@@ -19,11 +19,11 @@ export class AddBackgroundOnScrollDirective {
   }
 
   scroll = (): void => {
-    //Dropdown header background
-    if (window.scrollY > 0 && (this.header.state == 'above' || this.header.state == '')) {
+    // Dropdown header background
+    if (window.scrollY > 0 && (this.header.state === 'above' || this.header.state === '')) {
       this.header.moveDown();
-    } else if (window.scrollY == 0 && this.header.state == 'below') {
+    } else if (window.scrollY === 0 && this.header.state === 'below') {
       this.header.moveDown();
     }
-  };
+  }
 }

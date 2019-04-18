@@ -1,5 +1,4 @@
 import {Component, Input}  from '@angular/core';
-import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
 import {popoverSections} from '../data/navigation-links';
 import {PopoverService} from '../popover-service/popover-service.service';
 
@@ -12,7 +11,7 @@ export class PopoverComponent {
   @Input() linkName: string;
 
   constructor(private popoverService: PopoverService) { }
-  
+
   displayContent(): any[] {
     return (this.linkName in popoverSections) ? popoverSections[this.linkName] : [];
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { animations } from './main.animations';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,12 +8,10 @@ import { Router } from '@angular/router';
   animations: animations
 })
 export class MainComponent implements OnInit {
-  contactState: string = '';
-  bookingState: string = '';
+  contactState = '';
+  bookingState = '';
   main: MainComponent = this;
-  router: any = Router;
-
-  constructor(private renderer:Renderer2) { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
   }

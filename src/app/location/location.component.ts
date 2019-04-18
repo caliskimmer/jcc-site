@@ -1,5 +1,4 @@
 import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { environment } from '../../environments/environment';
 
 import * as L from 'mapbox.js';
 
@@ -14,11 +13,11 @@ export class LocationComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-    const LONGITUDE: number = 33.955113;
-    const LATITUDE: number = -118.396457;
-    const ZOOM: number = 15;
-    L.mapbox.accessToken = 'temp' //environment.mapbox.access_token;
-    let jccMap:any = L.mapbox.map(this.map.nativeElement, 'mapbox.streets').setView([LONGITUDE, LATITUDE], ZOOM);
+    const LONGITUDE = 33.955113;
+    const LATITUDE = -118.396457;
+    const ZOOM = 15;
+    L.mapbox.accessToken = 'temp'; // environment.mapbox.access_token;
+    const jccMap: any = L.mapbox.map(this.map.nativeElement, 'mapbox.streets').setView([LONGITUDE, LATITUDE], ZOOM);
     L.marker([LONGITUDE, LATITUDE]).addTo(jccMap);
   }
 

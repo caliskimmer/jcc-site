@@ -9,16 +9,16 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./header.component.scss'],
   animations: animations
 })
-export class HeaderComponent { 
-  state:string = '';
-  prevHeaderState:string = '';
-  menuState:string = 'menu-off';
-  header:HeaderComponent = this;
-  onDetail:boolean = false;
+export class HeaderComponent implements OnInit {
+  state = '';
+  prevHeaderState = '';
+  menuState = 'menu-off';
+  header: HeaderComponent = this;
+  onDetail = false;
   navListLeft: string[] = ['About Us', 'Services', 'Conditions Treated'];
   navListRight: string[] = ['New Patient Center', 'Blog'];
   navList: string[] = this.navListLeft.concat(this.navListRight);
-  currPopIndex: number = -1;
+  currPopIndex = -1;
 
   @ViewChildren('p') popovers: QueryList<NgbPopover>;
 
@@ -34,7 +34,7 @@ export class HeaderComponent {
 
   mouseenter(e) {
     this.currPopIndex = this.navList.indexOf(e.target.innerText);
-    let currPopover:NgbPopover = this.popovers.toArray()[this.currPopIndex];
+    const currPopover: NgbPopover = this.popovers.toArray()[this.currPopIndex];
     currPopover.open();
   }
 
@@ -42,7 +42,7 @@ export class HeaderComponent {
     this.popovers.toArray()[this.currPopIndex].close();
   }
 
-  //called on window scroll event
+  // called on window scroll event
   moveDown() {
      if (!this.onDetail) {
         this.state = (this.state === 'below') ? 'above' : 'below';
@@ -62,6 +62,6 @@ export class HeaderComponent {
 
   // Determines when to enable or disable animations
   detailPresent() {
-    return this.onDetail;    
+    return this.onDetail;
   }
 }

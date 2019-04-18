@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { QuoteComponent } from './quote/quote.component';
@@ -15,9 +16,8 @@ import { AddBackgroundOnScrollDirective } from './directives/add-background-on-s
 import { FooterComponent } from './footer/footer.component';
 import { PopoverComponent } from './popover/popover.component';
 import { LocationComponent } from './location/location.component';
-import { AdminBlogComponent } from './admin-blog/admin-blog.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
 import { DetailComponent } from './detail/detail.component';
 import { AboutComponent } from './about/about.component';
 import { FaqsComponent } from './faqs/faqs.component';
@@ -27,6 +27,7 @@ import { BookApptComponent } from './book-appt/book-appt.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'admin', component: AdminComponent },
   { path: 'home', component: HomeComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'services/:service', component: DetailComponent },
@@ -48,8 +49,7 @@ const appRoutes: Routes = [
     FooterComponent,
     PopoverComponent,
     LocationComponent,
-    AdminBlogComponent,
-    AdminLoginComponent,
+    AdminComponent,
     HomeComponent,
     DetailComponent,
     AboutComponent,
@@ -61,8 +61,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes

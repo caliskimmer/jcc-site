@@ -1,6 +1,8 @@
-<div class="container-fluid"> 
-  <app-header addBackgroundOnScroll></app-header>
+<div class="container-fluid">
+  <app-header addBackgroundOnScroll *ngIf="router.url !== '/admin'"></app-header>
   <router-outlet></router-outlet>
-  <app-location></app-location>
-  <app-footer></app-footer>
+  <div *ngIf="router.url !== '/admin'">
+    <app-location></app-location>
+    <app-footer></app-footer>
+  </div>
 </div>
