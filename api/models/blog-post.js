@@ -24,7 +24,7 @@ module.exports = function() {
 
     BlogPostSchema.methods.postToDatabase = async function() {
         try {
-            return await this.save();
+            return await this.save().exec();
         } catch(err) {
             throw err;
         }
@@ -56,7 +56,7 @@ module.exports = function() {
         }
 
         try {
-            return await this.deleteOne({_id: postID});
+            return await this.deleteOne({_id: postID}).exec();
         } catch(err) {
             throw err;
         }

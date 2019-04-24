@@ -113,7 +113,7 @@ module.exports = function() {
         }
 
         try {
-            await userToUpdate.save();
+            await userToUpdate.save().exec();
             return res.json({
                success: true,
                reason: null
@@ -218,7 +218,7 @@ module.exports = function() {
         }
 
         try {
-            var userExists = await User.findOne({'username': req.body.username});
+            var userExists = await User.findOne({'username': req.body.username}).exec();
             if (userExists) {
                 return res.json({
                    success: false,
@@ -234,7 +234,7 @@ module.exports = function() {
         }
 
         try {
-            await newUser.save();
+            await newUser.save().exec();
         } catch (err) {
             log.error(`An error occurred saving new user to database => ${err}`);
             return res.json({

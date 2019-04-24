@@ -103,7 +103,7 @@ module.exports = function() {
                 post.body = req.body.body;
             }
             post.updated = Date.now();
-            await post.save();
+            await post.save().exec();
         } catch(err) {
             log.error(`An error occurred while updating blog post => ${err}`);
             return res.json({

@@ -26,7 +26,7 @@ module.exports = function() {
 
     UserSchema.methods.deleteFromDatabase = async function() {
         try {
-            await this.deleteOne({username: this.username});
+            await this.deleteOne({username: this.username}).exec();
         } catch {
             throw err;
         }
@@ -34,7 +34,7 @@ module.exports = function() {
 
     UserSchema.statics.retrieveFromDatabase = async function(userID) {
         try {
-            return await this.findOne({_id: userID});
+            return await this.findOne({_id: userID}).exec();
         } catch(err) {
             throw err;
         }
@@ -43,7 +43,7 @@ module.exports = function() {
     UserSchema.statics.listFromDatabase = async function(userRole) {
         try {
             let filter = {$gte: userRole};
-            return await this.find({role: filter}, '-_id -password -blogPosts');
+            return await this.find({role: filter}, '-_id -password -blogPosts').exec();
         } catch (err) {
             throw err;
         }
@@ -51,7 +51,7 @@ module.exports = function() {
 
     UserSchema.statics.viewFromDatabase = async function(userID) {
         try {
-            return await this.findOne({_id: userID}, '-_id -password -blogPosts');
+            return await this.findOne({_id: userID}, '-_id -password -blogPosts').exec();
         } catch (err) {
             throw err;
         }
