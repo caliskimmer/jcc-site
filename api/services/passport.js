@@ -15,75 +15,61 @@ module.exports = function(app) {
         passReqToCallback: true,
         session: false
     };
-    passport.use(new LocalStrategy(opts, (req, username, password, done) => {
-        log.debug('api.services.passport.local: retrieving username from database');
-
-        log.info('api.services.passport.local: checking if user already authenticated');
-        let authHeader = req.headers.authorization;
-        if (authHeader) {
-            log.debug('api.services.passport.local: auth header exists, checking for token');
-
+    passport.use(new LocalStrategy(opts, async (req, username, password, done) => {
+        if (req.headers.authorization) {
             try {
-                let user = jwt.decode(authHeader.split(" ")[1], process.env.JWT_SECRET);
-
-                log.debug('api.services.passport.local: user already authenticated. No need to login.');
+                let user = jwt.decode(req.headers.authorization.split(" ")[1], process.env.JWT_SECRET);
                 return done(null, user);
             } catch(err) {
-                log.debug('decode failed, need to authenticate user');
+                log.error(`An error occurred decoding jwt => ${err}`);
+                return done(err, false);
             }
         }
 
-        log.info('api.services.passport.local: no authenticated user, retrieving from db...');
-        User.findOne({'username': username}, (err, obj) => {
-            if (!obj) {
-                log.debug('api.services.passport.local: user was not found');
-                done(null, false, { message: 'Unable to login' });
-            }
+        try {
+            var obj = await User.findOne({'username': username}).exec();
+        } catch (err) {
+            log.error(`An error occurred retrieving user from database => ${err}`);
+            return done(err, false);
+        }
+        if (!obj) {
+            return done(null, false)
+        }
 
-            log.debug('api.services.passport.local: comparing password hashes');
-            bcrypt.compare(password, obj['password']).then(function(res) {
-                if (res) {
-                    log.info(`api.services.passport.local: ${username} login successful`);
-                    let user = {
-                        'username':  username,
-                        'firstName': obj['firstName'],
-                        'lastName':  obj['lastName'],
-                        'id':        obj['_id'],
-                        'role':     obj['role']
-                    };
-                    let payload = {
-                        'id':       obj['_id'],
-                        'iat':      Date.now() / 1000,
-                        'exp':      Date.now() / 1000 + 5 * 60 * 60
-                    };
-                    let token = jwt.encode(payload, process.env.JWT_SECRET);
-                    user['token'] = token;
+        try {
+            var hashesMatch = await bcrypt.compare(password, obj['password']);
+        } catch (err) {
+            log.error(`An error occurred comparing hashes => ${err}`);
+            return done(err, false);
+        }
+        if (!hashesMatch) {
+            return done(null, false);
+        }
 
-                    return done(null, user);
-                }
+        let user = {
+            'username':  username,
+            'firstName': obj['firstName'],
+            'lastName':  obj['lastName'],
+            'id':        obj['_id'],
+            'role':     obj['role']
+        };
+        let payload = {
+            'id':       obj['_id'],
+            'iat':      Date.now() / 1000,
+            'exp':      Date.now() / 1000 + 5 * 60 * 60
+        };
+        let token = jwt.encode(payload, process.env.JWT_SECRET);
+        user['token'] = token;
 
-                log.info('api.services.passport.local: login failed');
-                return done(null, false, {message:'Username and/or password is incorrect'});
-
-            }, function(err) {
-                log.info('api.services.passport.local: an error occurred');
-                if (err) {
-                    log.error(`api.services.passport.local: ${err}`);
-                    return done(null, false, {message:'An error occurred during login'});
-                }
-            });
-        });
+        return done(null, user);
     }));
 
     // secure route authentication
-    log.info('api.services.passport: creating passport jwt behavior');
     opts = {
         'jwtFromRequest': ExtractJwt.fromAuthHeaderAsBearerToken(),
         'secretOrKey':    process.env.JWT_SECRET
     };
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-        log.debug(`api.services.passport.jwt: retrieving user from payload: ${JSON.stringify(jwt_payload)}`);
-
         return done(null, jwt_payload);
     }));
 

@@ -4,42 +4,44 @@ const log = require('../logger');
 module.exports = function() {
     let auth = {};
 
-    auth.login = function(req, res, next) {
+    auth.login = function(req, res) {
         passport.authenticate('local', function(err, user) {
-            log.trace('api.services.auth.login: begun');
-
             if (err) {
-                log.info(`api.services.auth.login: an error occurred => ${err}`);
-                res.status(404).json({user: null, success: false});
-                return next({
-                    type: 'authorization',
-                    error: err
+                log.error(`An error occurred logging in user => ${err}`);
+                return res.json({
+                    user: null,
+                    success: false,
+                    reason: 'An internal error occurred'
                 });
             }
 
             if (!user) {
-                log.info('api.services.auth.login: login failed');
                 return res.status(403).json({user: null, success: false});
             }
 
-            log.info('api.services.auth.login: login was successful');
             return res.json({user: user, success: true});
-        })(req, res, next);
+        })(req, res);
     };
 
-    auth.authenticate = function(req, res, next) {
-        log.debug('api.services.auth.authenticate: checking for jwt token');
+    auth.authenticate = function(req, res) {
         passport.authenticate('jwt', { session: false }, function(err, user) {
-            if (user) {
-                log.debug('api.services.auth.authenticate: user already logged in');
-                req.user = user;
+            if (err) {
+                log.error(`An error occurred authenticating user => ${err}`);
+                res.json({
+                    user: null,
+                    success: false,
+                    reason: 'An internal error occurred'
+                });
+            }
 
-                return next();
-            } else {
-                log.debug('api.services.auth.authenticate: user is NOT authenticated');
+            if (!user) {
                 return res.status(401).json({user: null, success: false});
             }
-        })(req, res, next);
+
+            req.user = user;
+
+            return next();
+        })(req, res);
     };
 
     return auth;
