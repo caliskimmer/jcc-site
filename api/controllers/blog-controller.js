@@ -17,7 +17,6 @@ module.exports = function() {
             title: req.body.title,
             body: req.body.body,
             author: req.user.id,
-            authorRank: req.user.roles[0]
         });
 
         try {
@@ -53,13 +52,6 @@ module.exports = function() {
     };
 
     BlogController.updatePost = async function(req, res) {
-        if (!req.params.id) {
-            return res.status(404).json({
-                success: false,
-                reason: 'no post provided for updating'
-            });
-        }
-
         if (!req.body.title && !req.body.body) {
             return res.json({
                 success: false,
@@ -77,13 +69,6 @@ module.exports = function() {
             });
         }
 
-        if (user.roles[0] === 'user') {
-            return res.status(403).json({
-                success: false,
-                reason: 'user not permitted to update post'
-            });
-        }
-
         try {
             var post = await BlogPost.retrieveFromDatabase(req.params.id);
         } catch(err) {
@@ -94,11 +79,20 @@ module.exports = function() {
             });
         }
 
-        if (!authorizedByRank(user.roles[0], post.author.roles[0])) {
-            return res.status(403).json({
-                success: false,
-                reason: 'user not permitted to update post'
-            });
+        if (user.role === User.roleMap.USER) {
+            if (user.username !== post.author.username) {
+                return res.status(403).json({
+                   success: false,
+                   reason: `user not permitted to update post`
+                });
+            }
+        } else {
+            if (user.role > post.author.role) {
+                return res.status(403).json({
+                   success: false,
+                   reason: `user not permitted to update post`
+                });
+            }
         }
 
         try {
@@ -125,13 +119,6 @@ module.exports = function() {
     };
 
     BlogController.deletePost = async function(req, res) {
-        if (!req.params.id) {
-            return res.status(404).json({
-                success: false,
-                reason: 'no post provided for updating'
-            });
-        }
-
         try {
             var user = await User.retrieveFromDatabase(req.user.id);
         } catch (err) {
@@ -139,13 +126,6 @@ module.exports = function() {
             return res.json({
                 success: false,
                 reason: 'an internal error occurred'
-            });
-        }
-
-        if (user.roles[0] === 'user') {
-            return res.status(403).json({
-                success: false,
-                reason: 'user not permitted to delete post'
             });
         }
 
@@ -159,11 +139,18 @@ module.exports = function() {
             });
         }
 
-        if (!authorizedByRank(user.roles[0], post.author.roles[0])) {
-            return res.json({
-               success: false,
-               reason: 'user not permitted to delete post'
+        if (user.role === User.roleMap.USER) {
+            return res.status(403).json({
+                success: false,
+                reason: 'user not permitted to delete post'
             });
+        } else if (user.role === User.roleMap.ADMIN) {
+            if (user.role >= post.author.role && user.username !== post.author.username) {
+                return res.status(403).json({
+                    success: false,
+                    reason: 'user not permitted to delete post'
+                });
+            }
         }
 
         try {
@@ -180,18 +167,6 @@ module.exports = function() {
            success: true,
            reason: null
         });
-    };
-
-    // private methods
-
-    let authorizedByRank = function(rank, rankRequired) {
-        let rankings = {
-            'superadministrator': Infinity,
-            'administrator': 0,
-            'user': -Infinity
-        };
-
-        return (rankings[rank] >= rankings[rankRequired]);
     };
 
     return BlogController;

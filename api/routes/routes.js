@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const BlogController = require('../controllers/blog-controller')();
+const UserController = require('../controllers/user-controller')();
 const authService = require('../services/auth')();
 
 // login
@@ -16,5 +17,10 @@ router.post('/blog/posts/update/:id', authService.authenticate, BlogController.u
 router.post('/blog/posts/delete/:id', authService.authenticate, BlogController.deletePost);
 
 // users panel
+router.get('/users', authService.authenticate, UserController.listUsers);
+router.get('/users/:id', authService.authenticate, UserController.viewUser);
+router.post('/users/create', authService.authenticate, UserController.createUser);
+router.post('/users/update/:id', authService.authenticate, UserController.updateUser);
+router.post('/users/delete/:id', authService.authenticate, UserController.deleteUser);
 
 module.exports = router;

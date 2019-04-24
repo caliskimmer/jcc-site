@@ -49,7 +49,7 @@ module.exports = function(app) {
                         'firstName': obj['firstName'],
                         'lastName':  obj['lastName'],
                         'id':        obj['_id'],
-                        'roles':     obj['roles']
+                        'role':     obj['role']
                     };
                     let payload = {
                         'id':       obj['_id'],
