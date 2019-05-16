@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { animations } from './main.animations';
+import { BookingService } from '../booking-service/booking-service.service';
 
 @Component({
   selector: 'app-main',
@@ -11,36 +12,19 @@ export class MainComponent implements OnInit {
   contactState = '';
   bookingState = '';
   main: MainComponent = this;
-  constructor(private renderer: Renderer2) { }
+
+  constructor(private renderer: Renderer2, private bookingService: BookingService) { 
+    this.bookingService.renderer = renderer;
+  }
 
   ngOnInit() {
   }
 
   toggleBookingForm() {
-    this.bookingState = (this.bookingState === 'booking-form-off' || this.bookingState === '') ? 'booking-form-on' : 'booking-form-off';
-    this.toggleScrollbar('booking');
+    this.bookingState = this.bookingService.toggleBookingForm();
   }
 
   toggleContactForm() {
-    this.contactState = (this.contactState === 'contact-form-off' || this.contactState === '') ? 'contact-form-on' : 'contact-form-off';
-    this.toggleScrollbar('contact');
-  }
-
-  toggleScrollbar(form: string) {
-    if (form === 'contact') {
-      if (this.contactState === 'contact-form-off') {
-        this.renderer.removeClass(document.body, 'hide-scrollbar');
-      } else {
-        this.renderer.addClass(document.body, 'hide-scrollbar');
-      }
-
-      return;
-    }
-
-    if (this.bookingState === 'booking-form-off') {
-      this.renderer.removeClass(document.body, 'hide-scrollbar');
-    } else {
-      this.renderer.addClass(document.body, 'hide-scrollbar');
-    }
+    this.contactState = this.bookingService.toggleContactForm();
   }
 }

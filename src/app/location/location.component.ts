@@ -1,16 +1,21 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { BookingService } from '../booking-service/booking-service.service';
 
+import { animations } from './location.animations';
 import * as L from 'mapbox.js';
 
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.scss']
+  styleUrls: ['./location.component.scss'],
+  animations: animations
 })
 export class LocationComponent implements AfterViewInit {
+  contactState = '';
+  bookingState = '';
   @ViewChild('map') map: ElementRef;
 
-  constructor() { }
+  constructor(private bookingService: BookingService) { }
 
   ngAfterViewInit() {
     const LONGITUDE = 33.955113;
@@ -21,4 +26,11 @@ export class LocationComponent implements AfterViewInit {
     L.marker([LONGITUDE, LATITUDE]).addTo(jccMap);
   }
 
+  toggleBookingForm() {
+    this.bookingState = this.bookingService.toggleBookingForm();
+  }
+
+  toggleContactForm() {
+    this.contactState = this.bookingService.toggleContactForm();
+  }
 }

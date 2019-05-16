@@ -1,12 +1,17 @@
+<ng-container *ngTemplateOutlet="bookapptmodal"></ng-container>
 <div class="container-fluid bg-jcc-green pt-5 pb-5">
   <div class="row align-self-center"> 
     <div class="col text-center">
       <h1>Schedule an Appointment</h1>
       <span class="d-block pb-1">Visit us at our Westchester location</span>
-      <button type="button" class="mt-1 mb-4 btn btn-lg btn-outline-light">Book Now</button>
+      <button type="button" (click)=toggleBookingForm() class="mt-1 mb-4 btn btn-lg btn-outline-light">Book Now</button>
       <span class="d-block font-weight-bold">Joga Chiropractic Center</span>
       <span class="d-block pb-3 font-weight-bold">8929 S Sepulveda Blvd #100 Los Angeles, CA 90045</span>
     </div>
   </div>
   <div id="map" class="row d-flex mx-auto mt-3" #map></div>
 </div>
+
+<ng-template #bookapptmodal>
+  <app-book-appt [@show-booking-form]="bookingState" id="book-appt-modal" (modalClosed)="bookingState = $event"></app-book-appt>
+</ng-template>

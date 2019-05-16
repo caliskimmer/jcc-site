@@ -3,6 +3,9 @@
 .container-fluid {
   height: 100vh;
   width: 100%;
+  background-image: url("../../assets/front.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #contact-modal {
@@ -13,7 +16,7 @@
 }
 
 #book-appt-modal {
-  position: absolute;
+  position: fixed;
   visibility: hidden;
   opacity: 0;
   z-index: $zindex-modal;

@@ -16,5 +16,5 @@
 </ng-template>
 
 <ng-template #bookapptmodal>
-  <app-book-appt [@show-booking-form]="bookingState" id="book-appt-modal" [main]="main"></app-book-appt>
+  <app-book-appt [@show-booking-form]="bookingState" id="book-appt-modal" (modalClosed)="bookingState = $event"></app-book-appt>
 </ng-template>
