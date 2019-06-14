@@ -13,7 +13,7 @@
 </ng-template>
 
 <div class="container-fluid">
-  <div id="{{service.id}}" class="row service-section" *ngFor="let service of services,
+  <div id="{{service.id}}" class="row service-section service-image" *ngFor="let service of services,
                                                                 index as index">
     <div *ngIf="index%2 === 1; then pictureBlock"></div>
     <ng-container [ngTemplateOutlet]="buttonBlock" 

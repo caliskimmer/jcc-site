@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+  styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent {
   services: any = [

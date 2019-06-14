@@ -1,4 +1,7 @@
 import { Directive, OnInit, OnDestroy } from '@angular/core';
+
+import * as _ from 'lodash';
+
 import { HeaderComponent } from '../header/header.component'
 
 @Directive({
@@ -7,15 +10,17 @@ import { HeaderComponent } from '../header/header.component'
 })
 
 export class AddBackgroundOnScrollDirective implements OnInit, OnDestroy {
+  throttledScroll: any;
 
   constructor(private header: HeaderComponent) {}
 
   ngOnInit() {
-    window.addEventListener('scroll', this.scroll, true);
+    this.throttledScroll = _.throttle(this.scroll, 500);
+    window.addEventListener('scroll', this.throttledScroll, true);
   }
 
   ngOnDestroy() {
-    window.removeEventListener('scroll', this.scroll, true);
+    window.removeEventListener('scroll', this.throttledScroll, true);
   }
 
   scroll = (): void => {

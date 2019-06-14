@@ -9,13 +9,6 @@
 }
 
 #contact-modal {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  z-index: $zindex-modal;
-}
-
-#book-appt-modal {
   position: fixed;
   visibility: hidden;
   opacity: 0;
