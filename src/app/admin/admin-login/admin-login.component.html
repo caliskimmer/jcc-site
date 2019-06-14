@@ -1,0 +1,38 @@
+<div class="container justify-content-center pt-5">
+  <div class="row justify-content-center mt-md-5 pt-md-5">
+    <div class="col-lg-6 col-md-9 bg-white rounded p-4 p-md-5 shadow-sm">
+      <h1 class="text-center">Admin Login</h1>
+      <form class="mt-2" [formGroup]="loginForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" formControlName="username" id="username" aria-describedby="adminUsername" placeholder="Username" required>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div class="text-danger" *ngIf="username.errors.required">
+              Username is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" formControlName="password" id="password" aria-describedby="adminPassword" placeholder="Password" required>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div class="text-danger" *ngIf="password.errors.required">
+              Password is required.
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="loginFailed">
+            Username or password is incorrect.
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn bg-jcc-green text-white" [disabled]="!loginForm.valid">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col d-flex justify-content-center">
+      <div id="triangle"></div>
+    </div>
+  </div>
+</div>
