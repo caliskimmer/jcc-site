@@ -1,0 +1,73 @@
+<div class="container-fluid d-flex">
+  <div class="row d-flex bg-dark">
+    <div class="col bg-white d-flex justify-content-center p-3">
+      <form>
+        <div class="row pb-4 pl-3 pr-3">
+          <div class="col text-center">
+            <h3 class="d-inline">Book Appointment</h3>
+            <a class="float-right mt-2" id="close-btn" (click)=close()>&#10761;</a>
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <select class="form-control">
+              <option>New Patient</option>
+              <option>Current Patient</option>
+              <option>Recurring Patient</option>
+            </select>
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <input type="email" class="form-control" id="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <input type="tel" class="form-control" id="tel" placeholder="Phone Number">
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col input-group">
+            <input type="text" id="datepicker" ngbDatepicker #d="ngbDatepicker" placeholder="Preferred Date" readonly>
+            <button type="button" (click)="d.toggle()" class="btn btn-secondary input-group-append">
+              <fa-icon [icon]="faCalendar"></fa-icon>
+            </button>
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <select class="form-control">
+              <option>Prefer Morning</option>
+              <option>Prefer Afternoon</option>
+              <option>Prefer Evening</option>
+            </select>
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <textarea class="form-control" rows="5" id="comment" placeholder="Comment"></textarea>
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <div class="g-recaptcha" data-sitekey="6LdWFncUAAAAALif7aY-Ku0YnshQ5ZUeaVd5LBya"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="submit" class="form-control">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
