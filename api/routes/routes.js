@@ -3,6 +3,10 @@ const router = express.Router();
 const BlogController = require('../controllers/blog-controller')();
 const UserController = require('../controllers/user-controller')();
 const authService = require('../services/auth')();
+const emailService = require('../services/email')();
+
+// email
+router.post('/contact', emailService.sendContactForm);
 
 // login
 router.post('/login', authService.login);
