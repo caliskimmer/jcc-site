@@ -1,4 +1,3 @@
-<ng-container *ngTemplateOutlet="bookapptmodal"></ng-container>
 <div class="container-fluid bg-jcc-green pt-5 pb-5">
   <div class="row align-self-center"> 
     <div class="col text-center">
@@ -11,7 +10,3 @@
   </div>
   <div id="map" class="row d-flex mx-auto mt-3" #map></div>
 </div>
-
-<ng-template #bookapptmodal>
-  <app-book-appt [@show-booking-form]="bookingState" id="book-appt-modal" (modalClosed)="bookingState = $event"></app-book-appt>
-</ng-template>

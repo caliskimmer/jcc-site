@@ -15,22 +15,6 @@
   height: 100px;
   width: 100px;
   background-image: url('../../assets/jcc-logo-md.png');
-  transform: scale(0.8);
-}
-
-@include media-breakpoint-down(md) {
-  .logo {
-    height: 75px;
-    width: 75px;
-    background-image: url('../../assets/jcc-logo-sm-white.png');
-  }
-
-  .logo-detail {
-    height: 75px;
-    width: 75px;
-    background-image: url('../../assets/jcc-logo-sm-white.png');
-    transform: scale(0.8);
-  }
 }
 
 .navbar {
@@ -49,10 +33,11 @@ header {
   background-color: rgb(128, 197, 184);
 }
 
-@include media-breakpoint-down(md) {
-  .header-detail {
-    height: 80px;
-  }
+#hidden-header-background {
+  position: fixed;
+  height: 100px;
+  top: -100px;
+  z-index: $zindex-sticky;
 }
 
 a {
@@ -61,15 +46,8 @@ a {
 
 li {
   display: flex;
-  height: 50px;
+  height: 60px;
   align-items: center;
-}
-
-#hidden-header-background {
-  position: fixed;
-  height: 80px;
-  top: -80px;
-  z-index: $zindex-sticky;
 }
 
 #hamburger {
@@ -111,12 +89,41 @@ li {
     box-shadow: inset 0 0 0 10px $jcc-green;
   }
 
- /deep/ .arrow::after {
-   border-bottom-color: $jcc-green;
- }
+  /deep/ .arrow::after {
+    border-bottom-color: $jcc-green;
+  }
 
- /deep/ .arrow::before {
-   opacity: 0;
- }
+  /deep/ .arrow::before {
+    opacity: 0;
+  }
 }
 
+@include media-breakpoint-up(md) {
+  .logo-detail {
+    transform: scale(0.8);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .logo {
+    height: 75px;
+    width: 75px;
+    background-image: url('../../assets/jcc-logo-sm-white.png');
+    margin-top: 10px;
+  }
+
+  .logo-detail {
+    height: 75px;
+    width: 75px;
+    background-image: url('../../assets/jcc-logo-sm-white.png');
+    margin-top: 10px;
+  }
+
+  #telephone {
+    margin-top: 10px;
+  }
+
+  #hamburger {
+    margin-top: 10px;
+  }
+}

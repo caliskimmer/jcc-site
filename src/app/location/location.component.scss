@@ -9,13 +9,6 @@ h1 {
   width: 100%;
 }
 
-#book-appt-modal {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  z-index: $zindex-modal;
-}
-
 @include media-breakpoint-up(lg) {
   #map {
     height: 350px;
