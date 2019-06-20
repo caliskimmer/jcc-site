@@ -62,6 +62,7 @@ module.exports = function() {
 
         // Check for existence
         errors = errors.concat(checkCommonExistence(req));
+
         if (!req.body.patientType) {
             errors.push('patient type is missing');
         }
@@ -84,14 +85,14 @@ module.exports = function() {
             errors.push('preferred time is invalid');
         }
 
+        const message = striptags(req.body.message);
+
         if (errors.length > 0) {
             return res.json({
                 success: false,
                 errors: errors
             });
         }
-
-        const message = striptags(req.body.message);
 
         const messageText = `First Name: ${req.body.firstName}\n` +
             `Last Name: ${req.body.lastName}\n` +
