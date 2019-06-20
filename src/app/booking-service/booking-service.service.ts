@@ -51,6 +51,8 @@ export class BookingService {
   sendForm(type: string, body) {
       if (type === 'contact') {
           return this.httpClient.post('http://localhost:8080/api/contact', body);
+      } else if (type === 'booking') {
+          return this.httpClient.post('http://localhost:8080/api/booking', body);
       }
   }
 }

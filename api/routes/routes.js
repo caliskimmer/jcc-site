@@ -7,6 +7,7 @@ const emailService = require('../services/email')();
 
 // email
 router.post('/contact', emailService.sendContactForm);
+router.post('/booking', emailService.sendBookingForm);
 
 // login
 router.post('/login', authService.login);

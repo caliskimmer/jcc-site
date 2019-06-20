@@ -2,11 +2,15 @@
 
 const log = require('../logger');
 const nodeMailer = require('nodemailer');
+const emailValidator = require('email-validator');
+const phoneValidator = require('libphonenumber-js');
+const striptags = require('striptags');
 
 module.exports = function() {
     let email = {};
 
-    email.sendBookingForm = async function(req, res) {
+    // Common form value existence check
+    let checkCommonExistence = (req) => {
         let errors = [];
 
         if (!req.body.firstName) {
@@ -21,6 +25,43 @@ module.exports = function() {
         if (!req.body.phone) {
             errors.push('phone number is missing');
         }
+        if (!req.body.message) {
+            errors.push('message is missing');
+        }
+
+        return errors;
+    };
+
+    // Common form value validity check
+    let checkCommonValidity = (req) => {
+        let errors = [];
+
+        if (!req.body.firstName.match(/^\w+$/)) {
+            errors.push('first name is invalid');
+        }
+        if (!req.body.lastName.match(/^\w+$/)) {
+            errors.push('last name is invalid');
+        }
+        if (!emailValidator.validate(req.body.email)) {
+            errors.push('email is invalid');
+        }
+
+        // phone validation
+        const phoneNumber = phoneValidator.parsePhoneNumberFromString(req.body.phone, 'US');
+        if (!phoneNumber || !phoneNumber.isValid()) {
+            errors.push('phone number is invalid');
+        }
+
+        return errors;
+    };
+
+    email.sendBookingForm = async function(req, res) {
+        let errors               = [];
+        const patientTypeOptions = ['New Patient', 'Current Patient', 'Recurring Patient'];
+        const timeOptions        = ['Prefer Morning', 'Prefer Afternoon', 'Prefer Evening'];
+
+        // Check for existence
+        errors = errors.concat(checkCommonExistence(req));
         if (!req.body.patientType) {
             errors.push('patient type is missing');
         }
@@ -31,8 +72,17 @@ module.exports = function() {
             errors.push('preferred time is missing');
         }
 
-        // Message is optional
-        let message = req.body.message || 'No message provided';
+        // Check for validity
+        errors = errors.concat(checkCommonValidity(req));
+        if (!req.body.date.match(/^[0-9]-[0-9]{2}-20[0-9]{2}$/)) {
+            errors.push('date is invalid');
+        }
+        if (!patientTypeOptions.includes(req.body.patientType)) {
+            errors.push('patient type is invalid');
+        }
+        if (!timeOptions.includes(req.body.preferredTime)) {
+            errors.push('preferred time is invalid');
+        }
 
         if (errors.length > 0) {
             return res.json({
@@ -40,6 +90,8 @@ module.exports = function() {
                 errors: errors
             });
         }
+
+        const message = striptags(req.body.message);
 
         const messageText = `First Name: ${req.body.firstName}\n` +
             `Last Name: ${req.body.lastName}\n` +
@@ -85,21 +137,8 @@ module.exports = function() {
     email.sendContactForm = async function(req, res) {
         let errors = [];
 
-        if (!req.body.firstName) {
-            errors.push('first name is missing');
-        }
-        if (!req.body.lastName) {
-            errors.push('last name is missing');
-        }
-        if (!req.body.email) {
-            errors.push('email is missing');
-        }
-        if (!req.body.phone) {
-            errors.push('phone number is missing');
-        }
-
-        // Message is optional
-        let message = req.body.message || 'No message provided';
+        errors = errors.concat(checkCommonExistence(req));
+        errors = errors.concat(checkCommonValidity(req));
 
         if (errors.length > 0) {
             return res.json({
@@ -107,6 +146,8 @@ module.exports = function() {
                 errors: errors
             });
         }
+
+        const message = striptags(req.body.message);
 
         const messageText = `First Name: ${req.body.firstName}\n` +
             `Last Name: ${req.body.lastName}\n` +
@@ -129,7 +170,7 @@ module.exports = function() {
         try {
             await transporter.sendMail({
                 from: '"JCC Contact Form" <noreply@jogachiropractic.com>',
-                to: 'matasempakeris@gmail.com',
+                to: process.env.EMAIL,
                 subject: 'A Patient Has Contacted You!',
                 text: messageText
             });
@@ -144,7 +185,7 @@ module.exports = function() {
                reason: 'an internal error occurred'
             });
         }
-    }
+    };
 
     return email;
 };

@@ -1,73 +1,116 @@
 <div class="container-fluid d-flex">
-  <div class="row d-flex bg-dark">
-    <div class="col bg-white d-flex justify-content-center p-3">
-      <form>
-        <div class="row pb-4 pl-3 pr-3">
-          <div class="col text-center">
-            <h3 class="d-inline">Book Appointment</h3>
-            <a class="float-right mt-2" id="close-btn" (click)=close()>&#10761;</a>
-          </div>
+    <div class="row bg-dark">
+        <div class="col bg-white justify-content-center p-0 pt-3 p-md-3 pt-md-0 booking-wrapper">
+            <div class="row pb-4 mt-md-4">
+                <div class="col text-center">
+                    <h3 class="d-inline">Book Appointment</h3>
+                    <a class="float-right mt-2" id="close-btn" (click)=close()>&#10761;</a>
+                </div>
+            </div>
+            <div class="row pb-4 px-0 px-md-3">
+                <div class="col">
+                    <form [formGroup]="bookingForm" (ngSubmit)="submitForm()" *ngIf="!sentForm; else postSubmit">
+                        <div class="row pb-3">
+                            <div class="col">
+                                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                                <div *ngIf="bookingForm.controls.firstName.invalid && (bookingForm.controls.firstName.dirty ||
+              bookingForm.controls.firstName.touched)">
+                                    <span class="text-danger">First Name is required</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+                                <div *ngIf="bookingForm.controls.lastName.invalid && (bookingForm.controls.lastName.dirty ||
+              bookingForm.controls.lastName.touched)">
+                                    <span class="text-danger">Last Name is required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <select class="form-control" formControlName="patientType">
+                                    <option>New Patient</option>
+                                    <option>Current Patient</option>
+                                    <option>Recurring Patient</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                                <div *ngIf="bookingForm.controls.email.invalid && (bookingForm.controls.email.dirty ||
+              bookingForm.controls.email.touched)">
+                                    <span class="text-danger">Email is invalid</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <input type="tel" class="form-control" formControlName="phoneNumber" placeholder="Phone Number">
+                                <div *ngIf="bookingForm.controls.phoneNumber.invalid && (bookingForm.controls.phoneNumber.dirty ||
+              bookingForm.controls.phoneNumber.touched)">
+                                    <span class="text-danger">Phone Number is invalid</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col input-group">
+                                <input type="text" id="datepicker" formControlName="preferredDate" ngbDatepicker #d="ngbDatepicker"
+                                       placeholder="Preferred Date" readonly>
+                                <button type="button" (click)="d.toggle()" class="btn btn-secondary input-group-append">
+                                    <fa-icon [icon]="faCalendar"></fa-icon>
+                                </button>
+                                <div *ngIf="bookingForm.controls.preferredDate.invalid && (bookingForm.controls.preferredDate.dirty ||
+              bookingForm.controls.preferredDate.touched)">
+                                    <span class="text-danger">Preferred date is required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <select class="form-control" formControlName="preferredTime">
+                                    <option>Prefer Morning</option>
+                                    <option>Prefer Afternoon</option>
+                                    <option>Prefer Evening</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <textarea class="form-control" rows="5" formControlName="message" placeholder="Comment"></textarea>
+                            </div>
+                            <div *ngIf="bookingForm.controls.message.invalid && (bookingForm.controls.message.dirty ||
+              bookingForm.controls.message.touched)">
+                                <span class="text-danger">Message is required</span>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col recaptcha-wrapper">
+                                <re-captcha formControlName="captcha">
+                                </re-captcha>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="pb-4" *ngFor="let error of errors">
+                                <span class="text-danger">{{error}}</span>
+                            </div>
+                                <mat-spinner class="spinner" *ngIf="isSubmitted"
+                                             color="primary"
+                                ></mat-spinner>
+                                <input type="submit" class="form-control" [hidden]="isSubmitted"
+                                       [disabled]="bookingForm.invalid">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="row pb-3">
-          <div class="col">
-            <input type="text" class="form-control" id="firstName" placeholder="First Name">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col">
-            <select class="form-control">
-              <option>New Patient</option>
-              <option>Current Patient</option>
-              <option>Recurring Patient</option>
-            </select>
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col">
-            <input type="email" class="form-control" id="email" placeholder="Email">
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col">
-            <input type="tel" class="form-control" id="tel" placeholder="Phone Number">
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col input-group">
-            <input type="text" id="datepicker" ngbDatepicker #d="ngbDatepicker" placeholder="Preferred Date" readonly>
-            <button type="button" (click)="d.toggle()" class="btn btn-secondary input-group-append">
-              <fa-icon [icon]="faCalendar"></fa-icon>
-            </button>
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col">
-            <select class="form-control">
-              <option>Prefer Morning</option>
-              <option>Prefer Afternoon</option>
-              <option>Prefer Evening</option>
-            </select>
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col">
-            <textarea class="form-control" rows="5" id="comment" placeholder="Comment"></textarea>
-          </div>
-        </div>
-        <div class="row pb-3">
-          <div class="col">
-            <div class="g-recaptcha" data-sitekey="6LdWFncUAAAAALif7aY-Ku0YnshQ5ZUeaVd5LBya"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <input type="submit" class="form-control">
-          </div>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
+
+<ng-template #postSubmit>
+    <div>
+        Thank you for contacting Joga Chiropractic Center. We will contact you shortly.
+    </div>
+</ng-template>
