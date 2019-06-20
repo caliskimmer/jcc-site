@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
-import {RECAPTCHA_SETTINGS, RecaptchaModule, RecaptchaSettings} from 'ng-recaptcha';
+import {RECAPTCHA_SETTINGS, RECAPTCHA_NONCE, RecaptchaModule, RecaptchaSettings} from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { AppComponent } from './app.component';
@@ -28,13 +28,11 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { BookApptComponent } from './book-appt/book-appt.component';
-import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AuthGuardService } from './auth-services/auth-guard.service';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 import {environment} from '../environments/environment';
 
 const appRoutes: Routes = [
-    { path: 'admin', component: AdminHomeComponent, canActivate: [AuthGuardService]},
     { path: 'admin/login', component: AdminLoginComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
@@ -66,7 +64,6 @@ const appRoutes: Routes = [
         MobileMenuComponent,
         ContactComponent,
         BookApptComponent,
-        AdminHomeComponent,
         EscapeHtmlPipe
     ],
     imports: [
@@ -95,6 +92,10 @@ const appRoutes: Routes = [
             useValue: {
                 siteKey: environment.recaptcha_key,
             } as RecaptchaSettings
+        },
+        {
+            provide: RECAPTCHA_NONCE,
+            useValue: environment.recaptcha_nonce
         }
     ],
     bootstrap: [AppComponent]

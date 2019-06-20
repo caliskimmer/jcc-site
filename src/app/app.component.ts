@@ -12,11 +12,16 @@ import { BookingService } from './booking-service/booking-service.service';
 })
 export class AppComponent {
   bookingState = '';
+  bookingClosed = true;
   title = 'Joga Chiropractic Center';
 
   constructor(private router: Router, private bookingService: BookingService) {
     this.bookingService.changeEmitted.subscribe(state => {
       this.bookingState = state;
     })
+  }
+
+  animFinished() {
+      this.bookingClosed = this.bookingState === 'booking-form-off';
   }
 }

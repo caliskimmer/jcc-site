@@ -13,6 +13,7 @@ import {parsePhoneNumberFromString} from 'libphonenumber-js';
 export class ContactComponent implements OnChanges {
     @Input() main: MainComponent;
     @Input() isClosed: boolean;
+    errors: string[] = [];
     sentForm = false;
     isSubmitted = false;
 
@@ -49,9 +50,17 @@ export class ContactComponent implements OnChanges {
             message: this.contactForm.get('message').value,
         };
 
-        this.bookingService.sendForm('contact', formBody).subscribe((response) => {
+        this.bookingService.sendForm('contact', formBody).subscribe((response: any) => {
+            if (response.errors) {
+                this.errors = response.errors;
+                this.contactForm.get('captcha').reset();
+                this.isSubmitted = false;
+                return;
+            }
+
             this.sentForm = true;
             this.isSubmitted = false;
+            this.errors = [];
         }), err => {
             throw err;
         };
