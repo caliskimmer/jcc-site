@@ -4,7 +4,12 @@
       <ul class="col navbar-nav" *ngFor="let list of lists | keyvalue">
         <li class="nav-title nav-item active text-secondary text-uppercase pb-2">{{list.key}}</li>
         <li class="nav-item active pb-2" *ngFor="let item of lists[list.key]">
-          <a class="text-dark font-weight-bold" href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
+          <a *ngIf="list.key !== 'Blog';else disabled" class="text-dark font-weight-bold"
+             href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
+
+            <ng-template #disabled>
+                <span class="text-dark font-weight-bold">{{item}}</span>
+            </ng-template>
         </li>
       </ul>
     </div>
@@ -15,7 +20,13 @@
       <div class="col text-center">
         <li class="active text-secondary text-uppercase font-weight-bold pb-2">{{list.key}}</li>
         <li id="mobile-list-items" class="active pb-2" *ngFor="let item of lists[list.key]">
-          <a class="text-dark font-weight-bold" href="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
+          <a *ngIf="list.key !== 'Blog'; else disabled;" class="text-dark font-weight-bold" href="{{urlName(list.key)}}/
+            {{urlName(item)}}">
+            {{item}}</a>
+
+            <ng-template #disabled>
+                <span class="text-dark font-weight-bold">{{item}}</span>
+            </ng-template>
         </li>
       </div>
     </ul>
