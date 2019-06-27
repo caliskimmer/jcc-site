@@ -30,7 +30,7 @@ import { ContactComponent } from './contact/contact.component';
 import { BookApptComponent } from './book-appt/book-appt.component';
 import { AuthGuardService } from './auth-services/auth-guard.service';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
-import {environment} from '../environments/environment';
+import {environment} from '../environments/environment.prod';
 
 const appRoutes: Routes = [
     { path: 'admin/login', component: AdminLoginComponent },

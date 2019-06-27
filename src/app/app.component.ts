@@ -15,10 +15,10 @@ export class AppComponent {
   bookingClosed = true;
   title = 'Joga Chiropractic Center';
 
-  constructor(private router: Router, private bookingService: BookingService) {
+  constructor(public router: Router, private bookingService: BookingService) {
     this.bookingService.changeEmitted.subscribe(state => {
       this.bookingState = state;
-    })
+    });
   }
 
   animFinished() {
