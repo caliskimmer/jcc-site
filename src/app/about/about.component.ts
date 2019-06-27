@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {employeeBios} from '../data/employee-bios.js';
+import employeeBios from '../data/employee-bios.js';
 
 @Component({
     selector: 'app-about',
