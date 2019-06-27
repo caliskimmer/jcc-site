@@ -1,12 +1,29 @@
-export var employeeBios = [
-  { 
-    'name': 'Employee A',
-    'photo': '#',
-    'bio': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Mi bibendum neque egestas congue quisque egestas diam in. Ut faucibus pulvinar elementum integer enim neque volutpat ac. Suspendisse sed nisi lacus sed viverra tellus in hac. Egestas diam in arcu cursus euismod. Quis auctor elit sed vulputate mi sit amet mauris commodo. Sed tempus urna et pharetra pharetra massa massa. Tristique nulla aliquet enim tortor. Condimentum id venenatis a condimentum vitae sapien. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare. Diam ut venenatis tellus in metus vulputate. Tempor nec feugiat nisl pretium fusce id. Ut tellus elementum sagittis vitae. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Dignissim diam quis enim lobortis scelerisque fermentum dui. Aliquam vestibulum morbi blandit cursus risus at ultrices. Felis imperdiet proin fermentum leo vel orci porta non.'
-  },
-  {
-    'name': 'Employee B',
-    'photo': '#',
-    'bio': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Mi bibendum neque egestas congue quisque egestas diam in. Ut faucibus pulvinar elementum integer enim neque volutpat ac. Suspendisse sed nisi lacus sed viverra tellus in hac. Egestas diam in arcu cursus euismod. Quis auctor elit sed vulputate mi sit amet mauris commodo. Sed tempus urna et pharetra pharetra massa massa. Tristique nulla aliquet enim tortor. Condimentum id venenatis a condimentum vitae sapien. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare. Diam ut venenatis tellus in metus vulputate. Tempor nec feugiat nisl pretium fusce id. Ut tellus elementum sagittis vitae. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Dignissim diam quis enim lobortis scelerisque fermentum dui. Aliquam vestibulum morbi blandit cursus risus at ultrices. Felis imperdiet proin fermentum leo vel orci porta non.'
-  }
+export default [
+    {
+        'name': 'Jasmine Johnson',
+        'photo': 'assets/employee-images/JasmineJohnson.jpg',
+        'bio': 'asdfjasd;lfkjasd;lfkjasd;lfkjas;dlfkja;sdlfkjsad;lfkj;alsdkfj;asdlkfj;als'
+    },
+    {
+        'name': 'Liz Manzo',
+        'photo': 'assets/employee-images/LizManzo.jpg',
+        'bio': ''
+    },
+    {
+        'name': 'Kelly Ryans',
+        'photo': 'assets/employee-images/KellyRyans.jpg',
+        'bio': `
+            Hometown: Los Angeles, CA\n
+            Education:  Everest College\n
+            Favorite books: The Flight of Dragons, Legion of the Damned\n
+            Movies: Howl\'s Moving Castle, The Forbidden Planet\n
+            Music: Collective Soul, Air, A Perfect Circle\n
+            Interests: painting, animation
+        `
+    },
+    {
+        'name': 'Shirra Leavitt',
+        'photo': 'assets/employee-images/ShirraLeavitt.jpg',
+        'bio': ''
+    }
 ];
