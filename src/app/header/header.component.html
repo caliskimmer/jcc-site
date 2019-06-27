@@ -1,23 +1,29 @@
 <div [@moveDown]="state" id="hidden-header-background" class="bg-white shadow w-100"></div>
-<ng-container *ngTemplateOutlet="mobilemenu"></ng-container> 
-<header [ngClass] = "{'header-detail': onDetail, shadow: onDetail, 'pt-3': !onDetail, 'pb-3': !onDetail}" class="container-fluid">
+<ng-container *ngTemplateOutlet="mobilemenu"></ng-container>
+<header [ngClass] = "{'header-detail': onDetail, shadow: onDetail}"
+        class="container-fluid pt-3 pb-3">
   <nav [@shiftUp]="state" class="d-none d-lg-flex flex-nowrap mx-auto navbar align-items-center">
     <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">
-        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
+        <a [@recolor]="state==='above' || onDetail" class="nav-link font-weight-light" tabindex=0
+           [ngbPopover]="popover"
+           triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
       </li>
     </ul>
     <div class="nav col-2 justify-content-center">
-      <a href="/home">
-        <div [class]="onDetail ? 'logo-detail': 'logo'" [@swapLogo]="state"></div>
+      <a routerLink="/home">
+        <div class="logo" [@swapLogo]="state==='above' || onDetail" [@resizeLogo]="state"></div>
       </a>
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">
       <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListRight; let index of i">
-        <a [@recolor]="state" class="nav-link font-weight-light" tabindex=0 [ngbPopover]="popover" triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
+        <a [@recolor]="state==='above' || onDetail" class="nav-link font-weight-light" tabindex=0
+           [ngbPopover]="popover"
+           triggers="manual"
+           placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state" class="nav-link font-weight-light" href="faqs">FAQs</a>
+        <a [@recolor]="state==='above' || onDetail" class="nav-link font-weight-light" routerLink="/faqs">FAQs</a>
       </li>
     </ul>
   </nav>

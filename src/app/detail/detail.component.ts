@@ -15,7 +15,11 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getDetail();
+        this.route.params.subscribe(
+            params => {
+                this.getDetail();
+            }
+        );
     }
 
     getDetail() {
