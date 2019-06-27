@@ -1,18 +1,29 @@
-import {Component, Input}  from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {popoverSections} from '../data/navigation-links';
 import {PopoverService} from '../popover-service/popover-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-popover',
   templateUrl: './popover.component.html',
   styleUrls: ['./popover.component.scss']
 })
-export class PopoverComponent {
+export class PopoverComponent implements OnInit {
   @Input() linkName: string;
 
-  constructor(private popoverService: PopoverService) { }
+  constructor(private popoverService: PopoverService, private router: Router) { }
+
+  ngOnInit() {
+      this.router.events.subscribe(() => {
+         this.jumpToTop();
+      });
+  }
 
   displayContent(): any[] {
     return (this.linkName in popoverSections) ? popoverSections[this.linkName] : [];
+  }
+
+  jumpToTop() {
+      window.scroll(0,0);
   }
 }

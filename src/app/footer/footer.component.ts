@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { popoverSections } from '../data/navigation-links.js';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,11 @@ import { popoverSections } from '../data/navigation-links.js';
 export class FooterComponent implements OnInit {
   lists: any = popoverSections;
 
-  constructor() {}
+  constructor(private router: Router) {
+      this.router.events.subscribe(() => {
+          window.scroll(0, 0);
+      });
+  }
 
   ngOnInit() {
   }
