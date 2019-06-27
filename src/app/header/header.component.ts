@@ -28,6 +28,14 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.onDetail = (!this.router.url.includes('home'));
+
+        if (this.onDetail) {
+            this.state = 'below';
+        }
+
+        if (!this.onDetail && window.scrollY <= 0) {
+            this.state = 'above';
+        }
       }
     });
   }
@@ -44,9 +52,9 @@ export class HeaderComponent implements OnInit {
 
   // called on window scroll event
   moveDown() {
-     if (!this.onDetail) {
-        this.state = (this.state === 'below') ? 'above' : 'below';
-     }
+      if (!this.onDetail) {
+          this.state = (this.state === 'below') ? 'above' : 'below';
+      }
   }
 
   moveMenu() {
@@ -54,7 +62,7 @@ export class HeaderComponent implements OnInit {
     this.prevHeaderState = this.state;
 
     if (!this.onDetail) {
-      this.state = 'below';
+        this.state = 'below';
     }
 
     this.renderer.addClass(document.body, 'modal-open');

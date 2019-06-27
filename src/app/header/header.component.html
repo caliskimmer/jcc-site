@@ -31,19 +31,20 @@
   <!-- small devices -->
   <nav [@shiftUpMobile]="state" class="d-sm-flex d-lg-none navbar align-items-center">
     <a (click)=moveMenu() class="nav col justify-content-center">
-      <div id="hamburger" [@recolor]="state"></div>
-    </a> 
+      <div id="hamburger" [@recolor]="state==='above' || onDetail"></div>
+    </a>
     <div class="nav col justify-content-center">
-      <a href="/home">
-        <div [ngClass]="{'logo-detail': onDetail, 'logo': !onDetail}" class="d-block d-md-none" [@swapLogoMobile]="state"></div>
-        <div class="d-none d-md-block" [ngClass]="{'logo-detail': onDetail, 'logo': !onDetail}" [@swapLogo]="state"></div>
+      <a routerLink="/home">
+        <div class="d-block d-md-none logo" [@swapLogoMobile]="state==='above' || onDetail"
+             [@resizeLogoMobile]="state"></div>
+        <div class="d-none d-md-block logo" [@swapLogo]="state==='above' || onDetail" [@resizeLogo]="state"></div>
       </a>
     </div>
     <div class="nav col justify-content-center">
       <a href="tel:+14248002488">
-        <div id="telephone" [@recolor]="state"></div>
+        <div id="telephone" [@recolor]="state==='above' || onDetail"></div>
       </a>
-    </div> 
+    </div>
   </nav>
 </header>
 
