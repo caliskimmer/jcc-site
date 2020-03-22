@@ -1,4 +1,10 @@
-import {Component, EventEmitter, OnInit, Output, Renderer2} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  Renderer2,
+} from '@angular/core';
 import { animations } from './main.animations';
 import { BookingService } from '../booking-service/booking-service.service';
 
@@ -6,21 +12,23 @@ import { BookingService } from '../booking-service/booking-service.service';
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  animations: animations
+  animations: animations,
 })
 export class MainComponent implements OnInit {
   contactState = '';
   contactClosed = true;
   main: MainComponent = this;
 
-  constructor(private renderer: Renderer2, private bookingService: BookingService) {
+  constructor(
+    private renderer: Renderer2,
+    private bookingService: BookingService,
+  ) {
     if (!this.bookingService.renderer) {
       this.bookingService.renderer = renderer;
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleBookingForm() {
     const bookingState = this.bookingService.toggleBookingForm();
@@ -31,6 +39,6 @@ export class MainComponent implements OnInit {
   }
 
   animFinished() {
-      this.contactClosed = this.contactState === 'contact-form-off';
+    this.contactClosed = this.contactState === 'contact-form-off';
   }
 }

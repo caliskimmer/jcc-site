@@ -1,7 +1,14 @@
 <div class="container-fluid p-0">
-  <app-book-appt [@show-booking-form]="bookingState" (@show-booking-form.done)="animFinished()"
-                 [isClosed]="bookingClosed" id="book-appt-modal"></app-book-appt>
-  <app-header addBackgroundOnScroll *ngIf="router.url.indexOf('/admin') === -1"></app-header>
+  <app-book-appt
+    [@show-booking-form]="bookingState"
+    (@show-booking-form.done)="animFinished()"
+    [isClosed]="bookingClosed"
+    id="book-appt-modal"
+  ></app-book-appt>
+  <app-header
+    addBackgroundOnScroll
+    *ngIf="router.url.indexOf('/admin') === -1"
+  ></app-header>
   <router-outlet></router-outlet>
   <div *ngIf="router.url.indexOf('/admin') === -1">
     <app-location></app-location>

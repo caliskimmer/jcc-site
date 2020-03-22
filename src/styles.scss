@@ -1,17 +1,19 @@
-@import "~bootstrap/scss/bootstrap";
-@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import '~bootstrap/scss/bootstrap';
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 
 /* You can add global styles to this file, and also import other style files */
 $jcc-green: rgb(3, 63, 45);
 
-html, body {
+html,
+body {
   height: 100vh;
   width: 100vw;
-  font-family: "raleway", "Helvetica Neue";
+  font-family: 'raleway', 'Helvetica Neue';
 }
 
-h1, h2 {
-  font-family: "Philosopher", "Arial";
+h1,
+h2 {
+  font-family: 'Philosopher', 'Arial';
 }
 
 body {
@@ -54,7 +56,9 @@ body {
   background-color: rgb(128, 197, 184);
 }
 
-.dot, .dot::before, .dot::after {
+.dot,
+.dot::before,
+.dot::after {
   position: relative;
   background-color: white;
   height: 4px;
@@ -69,7 +73,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.dot::before  {
+.dot::before {
   position: absolute;
   content: '';
   top: 0;

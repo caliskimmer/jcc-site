@@ -1,5 +1,11 @@
-import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
-import { Component, ViewChildren, QueryList, Renderer2, OnInit} from '@angular/core';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import {
+  Component,
+  ViewChildren,
+  QueryList,
+  Renderer2,
+  OnInit,
+} from '@angular/core';
 import { animations } from './header.animations';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -7,7 +13,7 @@ import { Router, NavigationEnd } from '@angular/router';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: animations
+  animations: animations,
 })
 export class HeaderComponent implements OnInit {
   state = '';
@@ -15,26 +21,30 @@ export class HeaderComponent implements OnInit {
   menuState = 'menu-off';
   header: HeaderComponent = this;
   onDetail = false;
-  navListLeft: string[] = ['About Us', 'Services', 'Conditions Treated'];
+  navListLeft: string[] = [
+    'About Us',
+    'Services',
+    'Conditions Treated',
+  ];
   navListRight: string[] = ['New Patient Center', 'Blog'];
   navList: string[] = this.navListLeft.concat(this.navListRight);
   currPopIndex = -1;
 
   @ViewChildren('p') popovers: QueryList<NgbPopover>;
 
-  constructor(private router: Router, private renderer: Renderer2) { }
+  constructor(private router: Router, private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.onDetail = (!this.router.url.includes('home'));
+        this.onDetail = !this.router.url.includes('home');
 
         if (this.onDetail) {
-            this.state = 'below';
+          this.state = 'below';
         }
 
         if (!this.onDetail && window.scrollY <= 0) {
-            this.state = 'above';
+          this.state = 'above';
         }
       }
     });
@@ -42,7 +52,9 @@ export class HeaderComponent implements OnInit {
 
   mouseenter(e) {
     this.currPopIndex = this.navList.indexOf(e.target.innerText);
-    const currPopover: NgbPopover = this.popovers.toArray()[this.currPopIndex];
+    const currPopover: NgbPopover = this.popovers.toArray()[
+      this.currPopIndex
+    ];
     currPopover.open();
   }
 
@@ -52,17 +64,18 @@ export class HeaderComponent implements OnInit {
 
   // called on window scroll event
   moveDown() {
-      if (!this.onDetail) {
-          this.state = (this.state === 'below') ? 'above' : 'below';
-      }
+    if (!this.onDetail) {
+      this.state = this.state === 'below' ? 'above' : 'below';
+    }
   }
 
   moveMenu() {
-    this.menuState = (this.menuState === 'menu-off') ? 'menu-on' : 'menu-off';
+    this.menuState =
+      this.menuState === 'menu-off' ? 'menu-on' : 'menu-off';
     this.prevHeaderState = this.state;
 
     if (!this.onDetail) {
-        this.state = 'below';
+      this.state = 'below';
     }
 
     this.renderer.addClass(document.body, 'modal-open');

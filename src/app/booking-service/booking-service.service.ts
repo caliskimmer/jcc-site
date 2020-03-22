@@ -1,9 +1,9 @@
 import { Injectable, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookingService {
   contactState = '';
@@ -12,10 +12,14 @@ export class BookingService {
   changeEmitted = this.emitChangeSource.asObservable();
   renderer: Renderer2;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   toggleBookingForm() {
-    this.bookingState = (this.bookingState === 'booking-form-off' || this.bookingState === '') ? 'booking-form-on' : 'booking-form-off';
+    this.bookingState =
+      this.bookingState === 'booking-form-off' ||
+      this.bookingState === ''
+        ? 'booking-form-on'
+        : 'booking-form-off';
     this.toggleScrollbar('booking');
     this.emitChangeSource.next(this.bookingState);
 
@@ -23,7 +27,11 @@ export class BookingService {
   }
 
   toggleContactForm() {
-    this.contactState = (this.contactState === 'contact-form-off' || this.contactState === '') ? 'contact-form-on' : 'contact-form-off';
+    this.contactState =
+      this.contactState === 'contact-form-off' ||
+      this.contactState === ''
+        ? 'contact-form-on'
+        : 'contact-form-off';
     this.toggleScrollbar('contact');
     this.emitChangeSource.next(this.contactState);
 
@@ -49,10 +57,16 @@ export class BookingService {
   }
 
   sendForm(type: string, body) {
-      if (type === 'contact') {
-          return this.httpClient.post('http://localhost:8080/api/contact', body);
-      } else if (type === 'booking') {
-          return this.httpClient.post('http://localhost:8080/api/booking', body);
-      }
+    if (type === 'contact') {
+      return this.httpClient.post(
+        'http://localhost:8080/api/contact',
+        body,
+      );
+    } else if (type === 'booking') {
+      return this.httpClient.post(
+        'http://localhost:8080/api/booking',
+        body,
+      );
+    }
   }
 }

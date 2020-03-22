@@ -1,55 +1,120 @@
-<div [@moveDown]="state" id="hidden-header-background" class="bg-white shadow w-100"></div>
+<div
+  [@moveDown]="state"
+  id="hidden-header-background"
+  class="bg-white shadow w-100"
+></div>
 <ng-container *ngTemplateOutlet="mobilemenu"></ng-container>
-<header [ngClass] = "{'header-detail': onDetail, shadow: onDetail}"
-        class="container-fluid pt-3 pb-3">
-  <nav [@shiftUp]="state" class="d-none d-lg-flex flex-nowrap mx-auto navbar align-items-center">
-    <ul class="nav col text-nowrap flex-nowrap justify-content-end text-center">
-      <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListLeft; let index of i">
-        <a [@recolor]="state==='above' || onDetail" class="nav-link font-weight-light" tabindex=0
-           [ngbPopover]="popover"
-           triggers="manual" placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
+<header
+  [ngClass]="{ 'header-detail': onDetail, shadow: onDetail }"
+  class="container-fluid pt-3 pb-3"
+>
+  <nav
+    [@shiftUp]="state"
+    class="d-none d-lg-flex flex-nowrap mx-auto navbar align-items-center"
+  >
+    <ul
+      class="nav col text-nowrap flex-nowrap justify-content-end text-center"
+    >
+      <li
+        class="nav-item active"
+        (mouseenter)="mouseenter($event)"
+        (mouseleave)="mouseleave($event)"
+        *ngFor="let item of navListLeft; let index; of: i"
+      >
+        <a
+          [@recolor]="state === 'above' || onDetail"
+          class="nav-link font-weight-light"
+          tabindex="0"
+          [ngbPopover]="popover"
+          triggers="manual"
+          placement="bottom"
+          #p="ngbPopover"
+          href="#"
+          >{{ item }}</a
+        >
       </li>
     </ul>
     <div class="nav col-2 justify-content-center">
       <a routerLink="/home">
-        <div class="logo" [@swapLogo]="state==='above' || onDetail" [@resizeLogo]="state"></div>
+        <div
+          class="logo"
+          [@swapLogo]="state === 'above' || onDetail"
+          [@resizeLogo]="state"
+        ></div>
       </a>
     </div>
     <ul class="nav col justify-content-start text-nowrap flex-nowrap">
-      <li class="nav-item active" (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)" *ngFor="let item of navListRight; let index of i">
-        <a [@recolor]="state==='above' || onDetail" class="nav-link font-weight-light" tabindex=0
-           [ngbPopover]="popover"
-           triggers="manual"
-           placement="bottom" #p="ngbPopover" href="#">{{item}}</a>
+      <li
+        class="nav-item active"
+        (mouseenter)="mouseenter($event)"
+        (mouseleave)="mouseleave($event)"
+        *ngFor="let item of navListRight; let index; of: i"
+      >
+        <a
+          [@recolor]="state === 'above' || onDetail"
+          class="nav-link font-weight-light"
+          tabindex="0"
+          [ngbPopover]="popover"
+          triggers="manual"
+          placement="bottom"
+          #p="ngbPopover"
+          href="#"
+          >{{ item }}</a
+        >
       </li>
       <li class="nav-item active">
-        <a [@recolor]="state==='above' || onDetail" class="nav-link font-weight-light" routerLink="/faqs">FAQs</a>
+        <a
+          [@recolor]="state === 'above' || onDetail"
+          class="nav-link font-weight-light"
+          routerLink="/faqs"
+          >FAQs</a
+        >
       </li>
     </ul>
   </nav>
 
   <!-- small devices -->
-  <nav [@shiftUpMobile]="state" class="d-sm-flex d-lg-none navbar align-items-center">
-    <a (click)=moveMenu() class="nav col justify-content-center">
-      <div id="hamburger" [@recolor]="state==='above' || onDetail"></div>
+  <nav
+    [@shiftUpMobile]="state"
+    class="d-sm-flex d-lg-none navbar align-items-center"
+  >
+    <a (click)="moveMenu()" class="nav col justify-content-center">
+      <div
+        id="hamburger"
+        [@recolor]="state === 'above' || onDetail"
+      ></div>
     </a>
     <div class="nav col justify-content-center">
       <a routerLink="/home">
-        <div class="d-block d-md-none logo" [@swapLogoMobile]="state==='above' || onDetail"
-             [@resizeLogoMobile]="state"></div>
-        <div class="d-none d-md-block logo" [@swapLogo]="state==='above' || onDetail" [@resizeLogo]="state"></div>
+        <div
+          class="d-block d-md-none logo"
+          [@swapLogoMobile]="state === 'above' || onDetail"
+          [@resizeLogoMobile]="state"
+        ></div>
+        <div
+          class="d-none d-md-block logo"
+          [@swapLogo]="state === 'above' || onDetail"
+          [@resizeLogo]="state"
+        ></div>
       </a>
     </div>
     <div class="nav col justify-content-center">
       <a href="tel:+14248002488">
-        <div id="telephone" [@recolor]="state==='above' || onDetail"></div>
+        <div
+          id="telephone"
+          [@recolor]="state === 'above' || onDetail"
+        ></div>
       </a>
     </div>
   </nav>
 </header>
 
 <ng-template #mobilemenu>
-  <app-mobile-menu [@mobile-menu-slide]="menuState" [header]="header" id="mobile-menu"></app-mobile-menu>
+  <app-mobile-menu
+    [@mobile-menu-slide]="menuState"
+    [header]="header"
+    id="mobile-menu"
+  ></app-mobile-menu>
 </ng-template>
 
 <ng-template #popover>

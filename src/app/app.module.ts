@@ -6,10 +6,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
-import {RECAPTCHA_SETTINGS, RECAPTCHA_NONCE, RecaptchaModule, RecaptchaSettings} from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import {
+  RECAPTCHA_SETTINGS,
+  RECAPTCHA_NONCE,
+  RecaptchaModule,
+  RecaptchaFormsModule,
+  RecaptchaSettings,
+} from 'ng-recaptcha';
 
 import { AppComponent } from './app.component';
 import { QuoteComponent } from './quote/quote.component';
@@ -30,74 +35,77 @@ import { ContactComponent } from './contact/contact.component';
 import { BookApptComponent } from './book-appt/book-appt.component';
 import { AuthGuardService } from './auth-services/auth-guard.service';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
-import {environment} from '../environments/environment.prod';
+import { environment } from '../../environments/environment.prod';
 
 const appRoutes: Routes = [
-    { path: 'admin/login', component: AdminLoginComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'faqs', component: FaqsComponent },
-    { path: 'services/:service', component: DetailComponent },
-    { path: 'conditions-treated/:condition', component: DetailComponent },
-    { path: 'about-us/meet-the-team', component: AboutComponent},
-    { path: 'about-us/philosophy', component: DetailComponent},
-    { path: 'new-patient-center/:patient-info', component: DetailComponent}
+  { path: 'admin/login', component: AdminLoginComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'faqs', component: FaqsComponent },
+  { path: 'services/:service', component: DetailComponent },
+  {
+    path: 'conditions-treated/:condition',
+    component: DetailComponent,
+  },
+  { path: 'about-us/meet-the-team', component: AboutComponent },
+  { path: 'about-us/philosophy', component: DetailComponent },
+  {
+    path: 'new-patient-center/:patient-info',
+    component: DetailComponent,
+  },
 ];
 
-
 @NgModule({
-    declarations: [
-        AppComponent,
-        QuoteComponent,
-        MainComponent,
-        ServiceComponent,
-        HeaderComponent,
-        AddBackgroundOnScrollDirective,
-        FooterComponent,
-        PopoverComponent,
-        LocationComponent,
-        AdminLoginComponent,
-        HomeComponent,
-        DetailComponent,
-        AboutComponent,
-        FaqsComponent,
-        MobileMenuComponent,
-        ContactComponent,
-        BookApptComponent,
-        EscapeHtmlPipe
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        FontAwesomeModule,
-        FormsModule,
-        MatProgressSpinnerModule,
-        RecaptchaModule,
-        RecaptchaFormsModule,
-        NgbModule.forRoot(),
-        RouterModule.forRoot(
-            appRoutes
-        ),
-        JwtModule.forRoot({
-            config: {
-                tokenGetter: () => localStorage.getItem('token')
-            }
-        })
-    ],
-    providers: [
-        {
-            provide: RECAPTCHA_SETTINGS,
-            useValue: {
-                siteKey: environment.recaptcha_key,
-            } as RecaptchaSettings
-        },
-        {
-            provide: RECAPTCHA_NONCE,
-            useValue: environment.recaptcha_nonce
-        }
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    QuoteComponent,
+    MainComponent,
+    ServiceComponent,
+    HeaderComponent,
+    AddBackgroundOnScrollDirective,
+    FooterComponent,
+    PopoverComponent,
+    LocationComponent,
+    AdminLoginComponent,
+    HomeComponent,
+    DetailComponent,
+    AboutComponent,
+    FaqsComponent,
+    MobileMenuComponent,
+    ContactComponent,
+    BookApptComponent,
+    EscapeHtmlPipe,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    NgbModule,
+    RouterModule.forRoot(appRoutes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token'),
+      },
+    }),
+  ],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.recaptcha_key,
+      } as RecaptchaSettings,
+    },
+    {
+      provide: RECAPTCHA_NONCE,
+      useValue: environment.recaptcha_nonce,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -5,11 +5,14 @@ import { PopoverServiceService } from './popover-service.service';
 describe('PopoverServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PopoverServiceService]
+      providers: [PopoverServiceService],
     });
   });
 
-  it('should be created', inject([PopoverServiceService], (service: PopoverServiceService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should be created', inject(
+    [PopoverServiceService],
+    (service: PopoverServiceService) => {
+      expect(service).toBeTruthy();
+    },
+  ));
 });

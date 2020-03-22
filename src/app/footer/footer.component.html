@@ -1,69 +1,124 @@
 <div class="container-fluid">
-    <div class="d-none d-md-flex row font-weight-bold pt-4 pl-4 pr-4 pb-3">Jogachiropractic.com</div>
-    <div class="d-none d-md-flex row p-4">
-      <ul class="col navbar-nav" *ngFor="let list of lists | keyvalue">
-        <li class="nav-title nav-item active text-secondary text-uppercase pb-2">{{list.key}}</li>
-        <li class="nav-item active pb-2" *ngFor="let item of lists[list.key]">
-          <a *ngIf="list.key !== 'Blog';else disabled" class="text-dark font-weight-bold"
-             routerLink="{{urlName(list.key)}}/{{urlName(item)}}">{{item}}</a>
+  <div
+    class="d-none d-md-flex row font-weight-bold pt-4 pl-4 pr-4 pb-3"
+  >
+    Jogachiropractic.com
+  </div>
+  <div class="d-none d-md-flex row p-4">
+    <ul class="col navbar-nav" *ngFor="let list of lists | keyvalue">
+      <li
+        class="nav-title nav-item active text-secondary text-uppercase pb-2"
+      >
+        {{ list.key }}
+      </li>
+      <li
+        class="nav-item active pb-2"
+        *ngFor="let item of lists[list.key]"
+      >
+        <a
+          *ngIf="list.key !== 'Blog'; else disabled"
+          class="text-dark font-weight-bold"
+          routerLink="{{ urlName(list.key) }}/{{ urlName(item) }}"
+          >{{ item }}</a
+        >
 
-            <ng-template #disabled>
-                <span class="text-dark font-weight-bold">{{item}}</span>
-            </ng-template>
-        </li>
-      </ul>
-    </div>
- 
+        <ng-template #disabled>
+          <span class="text-dark font-weight-bold">{{ item }}</span>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+
   <!-- mobile -->
   <div class="d-xs-flex d-md-none pt-3">
     <ul class="row p-0" *ngFor="let list of lists | keyvalue">
       <div class="col text-center">
-        <li class="active text-secondary text-uppercase font-weight-bold pb-2">{{list.key}}</li>
-        <li id="mobile-list-items" class="active pb-2" *ngFor="let item of lists[list.key]">
-          <a *ngIf="list.key !== 'Blog'; else disabled;" class="text-dark font-weight-bold" href="{{urlName(list.key)}}/
-            {{urlName(item)}}">
-            {{item}}</a>
+        <li
+          class="active text-secondary text-uppercase font-weight-bold pb-2"
+        >
+          {{ list.key }}
+        </li>
+        <li
+          id="mobile-list-items"
+          class="active pb-2"
+          *ngFor="let item of lists[list.key]"
+        >
+          <a
+            *ngIf="list.key !== 'Blog'; else disabled"
+            class="text-dark font-weight-bold"
+            href="{{ urlName(list.key) }}/
+            {{ urlName(item) }}"
+          >
+            {{ item }}</a
+          >
 
-            <ng-template #disabled>
-                <span class="text-dark font-weight-bold">{{item}}</span>
-            </ng-template>
+          <ng-template #disabled>
+            <span class="text-dark font-weight-bold">{{ item }}</span>
+          </ng-template>
         </li>
       </div>
     </ul>
   </div>
   <!-- end mobile -->
 
-  <div class="row pb-4 pt-3 border-top mx-auto text-center align-items-center">
+  <div
+    class="row pb-4 pt-3 border-top mx-auto text-center align-items-center"
+  >
     <div id="social-media" class="d-block col text-sm-left pb-2">
-        <div class="row">
-            <div class="col">
-                <span class="d-block h-50 font-weight-bold pb-2 pb-md-3">We're on social media!</span>
-            </div>
-        </div>
       <div class="row">
-          <div class="col-1 px-0">
-              <a target="_blank" href="https://www.facebook.com/jogachiropractic/">
-                  <img src="../../assets/fb-icon.png" alt="Facebook">
-              </a>
-          </div>
-          <div class="col-1 px-0">
-              <a target="_blank" href="https://www.instagram.com/jogachiropractic/">
-                  <img src="../../assets/instagram-icon.png" alt="Instagram" />
-              </a>
-          </div>
-          <div class="col-1 px-0">
-              <a target="_blank" href="https://www.yelp.com/biz/joga-chiropractic-center-los-angeles">
-                  <img src="../../assets/yelp-icon.png" alt="Yelp" />
-              </a>
-          </div>
+        <div class="col">
+          <span class="d-block h-50 font-weight-bold pb-2 pb-md-3"
+            >We're on social media!</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1 px-0">
+          <a
+            target="_blank"
+            href="https://www.facebook.com/jogachiropractic/"
+          >
+            <img src="../../assets/fb-icon.png" alt="Facebook" />
+          </a>
+        </div>
+        <div class="col-1 px-0">
+          <a
+            target="_blank"
+            href="https://www.instagram.com/jogachiropractic/"
+          >
+            <img
+              src="../../assets/instagram-icon.png"
+              alt="Instagram"
+            />
+          </a>
+        </div>
+        <div class="col-1 px-0">
+          <a
+            target="_blank"
+            href="https://www.yelp.com/biz/joga-chiropractic-center-los-angeles"
+          >
+            <img src="../../assets/yelp-icon.png" alt="Yelp" />
+          </a>
+        </div>
       </div>
     </div>
-    <div id="copyright" class="d-block d-md-flex col-md text-center text-md-right justify-content-end">
-      <div class="d-block position-relative d-md-flex align-items-center justify-content-center">
-        <span>© 2019 Joga Chiropractic Center - all rights reserved.</span>
-        <img class="d-block d-md-flex mx-auto ml-md-3" src="../../assets/jcc-logo-sm-black.png" alt="Joga Chiropractic Logo" />
+    <div
+      id="copyright"
+      class="d-block d-md-flex col-md text-center text-md-right justify-content-end"
+    >
+      <div
+        class="d-block position-relative d-md-flex align-items-center justify-content-center"
+      >
+        <span
+          >© 2019 Joga Chiropractic Center - all rights
+          reserved.</span
+        >
+        <img
+          class="d-block d-md-flex mx-auto ml-md-3"
+          src="../../assets/jcc-logo-sm-black.png"
+          alt="Joga Chiropractic Logo"
+        />
       </div>
     </div>
   </div>
 </div>
-

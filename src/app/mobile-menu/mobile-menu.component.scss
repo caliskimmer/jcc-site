@@ -1,5 +1,5 @@
-@import "~bootstrap/scss/bootstrap";
-@import "../../styles.scss";
+@import '~bootstrap/scss/bootstrap';
+@import '../../styles.scss';
 
 .container-fluid {
   background-color: $jcc-green;
@@ -11,7 +11,7 @@ ul {
 }
 
 .card-header {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border-style: none;
 }
 
@@ -29,5 +29,5 @@ ul {
 }
 
 #close-btn {
-  font-size: 2em; 
+  font-size: 2em;
 }

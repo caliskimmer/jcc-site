@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 
 $jcc-green-secondary: rgb(128, 197, 184);
 
@@ -13,7 +13,7 @@ $jcc-green-secondary: rgb(128, 197, 184);
   background-color: $jcc-green-secondary;
 }
 
-.card-header:hover > h5 > button  {
+.card-header:hover > h5 > button {
   color: white;
 }
 

@@ -14,7 +14,7 @@ require('./models/user')();
 
 // Connect mongodb
 const mongodPath = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
-mongoose.connect(mongodPath, {useNewUrlParser: true});
+mongoose.connect(mongodPath, { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -29,4 +29,6 @@ app.use('/api', routes);
 require('./services/passport')(app);
 
 // launch server
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () =>
+  console.log(`Example app listening on port ${port}!`),
+);

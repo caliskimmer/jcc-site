@@ -1,10 +1,30 @@
 <ng-template #buttonBlock let-service let-index="index">
-  <div class="col d-flex h-100 align-items-center justify-content-center {{index%2 === 0 ? 'bg-white' : 'bg-jcc-green'}}">
-    <div class="text-center {{index%2 === 0 ? 'text-dark' : 'text-light'}}">
-      <h1 class="mb-3">{{service.name}}</h1>
-      <span id="quote-text" class="d-block pb-0">{{service.quote.text}}</span>
-      <span id="quote-author" class="d-block font-italic pb-4">{{service.quote.author}}</span>
-      <button type="button" (click)="goToService(service.id)" class="btn btn-lg {{index%2 === 0 ? 'btn-outline-dark' : 'btn-outline-light'}}">Learn More</button>
+  <div
+    class="col d-flex h-100 align-items-center justify-content-center {{
+      index % 2 === 0 ? 'bg-white' : 'bg-jcc-green'
+    }}"
+  >
+    <div
+      class="text-center {{
+        index % 2 === 0 ? 'text-dark' : 'text-light'
+      }}"
+    >
+      <h1 class="mb-3">{{ service.name }}</h1>
+      <span id="quote-text" class="d-block pb-0">{{
+        service.quote.text
+      }}</span>
+      <span id="quote-author" class="d-block font-italic pb-4">{{
+        service.quote.author
+      }}</span>
+      <button
+        type="button"
+        (click)="goToService(service.id)"
+        class="btn btn-lg {{
+          index % 2 === 0 ? 'btn-outline-dark' : 'btn-outline-light'
+        }}"
+      >
+        Learn More
+      </button>
     </div>
   </div>
 </ng-template>
@@ -13,11 +33,16 @@
 </ng-template>
 
 <div class="container-fluid">
-  <div id="{{service.id}}" class="row service-section service-image" *ngFor="let service of services,
-                                                                index as index">
-    <div *ngIf="index%2 === 1; then pictureBlock"></div>
-    <ng-container [ngTemplateOutlet]="buttonBlock" 
-                  [ngTemplateOutletContext]="{$implicit: service, index: index}"></ng-container>
-    <div *ngIf="index%2 === 0; then pictureBlock"></div>
+  <div
+    id="{{ service.id }}"
+    class="row service-section service-image"
+    *ngFor="let service of services; index as index"
+  >
+    <div *ngIf="index % 2 === 1; then pictureBlock"></div>
+    <ng-container
+      [ngTemplateOutlet]="buttonBlock"
+      [ngTemplateOutletContext]="{ $implicit: service, index: index }"
+    ></ng-container>
+    <div *ngIf="index % 2 === 0; then pictureBlock"></div>
   </div>
 </div>
