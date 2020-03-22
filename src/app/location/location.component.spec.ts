@@ -1,7 +1,7 @@
 import {
-  async,
   ComponentFixture,
   TestBed,
+  async,
 } from '@angular/core/testing';
 
 import { LocationComponent } from './location.component';

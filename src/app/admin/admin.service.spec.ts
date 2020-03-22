@@ -1,6 +1,5 @@
-import { TestBed } from '@angular/core/testing';
-
 import { AdminService } from './admin.service';
+import { TestBed } from '@angular/core/testing';
 
 describe('AdminService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

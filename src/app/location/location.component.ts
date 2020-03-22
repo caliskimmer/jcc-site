@@ -1,14 +1,15 @@
+import * as L from 'mapbox.js';
+
 import {
-  Component,
-  ViewChild,
   AfterViewInit,
+  Component,
   ElementRef,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
+
 import { BookingService } from '../booking-service/booking-service.service';
 import { environment } from '../../environments/environment.prod';
-
-import * as L from 'mapbox.js';
 
 @Component({
   selector: 'app-location',

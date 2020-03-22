@@ -1,13 +1,14 @@
-import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import {
   Component,
-  ViewChildren,
+  OnInit,
   QueryList,
   Renderer2,
-  OnInit,
+  ViewChildren,
 } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { animations } from './header.animations';
-import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',

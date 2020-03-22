@@ -4,10 +4,10 @@ import {
   OnChanges,
   Renderer2,
 } from '@angular/core';
-import { MainComponent } from '../main/main.component';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { BookingService } from '../booking-service/booking-service.service';
+import { MainComponent } from '../main/main.component';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 @Component({

@@ -1,14 +1,15 @@
 import {
   Component,
   Input,
-  Renderer2,
   OnChanges,
   OnInit,
+  Renderer2,
 } from '@angular/core';
+
 import { HeaderComponent } from '../header/header.component';
-import { popoverSections } from '../data/navigation-links.js';
 import { PopoverService } from '../popover-service/popover-service.service';
 import { Router } from '@angular/router';
+import { popoverSections } from '../data/navigation-links.js';
 
 @Component({
   selector: 'app-mobile-menu',

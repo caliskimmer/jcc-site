@@ -5,8 +5,9 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { animations } from './main.animations';
+
 import { BookingService } from '../booking-service/booking-service.service';
+import { animations } from './main.animations';
 
 @Component({
   selector: 'app-main',

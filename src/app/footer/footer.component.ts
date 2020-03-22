@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { popoverSections } from '../data/navigation-links.js';
+
 import { Router } from '@angular/router';
+import { popoverSections } from '../data/navigation-links.js';
 
 @Component({
   selector: 'app-footer',

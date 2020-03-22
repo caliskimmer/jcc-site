@@ -1,6 +1,6 @@
-import { Directive, OnInit, OnDestroy } from '@angular/core';
-
 import * as _ from 'lodash';
+
+import { Directive, OnDestroy, OnInit } from '@angular/core';
 
 import { HeaderComponent } from '../header/header.component';
 

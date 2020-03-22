@@ -1,14 +1,15 @@
 import {
   Component,
-  Input,
-  Output,
   EventEmitter,
-  Renderer2,
+  Input,
   OnChanges,
+  Output,
+  Renderer2,
 } from '@angular/core';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { BookingService } from '../booking-service/booking-service.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+
+import { BookingService } from '../booking-service/booking-service.service';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 @Component({

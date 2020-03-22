@@ -1,8 +1,7 @@
+import { BookingService } from './booking-service/booking-service.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { animations } from './app.animations';
-import { BookingService } from './booking-service/booking-service.service';
 
 @Component({
   selector: 'app-root',
