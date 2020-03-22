@@ -35,7 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopoverComponent } from './popover/popover.component';
 import { QuoteComponent } from './quote/quote.component';
 import { ServiceComponent } from './service/service.component';
-import { environment } from '../../environments/environment.prod';
+import { environment } from './../environments/environment.prod';
 
 const appRoutes: Routes = [
   { path: 'admin/login', component: AdminLoginComponent },

@@ -13,7 +13,7 @@ export class PopoverComponent implements OnInit {
   @Input() linkName: string;
 
   constructor(
-    private popoverService: PopoverService,
+    public popoverService: PopoverService,
     private router: Router,
   ) {}
 

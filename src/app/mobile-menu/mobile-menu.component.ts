@@ -22,7 +22,7 @@ export class MobileMenuComponent implements OnChanges, OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private popoverService: PopoverService,
+    public popoverService: PopoverService,
     private router: Router,
   ) {}
 
