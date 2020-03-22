@@ -27,7 +27,7 @@
 
 @include media-breakpoint-only(xs) {
   /* Represents ReCaptcha visual */
-  /deep/ #captcha > div:first-child {
+  ::ng-deep #captcha > div:first-child {
     transform: scale(0.9);
   }
 

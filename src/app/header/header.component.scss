@@ -77,18 +77,18 @@ li {
 
 /*Don't own ngb popover el, so must access through shadow DOM*/
 :host {
-  /deep/ .popover {
+  ::ng-deep .popover {
     max-width: 100%;
     border-radius: 0;
     border-style: normal;
     box-shadow: inset 0 0 0 10px $jcc-green;
   }
 
-  /deep/ .arrow::after {
+  ::ng-deep .arrow::after {
     border-bottom-color: $jcc-green;
   }
 
-  /deep/ .arrow::before {
+  ::ng-deep .arrow::before {
     opacity: 0;
   }
 }
