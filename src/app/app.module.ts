@@ -9,7 +9,6 @@ import {
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
-import { AddBackgroundOnScrollDirective } from './directives/add-background-on-scroll.directive';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AppComponent } from './app.component';
 import { AuthGuardService } from './auth-services/auth-guard.service';
@@ -62,7 +61,6 @@ const appRoutes: Routes = [
     MainComponent,
     ServiceComponent,
     HeaderComponent,
-    AddBackgroundOnScrollDirective,
     FooterComponent,
     PopoverComponent,
     LocationComponent,
