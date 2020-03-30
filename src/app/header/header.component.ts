@@ -87,9 +87,4 @@ export class HeaderComponent implements OnInit {
 
     this.renderer.addClass(document.body, 'modal-open');
   }
-
-  // Determines when to enable or disable animations
-  detailPresent() {
-    return this.onDetail;
-  }
 }
