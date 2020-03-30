@@ -23,8 +23,7 @@ export const animations = [
         transform: 'translateY(-100px)',
       }),
     ),
-    transition('below => above', animate('300ms linear')),
-    transition('above => below', animate('300ms linear')),
+    transition('below <=> above', animate('300ms linear')),
   ]),
   trigger('recolor', [
     state(
@@ -39,7 +38,7 @@ export const animations = [
         filter: 'invert(0%)',
       }),
     ),
-    transition('* <=> *', animate('300ms linear')),
+    transition('0 <=> 1', animate('300ms linear')),
   ]),
   trigger('resizeLogo', [
     state(
@@ -54,7 +53,7 @@ export const animations = [
         transform: 'scale(1.0)',
       }),
     ),
-    transition('* <=> *', animate('300ms linear')),
+    transition('below <=> above', animate('300ms linear')),
   ]),
   trigger('swapLogo', [
     state(
@@ -69,22 +68,22 @@ export const animations = [
         'background-image': 'url(../../assets/jcc-logo-md.png)',
       }),
     ),
-    transition('* <=> *', animate('300ms linear')),
+    transition('0 <=> 1', animate('300ms linear')),
   ]),
   trigger('swapLogoMobile', [
     state(
-      '0',
+      'below',
       style({
         'background-image': 'url(../../assets/jcc-logo-sm-black.png)',
       }),
     ),
     state(
-      '1',
+      'above',
       style({
         'background-image': 'url(../../assets/jcc-logo-sm-white.png)',
       }),
     ),
-    transition('* <=> *', animate('300ms linear')),
+    transition('below <=> above', animate('300ms linear')),
   ]),
   trigger('resizeLogoMobile', [
     state(
@@ -100,7 +99,7 @@ export const animations = [
         transform: 'scale(1.0)',
       }),
     ),
-    transition('* <=> *', animate('300ms linear')),
+    transition('below <=> above', animate('300ms linear')),
   ]),
   trigger('shiftUp', [
     state(
@@ -116,7 +115,7 @@ export const animations = [
       }),
     ),
     transition(
-      '* <=> below',
+      'below <=> above',
       group([
         query('@recolor', animateChild(), { optional: true }),
         query('@swapLogo', animateChild(), { optional: true }),
