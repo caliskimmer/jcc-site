@@ -12,13 +12,13 @@
   font-size: 0.7em;
 }
 
-#social-media {
-  padding-left: 0;
-}
-
 #social-media > a {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.social-media-img {
+  margin: 0;
 }
 
 #copyright > div {
@@ -45,14 +45,6 @@ ul {
 @include media-breakpoint-down(sm) {
   li {
     font-size: 0.8em;
-  }
-
-  #copyright {
-    display: block;
-  }
-
-  #copyright > div {
-    position: relative;
   }
 
   #social-media > a {
