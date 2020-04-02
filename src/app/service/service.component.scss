@@ -1,9 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 
-.service-section {
-  height: 45vh;
-}
-
 #quote-text {
   font-size: 1.1em;
 }
@@ -49,5 +45,11 @@
 @include media-breakpoint-down(md) {
   .service-image {
     background-attachment: scroll;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .service-section {
+    height: 45vh;
   }
 }
