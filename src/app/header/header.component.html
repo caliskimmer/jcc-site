@@ -19,7 +19,7 @@
         class="nav-item active"
         (mouseenter)="mouseenter($event)"
         (mouseleave)="mouseleave($event)"
-        *ngFor="let item of navListLeft; let index; of: i"
+        *ngFor="let item of navListLeft"
       >
         <a
           [@recolor]="state === 'above' || onDetail"
@@ -48,7 +48,7 @@
         class="nav-item active"
         (mouseenter)="mouseenter($event)"
         (mouseleave)="mouseleave($event)"
-        *ngFor="let item of navListRight; let index; of: i"
+        *ngFor="let item of navListRight"
       >
         <a
           [@recolor]="state === 'above' || onDetail"

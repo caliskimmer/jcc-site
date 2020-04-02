@@ -72,18 +72,18 @@ export const animations = [
   ]),
   trigger('swapLogoMobile', [
     state(
-      'below',
+      '0',
       style({
         'background-image': 'url(../../assets/jcc-logo-sm-black.png)',
       }),
     ),
     state(
-      'above',
+      '1',
       style({
         'background-image': 'url(../../assets/jcc-logo-sm-white.png)',
       }),
     ),
-    transition('below <=> above', animate('300ms linear')),
+    transition('0 <=> 1', animate('300ms linear')),
   ]),
   trigger('resizeLogoMobile', [
     state(
