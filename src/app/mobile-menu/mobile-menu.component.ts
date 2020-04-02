@@ -42,13 +42,4 @@ export class MobileMenuComponent implements OnChanges, OnInit {
       });
     }
   }
-
-  close() {
-    this.renderer.removeClass(document.body, 'modal-open');
-    this.header.menuState = 'menu-off';
-
-    if (!this.header.detailPresent()) {
-      this.header.state = this.header.prevHeaderState;
-    }
-  }
 }

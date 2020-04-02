@@ -72,15 +72,18 @@ export class HeaderComponent implements OnInit {
     this.state = this.state === 'below' ? 'above' : 'below';
   }
 
-  moveMenu() {
-    this.menuState =
-      this.menuState === 'menu-off' ? 'menu-on' : 'menu-off';
-    this.prevHeaderState = this.state;
-
-    if (!this.onDetail) {
+  toggleMenu() {
+    if (this.menuState === 'menu-off') {
+      this.menuState = 'menu-on';
+      this.prevHeaderState = this.state;
       this.state = 'below';
+      this.renderer.addClass(document.body, 'modal-open');
+      console.log(this.prevHeaderState);
+      console.log(this.state);
+    } else {
+      this.menuState = 'menu-off';
+      if (!this.onDetail) this.state = this.prevHeaderState;
+      this.renderer.removeClass(document.body, 'modal-open');
     }
-
-    this.renderer.addClass(document.body, 'modal-open');
   }
 }
