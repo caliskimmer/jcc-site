@@ -25,12 +25,8 @@ export class HeaderComponent implements OnInit {
   menuState = 'menu-off';
   header: HeaderComponent = this;
   onDetail = false;
-  navListLeft: string[] = [
-    'About Us',
-    'Services',
-    'Conditions Treated',
-  ];
-  navListRight: string[] = ['New Patient Center', 'Blog'];
+  navListLeft = ['About Us', 'Services', 'Conditions Treated'];
+  navListRight = ['New Patient Center', 'Blog'];
   navList: string[] = this.navListLeft.concat(this.navListRight);
   currPopIndex = -1;
   private throttleMoveDown = _.throttle(this.moveDown, 500);
