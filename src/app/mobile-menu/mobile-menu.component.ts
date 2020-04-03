@@ -2,7 +2,6 @@ import {
   Component,
   Input,
   OnChanges,
-  OnInit,
   Renderer2,
 } from '@angular/core';
 
@@ -16,7 +15,7 @@ import { popoverSections } from '../data/navigation-links.js';
   templateUrl: './mobile-menu.component.html',
   styleUrls: ['./mobile-menu.component.scss'],
 })
-export class MobileMenuComponent implements OnChanges, OnInit {
+export class MobileMenuComponent implements OnChanges {
   @Input() header: HeaderComponent;
   menuItems: any[];
 
@@ -25,12 +24,6 @@ export class MobileMenuComponent implements OnChanges, OnInit {
     public popoverService: PopoverService,
     private router: Router,
   ) {}
-
-  ngOnInit() {
-    this.router.events.subscribe(() => {
-      this.close();
-    });
-  }
 
   ngOnChanges() {
     this.menuItems = [];
