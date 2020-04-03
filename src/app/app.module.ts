@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { ContactComponent } from './contact/contact.component';
 import { DetailComponent } from './detail/detail.component';
+import { DetailResolver } from './detail/detail.resolver';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 import { FaqsComponent } from './faqs/faqs.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -41,16 +42,26 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'faqs', component: FaqsComponent },
-  { path: 'services/:service', component: DetailComponent },
+  {
+    path: 'services/:service',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
   {
     path: 'conditions-treated/:condition',
     component: DetailComponent,
+    resolve: { content: DetailResolver },
   },
   { path: 'about-us/meet-the-team', component: AboutComponent },
-  { path: 'about-us/philosophy', component: DetailComponent },
+  {
+    path: 'about-us/philosophy',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
   {
     path: 'new-patient-center/:patient-info',
     component: DetailComponent,
+    resolve: { content: DetailResolver },
   },
 ];
 
@@ -103,6 +114,7 @@ const appRoutes: Routes = [
       provide: RECAPTCHA_NONCE,
       useValue: environment.recaptcha_nonce,
     },
+    DetailResolver,
   ],
   bootstrap: [AppComponent],
 })
