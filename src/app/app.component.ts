@@ -13,6 +13,7 @@ export class AppComponent {
   bookingState = '';
   bookingClosed = true;
   title = 'Joga Chiropractic Center';
+  routerOutletReady = false;
 
   constructor(
     public router: Router,
@@ -25,5 +26,9 @@ export class AppComponent {
 
   animFinished() {
     this.bookingClosed = this.bookingState === 'booking-form-off';
+  }
+
+  routerOutletLoaded() {
+    this.routerOutletReady = true;
   }
 }
