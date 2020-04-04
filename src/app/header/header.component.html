@@ -85,7 +85,12 @@
       ></div>
     </a>
     <div class="nav col justify-content-center">
-      <a routerLink="/home">
+      <a
+        routerLink="/home"
+        (click)="
+          onDetail && menuState === 'menu-on' ? toggleMenu() : null
+        "
+      >
         <div
           class="d-block d-md-none logo"
           [@swapLogoMobile]="state === 'above' || onDetail"
