@@ -164,7 +164,7 @@ export const animations = [
         display: 'hidden',
       }),
     ),
-    transition('menu-off => menu-on', animate('500ms ease-out')),
-    transition('menu-on => menu-off', animate('500ms ease-in')),
+    transition('menu-off => menu-on', animate('250ms ease-out')),
+    transition('menu-on => menu-off', animate('250ms ease-in')),
   ]),
 ];

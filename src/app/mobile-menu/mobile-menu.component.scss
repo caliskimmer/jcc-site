@@ -3,7 +3,8 @@
 
 .container-fluid {
   background-color: $jcc-green;
-  height: 100vh;
+  overflow: auto;
+  height: calc(100vh - 100px); // 100 px is the height of the header
 }
 
 ul {
@@ -20,11 +21,15 @@ ul {
   background-color: transparent;
 }
 
-.btn-link {
-  text-decoration: none;
+.dropdown-links {
+  font-size: 0.9rem;
 }
 
 .btn-link:hover {
+  text-decoration: none;
+}
+
+.btn-link:focus {
   text-decoration: none;
 }
 

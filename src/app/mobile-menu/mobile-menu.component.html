@@ -41,7 +41,9 @@
         </div>
         <div
           id="collapse{{ i }}"
-          [ngbCollapse]="menuItem.isCollapsed"
+          [@anim-collapse]="
+            menuItem.isCollapsed ? 'initial' : 'final'
+          "
         >
           <div class="card-body pb-0 pt-0">
             <ul class="mb-0">
@@ -54,7 +56,7 @@
                     popoverService.urlName(menuItem.item)
                   }}/{{ popoverService.urlName(child) }}"
                   (click)="header.toggleMenu()"
-                  class="text-white font-weight-bold"
+                  class="text-white dropdown-links"
                   >{{ child }}</a
                 >
               </li>
