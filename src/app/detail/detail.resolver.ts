@@ -20,7 +20,7 @@ export class DetailResolver implements Resolve<Observable<string>> {
     let fileLoc = null;
     if (!currentDetail) {
       // load global page
-      fileLoc = `assets/docs/detail/${detailCategory}.html`;
+      fileLoc = `assets/docs/detail/${detailCategory}/${detailCategory}.html`;
     } else {
       // load detail page
       fileLoc = `assets/docs/detail/${detailCategory}/${currentDetail}.html`;
