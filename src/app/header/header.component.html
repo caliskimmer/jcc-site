@@ -29,7 +29,7 @@
           triggers="manual"
           placement="bottom"
           #p="ngbPopover"
-          href="#"
+          routerLink="{{ item.toLowerCase().split(' ').join('-') }}"
           >{{ item }}</a
         >
       </li>
@@ -58,7 +58,7 @@
           triggers="manual"
           placement="bottom"
           #p="ngbPopover"
-          href="#"
+          routerLink="{{ item.toLowerCase().split(' ').join('-') }}"
           >{{ item }}</a
         >
       </li>
