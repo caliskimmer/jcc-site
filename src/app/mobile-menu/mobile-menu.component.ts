@@ -1,13 +1,7 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  Renderer2,
-} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { HeaderComponent } from '../header/header.component';
-import { PopoverService } from '../popover-service/popover-service.service';
-import { Router } from '@angular/router';
+import { PopoverService } from '../popover/popover.service';
 import { popoverSections } from '../data/navigation-links.js';
 
 @Component({
@@ -19,11 +13,7 @@ export class MobileMenuComponent implements OnChanges {
   @Input() header: HeaderComponent;
   menuItems: any[];
 
-  constructor(
-    private renderer: Renderer2,
-    public popoverService: PopoverService,
-    private router: Router,
-  ) {}
+  constructor(public popoverService: PopoverService) {}
 
   ngOnChanges() {
     this.menuItems = [];

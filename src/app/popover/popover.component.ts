@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { PopoverService } from '../popover-service/popover-service.service';
+import { PopoverService } from './popover.service';
 import { Router } from '@angular/router';
 import { popoverSections } from '../data/navigation-links';
 
