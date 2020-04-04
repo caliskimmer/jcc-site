@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.onDetail = !this.router.url.includes('home');
         if (this.onDetail) this.state = 'below';
