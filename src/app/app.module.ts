@@ -43,12 +43,27 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'faqs', component: FaqsComponent },
   {
+    path: 'services',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
+  {
     path: 'services/:service',
     component: DetailComponent,
     resolve: { content: DetailResolver },
   },
   {
+    path: 'conditions-treated',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
+  {
     path: 'conditions-treated/:condition',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
+  {
+    path: 'about-us',
     component: DetailComponent,
     resolve: { content: DetailResolver },
   },
@@ -59,9 +74,18 @@ const appRoutes: Routes = [
     resolve: { content: DetailResolver },
   },
   {
+    path: 'new-patient-center',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
+  {
     path: 'new-patient-center/:patient-info',
     component: DetailComponent,
     resolve: { content: DetailResolver },
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
   },
 ];
 
