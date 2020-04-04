@@ -53,6 +53,7 @@
                   routerLink="{{
                     popoverService.urlName(menuItem.item)
                   }}/{{ popoverService.urlName(child) }}"
+                  (click)="header.toggleMenu()"
                   class="text-white font-weight-bold"
                   >{{ child }}</a
                 >
