@@ -78,8 +78,6 @@ export class HeaderComponent implements OnInit {
       this.prevHeaderState = this.state;
       this.state = 'below';
       this.renderer.addClass(document.body, 'modal-open');
-      console.log(this.prevHeaderState);
-      console.log(this.state);
     } else {
       this.menuState = 'menu-off';
       if (!this.onDetail) this.state = this.prevHeaderState;
