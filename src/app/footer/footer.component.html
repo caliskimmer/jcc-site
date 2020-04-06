@@ -1,7 +1,5 @@
-<div class="container-fluid">
-  <div
-    class="d-none d-md-flex row font-weight-bold pt-4 pl-4 pr-4 pb-3"
-  >
+<div class="container">
+  <div class="d-none d-md-flex row font-weight-bold pt-4 px-4 pb-3">
     Jogachiropractic.com
   </div>
   <div class="d-none d-md-flex row p-4">
@@ -70,42 +68,57 @@
       </div>
 
       <div
-        class="row px-3 justify-content-center justify-content-md-start pl-lg-4"
+        class="row px-3 justify-content-center justify-content-md-start"
       >
-        <div class="col-2 pl-2 pl-md-1 pr-2 col-lg-1">
+        <div class="col-2 px-0 ml-md-1 ml-lg-3 col-lg-1 text-center">
           <a
             target="_blank"
             href="https://www.facebook.com/jogachiropractic/"
           >
-            <img
+            <!-- <img
               src="../../assets/fb-icon.png"
               alt="Facebook"
-              class="social-media-img"
-            />
+              class="social-media-img img-fluid"
+            /> -->
+            <fa-icon
+              [icon]="faFacebookSquare"
+              size="2x"
+              [styles]="{ color: 'black' }"
+            ></fa-icon>
           </a>
         </div>
-        <div class="col-2 px-2 col-lg-1">
+        <div class="col-2 px-0 col-lg-1 text-center">
           <a
             target="_blank"
             href="https://www.instagram.com/jogachiropractic/"
           >
-            <img
+            <!-- <img
               src="../../assets/instagram-icon.png"
               alt="Instagram"
-              class="social-media-img"
-            />
+              class="social-media-img img-fluid"
+            /> -->
+            <fa-icon
+              [icon]="faInstagram"
+              size="2x"
+              [styles]="{ color: 'black' }"
+            ></fa-icon>
           </a>
         </div>
-        <div class="col-2 px-2 col-lg-1">
+        <div class="col-2 px-0 col-lg-1 text-center">
           <a
             target="_blank"
             href="https://www.yelp.com/biz/joga-chiropractic-center-los-angeles"
           >
-            <img
+            <!-- <img
               src="../../assets/yelp-icon.png"
               alt="Yelp"
-              class="social-media-img"
-            />
+              class="social-media-img img-fluid"
+            /> -->
+            <fa-icon
+              [icon]="faYelp"
+              size="2x"
+              [styles]="{ color: 'black' }"
+            ></fa-icon>
           </a>
         </div>
       </div>

@@ -20,8 +20,8 @@ import { parsePhoneNumberFromString } from 'libphonenumber-js';
 export class BookApptComponent implements OnChanges {
   @Output() modalChanged: EventEmitter<any> = new EventEmitter();
   @Input() isClosed: boolean;
-  errors: string[] = [];
   faCalendar: any = faCalendar;
+  errors: string[] = [];
   sentForm = false;
   isSubmitted = false;
   bookingForm = this.fb.group({
@@ -85,7 +85,7 @@ export class BookApptComponent implements OnChanges {
         this.isSubmitted = false;
         this.errors = [];
       }),
-      err => {
+      (err) => {
         throw err;
       };
 

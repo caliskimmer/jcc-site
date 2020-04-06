@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  faFacebookSquare,
+  faInstagram,
+  faYelp,
+} from '@fortawesome/free-brands-svg-icons';
 
 import { Router } from '@angular/router';
 import { popoverSections } from '../data/navigation-links.js';
@@ -10,6 +15,9 @@ import { popoverSections } from '../data/navigation-links.js';
 })
 export class FooterComponent implements OnInit {
   lists: any = popoverSections;
+  faFacebookSquare: any = faFacebookSquare;
+  faInstagram: any = faInstagram;
+  faYelp: any = faYelp;
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
