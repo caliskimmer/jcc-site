@@ -12,7 +12,8 @@
 src/environments
 
 # dependencies
-/node_modules
+angular/node_modules
+api/node_modules
 
 # IDEs and editors
 /.idea
