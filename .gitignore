@@ -9,7 +9,7 @@
 /out-tsc
 
 # environments
-src/environments
+angular/src/environments
 
 # dependencies
 angular/node_modules
@@ -47,3 +47,4 @@ Thumbs.db
 
 # User developed
 .env
+.envrc
