@@ -2,10 +2,10 @@ const User = require('mongoose').model('User');
 const UserService = require('../services/user')();
 const log = require('../logger');
 
-module.exports = function() {
+module.exports = function () {
   let UserController = {};
 
-  UserController.listUsers = async function(req, res) {
+  UserController.listUsers = async function (req, res) {
     let user = await getUser(res, req.user.id);
 
     if (user.role === User.roleMap.USER) {
@@ -35,7 +35,7 @@ module.exports = function() {
     }
   };
 
-  UserController.viewUser = async function(req, res) {
+  UserController.viewUser = async function (req, res) {
     try {
       var user = await User.viewFromDatabase(req.user.id);
     } catch (err) {
@@ -79,7 +79,7 @@ module.exports = function() {
     });
   };
 
-  UserController.updateUser = async function(req, res) {
+  UserController.updateUser = async function (req, res) {
     let user = await getUser(res, req.user.id);
     let userToUpdate = await getUser(res, req.params.id);
 
@@ -151,7 +151,7 @@ module.exports = function() {
     }
   };
 
-  UserController.deleteUser = async function(req, res) {
+  UserController.deleteUser = async function (req, res) {
     let user = await getUser(res, req.user.id);
     let userToDelete = await getUser(res, req.params.id);
 
@@ -198,7 +198,7 @@ module.exports = function() {
     }
   };
 
-  UserController.createUser = async function(req, res) {
+  UserController.createUser = async function (req, res) {
     let user = await getUser(res, req.user.id);
 
     if (user.role === User.roleMap.USER) {
@@ -293,7 +293,7 @@ module.exports = function() {
     });
   };
 
-  let getUser = async function(res, id) {
+  let getUser = async function (res, id) {
     try {
       var user = await User.retrieveFromDatabase(id);
     } catch (err) {

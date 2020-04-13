@@ -8,7 +8,7 @@ const User = require('mongoose').model('User');
 const log = require('../logger');
 
 // TODO: handle successful and unsuccessful login and refactor
-module.exports = function(app) {
+module.exports = function (app) {
   log.info('api.services.passport: creating passport local behavior');
 
   let opts = {
@@ -80,7 +80,7 @@ module.exports = function(app) {
     secretOrKey: process.env.JWT_SECRET,
   };
   passport.use(
-    new JwtStrategy(opts, function(jwt_payload, done) {
+    new JwtStrategy(opts, function (jwt_payload, done) {
       return done(null, jwt_payload);
     }),
   );

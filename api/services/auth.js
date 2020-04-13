@@ -1,11 +1,11 @@
 const passport = require('passport');
 const log = require('../logger');
 
-module.exports = function() {
+module.exports = function () {
   let auth = {};
 
-  auth.login = function(req, res) {
-    passport.authenticate('local', function(err, user) {
+  auth.login = function (req, res) {
+    passport.authenticate('local', function (err, user) {
       if (err) {
         log.error(`An error occurred logging in user => ${err}`);
         return res.json({
@@ -23,8 +23,8 @@ module.exports = function() {
     })(req, res);
   };
 
-  auth.authenticate = function(req, res) {
-    passport.authenticate('jwt', { session: false }, function(
+  auth.authenticate = function (req, res) {
+    passport.authenticate('jwt', { session: false }, function (
       err,
       user,
     ) {

@@ -2,10 +2,10 @@ const BlogPost = require('../models/blog-post')();
 const User = require('mongoose').model('User');
 const log = require('../logger');
 
-module.exports = function() {
+module.exports = function () {
   let BlogController = {};
 
-  BlogController.createPost = async function(req, res) {
+  BlogController.createPost = async function (req, res) {
     if (!req.body.title || !req.body.body) {
       return res.json({
         success: false,
@@ -36,7 +36,7 @@ module.exports = function() {
     }
   };
 
-  BlogController.readPosts = async function(req, res) {
+  BlogController.readPosts = async function (req, res) {
     try {
       return res.json({
         success: true,
@@ -55,7 +55,7 @@ module.exports = function() {
     }
   };
 
-  BlogController.updatePost = async function(req, res) {
+  BlogController.updatePost = async function (req, res) {
     if (!req.body.title && !req.body.body) {
       return res.json({
         success: false,
@@ -128,7 +128,7 @@ module.exports = function() {
     });
   };
 
-  BlogController.deletePost = async function(req, res) {
+  BlogController.deletePost = async function (req, res) {
     try {
       var user = await User.retrieveFromDatabase(req.user.id);
     } catch (err) {

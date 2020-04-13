@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-module.exports = function() {
+module.exports = function () {
   const UserSchema = new mongoose.Schema({
     title: String,
     firstName: String,
@@ -26,7 +26,7 @@ module.exports = function() {
     ],
   });
 
-  UserSchema.methods.deleteFromDatabase = async function() {
+  UserSchema.methods.deleteFromDatabase = async function () {
     try {
       await this.deleteOne({ username: this.username }).exec();
     } catch {
@@ -34,7 +34,7 @@ module.exports = function() {
     }
   };
 
-  UserSchema.statics.retrieveFromDatabase = async function(userID) {
+  UserSchema.statics.retrieveFromDatabase = async function (userID) {
     try {
       return await this.findOne({ _id: userID }).exec();
     } catch (err) {
@@ -42,7 +42,7 @@ module.exports = function() {
     }
   };
 
-  UserSchema.statics.listFromDatabase = async function(userRole) {
+  UserSchema.statics.listFromDatabase = async function (userRole) {
     try {
       let filter = { $gte: userRole };
       return await this.find(
@@ -54,7 +54,7 @@ module.exports = function() {
     }
   };
 
-  UserSchema.statics.viewFromDatabase = async function(userID) {
+  UserSchema.statics.viewFromDatabase = async function (userID) {
     try {
       return await this.findOne(
         { _id: userID },
@@ -65,7 +65,7 @@ module.exports = function() {
     }
   };
 
-  UserSchema.statics.getRoleFromNumber = function(roleNumber) {
+  UserSchema.statics.getRoleFromNumber = function (roleNumber) {
     switch (parseInt(roleNumber)) {
       case 0:
         return 'superadministrator';

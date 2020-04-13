@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-module.exports = function() {
+module.exports = function () {
   const BlogPostSchema = new mongoose.Schema({
     title: {
       type: String,
@@ -22,7 +22,7 @@ module.exports = function() {
     },
   });
 
-  BlogPostSchema.methods.postToDatabase = async function() {
+  BlogPostSchema.methods.postToDatabase = async function () {
     try {
       return await this.save().exec();
     } catch (err) {
@@ -30,7 +30,7 @@ module.exports = function() {
     }
   };
 
-  BlogPostSchema.statics.listFromDatabase = async function() {
+  BlogPostSchema.statics.listFromDatabase = async function () {
     try {
       return await this.find({})
         .populate('author', '-password')
@@ -40,7 +40,7 @@ module.exports = function() {
     }
   };
 
-  BlogPostSchema.statics.retrieveFromDatabase = async function(
+  BlogPostSchema.statics.retrieveFromDatabase = async function (
     postID,
   ) {
     if (!postID) {
@@ -56,7 +56,9 @@ module.exports = function() {
     }
   };
 
-  BlogPostSchema.statics.deleteFromDatabase = async function(postID) {
+  BlogPostSchema.statics.deleteFromDatabase = async function (
+    postID,
+  ) {
     if (!postID) {
       throw 'No postID provided';
     }

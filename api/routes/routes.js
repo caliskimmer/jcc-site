@@ -11,7 +11,7 @@ router.post('/booking', emailService.sendBookingForm);
 
 // login
 router.post('/login', authService.login);
-router.get('/test', authService.authenticate, function(req, res) {
+router.get('/test', authService.authenticate, function (req, res) {
   return res.json({ success: 'true' });
 });
 
