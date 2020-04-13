@@ -6,11 +6,11 @@ const emailValidator = require('email-validator');
 const phoneValidator = require('libphonenumber-js');
 const striptags = require('striptags');
 
-module.exports = function() {
+module.exports = function () {
   let email = {};
 
   // Common form value existence check
-  let checkCommonExistence = req => {
+  let checkCommonExistence = (req) => {
     let errors = [];
 
     if (!req.body.firstName) {
@@ -33,7 +33,7 @@ module.exports = function() {
   };
 
   // Common form value validity check
-  let checkCommonValidity = req => {
+  let checkCommonValidity = (req) => {
     let errors = [];
 
     if (!req.body.firstName.match(/^\w+$/)) {
@@ -58,7 +58,7 @@ module.exports = function() {
     return errors;
   };
 
-  email.sendBookingForm = async function(req, res) {
+  email.sendBookingForm = async function (req, res) {
     let errors = [];
     const patientTypeOptions = [
       'New Patient',
@@ -149,7 +149,7 @@ module.exports = function() {
     }
   };
 
-  email.sendContactForm = async function(req, res) {
+  email.sendContactForm = async function (req, res) {
     let errors = [];
 
     errors = errors.concat(checkCommonExistence(req));
