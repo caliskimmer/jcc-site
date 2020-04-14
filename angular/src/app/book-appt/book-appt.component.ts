@@ -4,7 +4,6 @@ import {
   Input,
   OnChanges,
   Output,
-  Renderer2,
 } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
