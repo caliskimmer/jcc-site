@@ -1,6 +1,6 @@
 const BlogPost = require('../models/blog-post')();
 const User = require('mongoose').model('User');
-const log = require('../logger');
+const debug = require('debug')('blog-controller');
 
 module.exports = function () {
   let BlogController = {};
@@ -26,7 +26,7 @@ module.exports = function () {
         reason: null,
       });
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while saving object to the database => ${err}`,
       );
       return res.json({
@@ -44,7 +44,7 @@ module.exports = function () {
         reason: null,
       });
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while retrieving posts from database => ${err}`,
       );
       return res.json({
@@ -66,7 +66,7 @@ module.exports = function () {
     try {
       var user = await User.retrieveFromDatabase(req.user.id);
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while retrieving user from database => ${err}`,
       );
       return res.json({
@@ -78,7 +78,7 @@ module.exports = function () {
     try {
       var post = await BlogPost.retrieveFromDatabase(req.params.id);
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while retrieving post from database => ${err}`,
       );
       return res.json({
@@ -113,9 +113,7 @@ module.exports = function () {
       post.updated = Date.now();
       await post.save().exec();
     } catch (err) {
-      log.error(
-        `An error occurred while updating blog post => ${err}`,
-      );
+      debug(`An error occurred while updating blog post => ${err}`);
       return res.json({
         success: false,
         reason: 'an internal error occurred',
@@ -132,7 +130,7 @@ module.exports = function () {
     try {
       var user = await User.retrieveFromDatabase(req.user.id);
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while retrieving user from database => ${err}`,
       );
       return res.json({
@@ -144,7 +142,7 @@ module.exports = function () {
     try {
       var post = await BlogPost.retrieveFromDatabase(req.params.id);
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while retrieving post from database => ${err}`,
       );
       return res.json({
@@ -173,7 +171,7 @@ module.exports = function () {
     try {
       await BlogPost.deleteFromDatabase(req.params.id);
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while retrieving post from database => ${err}`,
       );
       return res.json({

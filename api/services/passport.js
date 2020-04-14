@@ -5,11 +5,11 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwt = require('jwt-simple');
 const bcrypt = require('bcrypt');
 const User = require('mongoose').model('User');
-const log = require('../logger');
+const debug = require('debug')('passport');
 
 // TODO: handle successful and unsuccessful login and refactor
 module.exports = function (app) {
-  log.info('api.services.passport: creating passport local behavior');
+  debug('api.services.passport: creating passport local behavior');
 
   let opts = {
     passReqToCallback: true,
@@ -25,7 +25,7 @@ module.exports = function (app) {
           );
           return done(null, user);
         } catch (err) {
-          log.error(`An error occurred decoding jwt => ${err}`);
+          debug(`An error occurred decoding jwt => ${err}`);
           return done(err, false);
         }
       }
@@ -33,7 +33,7 @@ module.exports = function (app) {
       try {
         var obj = await User.findOne({ username: username }).exec();
       } catch (err) {
-        log.error(
+        debug(
           `An error occurred retrieving user from database => ${err}`,
         );
         return done(err, false);
@@ -48,7 +48,7 @@ module.exports = function (app) {
           obj['password'],
         );
       } catch (err) {
-        log.error(`An error occurred comparing hashes => ${err}`);
+        debug(`An error occurred comparing hashes => ${err}`);
         return done(err, false);
       }
       if (!hashesMatch) {

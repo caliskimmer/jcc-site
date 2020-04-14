@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const helmet = require('helmet');
+const debug = require('debug')('server');
 
 const app = express();
-const port = 8080;
+const port = process.env.API_PORT;
 
 // initialize dotenv
 require('dotenv').config();
@@ -21,6 +23,8 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+app.use(helmet());
+
 // routes
 let routes = require('./routes/routes.js');
 app.use('/api', routes);
@@ -29,6 +33,4 @@ app.use('/api', routes);
 require('./services/passport')(app);
 
 // launch server
-app.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`),
-);
+app.listen(port, () => debug(`server listening on ${port}`));

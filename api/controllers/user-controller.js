@@ -1,6 +1,6 @@
 const User = require('mongoose').model('User');
 const UserService = require('../services/user')();
-const log = require('../logger');
+const debug = require('debug')('user-controller');
 
 module.exports = function () {
   let UserController = {};

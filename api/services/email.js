@@ -1,11 +1,11 @@
 'use strict';
 
-const log = require('../logger');
 const nodeMailer = require('nodemailer');
 const emailValidator = require('email-validator');
 const phoneValidator = require('libphonenumber-js');
 const striptags = require('striptags');
 const axios = require('axios');
+const debug = require('debug')('email');
 
 module.exports = function () {
   let email = {};
@@ -175,7 +175,7 @@ module.exports = function () {
         success: true,
       });
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while sending email from booking form => ${err}`,
       );
       return res.status(500).json({
@@ -231,7 +231,7 @@ module.exports = function () {
         success: true,
       });
     } catch (err) {
-      log.error(
+      debug(
         `An error occurred while sending email from contact form => ${err}`,
       );
       return res.status(500).json({

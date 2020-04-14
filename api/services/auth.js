@@ -1,5 +1,5 @@
 const passport = require('passport');
-const log = require('../logger');
+const debug = require('debug')('auth');
 
 module.exports = function () {
   let auth = {};
