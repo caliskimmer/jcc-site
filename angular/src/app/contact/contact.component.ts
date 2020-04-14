@@ -1,14 +1,12 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  Renderer2,
-} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { BookingService } from '../booking-service/booking-service.service';
 import { MainComponent } from '../main/main.component';
+import { Observable } from 'rxjs';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -28,11 +26,10 @@ export class ContactComponent implements OnChanges {
     email: ['', [Validators.required, Validators.email]],
     phoneNumber: ['', [Validators.required, this.phoneValidator]],
     message: ['', Validators.required],
-    captcha: ['', Validators.required],
   });
 
   constructor(
-    private renderer: Renderer2,
+    private recaptchaService: ReCaptchaV3Service,
     private fb: FormBuilder,
     private bookingService: BookingService,
   ) {}
@@ -57,23 +54,29 @@ export class ContactComponent implements OnChanges {
       message: this.contactForm.get('message').value,
     };
 
-    this.bookingService
-      .sendForm('contact', formBody)
-      .subscribe((response: any) => {
-        if (response.errors) {
-          this.errors = response.errors;
-          this.contactForm.get('captcha').reset();
-          this.isSubmitted = false;
-          return;
-        }
+    this._verifyCaptcha()
+      .pipe(
+        switchMap((token) => {
+          formBody['recaptchaToken'] = token;
+          return this.bookingService.sendForm('contact', formBody);
+        }),
+      )
+      .subscribe(
+        (response) => {
+          if (response['errors']) {
+            this.errors = response['errors'];
+            this.isSubmitted = false;
+            return;
+          }
 
-        this.sentForm = true;
-        this.isSubmitted = false;
-        this.errors = [];
-      }),
-      err => {
-        throw err;
-      };
+          this.sentForm = true;
+          this.isSubmitted = false;
+          this.errors = [];
+        },
+        (err) => {
+          throw err;
+        },
+      );
 
     this.isSubmitted = true;
   }
@@ -94,5 +97,9 @@ export class ContactComponent implements OnChanges {
     }
 
     return parsedNumber.isValid() ? null : invalid;
+  }
+
+  private _verifyCaptcha(): Observable<string> {
+    return this.recaptchaService.execute('homepage');
   }
 }

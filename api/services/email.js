@@ -5,9 +5,31 @@ const nodeMailer = require('nodemailer');
 const emailValidator = require('email-validator');
 const phoneValidator = require('libphonenumber-js');
 const striptags = require('striptags');
+const axios = require('axios');
 
 module.exports = function () {
   let email = {};
+
+  // captcha handler helper
+  let validateCaptcha = async (token) => {
+    let errors = [];
+
+    let response = await axios.post(
+      'https://www.google.com/recaptcha/api/siteverify',
+      {
+        token: token,
+      },
+    );
+
+    if (response.success === false)
+      errors.push('invalid recaptcha token used');
+    if (response.score <= 0.5)
+      errors.push('recaptcha verification failed');
+    if (response.action !== 'homepage')
+      errors.push('recaptcha action mismatch');
+
+    return errors;
+  };
 
   // Common form value existence check
   let checkCommonExistence = (req) => {
@@ -27,6 +49,9 @@ module.exports = function () {
     }
     if (!req.body.message) {
       errors.push('message is missing');
+    }
+    if (!req.body.recaptchaToken) {
+      errors.push('captcha token is missing');
     }
 
     return errors;
@@ -98,6 +123,17 @@ module.exports = function () {
 
     const message = striptags(req.body.message);
 
+    if (errors.length > 0) {
+      return res.json({
+        success: false,
+        errors: errors,
+      });
+    }
+
+    // validate recaptcha (place after first error check
+    // to prevent extra API call if form data invalid)
+    let recaptchaErrors = await validateCaptcha(req.token);
+    errors.concat(recaptchaErrors);
     if (errors.length > 0) {
       return res.json({
         success: false,

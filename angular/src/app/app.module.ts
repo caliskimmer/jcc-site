@@ -1,10 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  RECAPTCHA_NONCE,
-  RECAPTCHA_SETTINGS,
-  RecaptchaFormsModule,
-  RecaptchaModule,
-  RecaptchaSettings,
+  RECAPTCHA_V3_SITE_KEY,
+  RecaptchaV3Module,
 } from 'ng-recaptcha';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -117,8 +114,7 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     FormsModule,
     MatProgressSpinnerModule,
-    RecaptchaModule,
-    RecaptchaFormsModule,
+    RecaptchaV3Module,
     NgbModule,
     RouterModule.forRoot(appRoutes),
     JwtModule.forRoot({
@@ -129,14 +125,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     {
-      provide: RECAPTCHA_SETTINGS,
-      useValue: {
-        siteKey: environment.recaptcha_key,
-      } as RecaptchaSettings,
-    },
-    {
-      provide: RECAPTCHA_NONCE,
-      useValue: environment.recaptcha_nonce,
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.recaptcha_key,
     },
     DetailResolver,
   ],

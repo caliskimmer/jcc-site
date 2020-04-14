@@ -9,8 +9,11 @@ import {
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { BookingService } from '../booking-service/booking-service.service';
+import { Observable } from 'rxjs';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-appt',
@@ -29,17 +32,16 @@ export class BookApptComponent implements OnChanges {
     lastName: ['', Validators.required],
     patientType: ['New Patient', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    phoneNumber: ['', [Validators.required, this.phoneValidator]],
+    phoneNumber: ['', [Validators.required, this._phoneValidator]],
     preferredDate: ['', [Validators.required]],
     preferredTime: ['Prefer Morning', [Validators.required]],
     message: ['', Validators.required],
-    captcha: ['', Validators.required],
   });
 
   constructor(
+    private recaptchaService: ReCaptchaV3Service,
     private bookingService: BookingService,
     private fb: FormBuilder,
-    private renderer: Renderer2,
   ) {}
 
   ngOnChanges() {
@@ -71,28 +73,35 @@ export class BookApptComponent implements OnChanges {
       'date'
     ] = `${date['month']}-${date['day']}-${date['year']}`;
 
-    this.bookingService
-      .sendForm('booking', formBody)
-      .subscribe((response: any) => {
-        if (response.errors) {
-          this.errors = response.errors;
-          this.bookingForm.get('captcha').reset();
-          this.isSubmitted = false;
-          return;
-        }
+    this._verifyCaptcha()
+      .pipe(
+        switchMap((token) => {
+          formBody['recaptchaToken'] = token;
+          return this.bookingService.sendForm('contact', formBody);
+        }),
+      )
+      .subscribe(
+        (response) => {
+          console.log(response);
+          if (response['errors']) {
+            this.errors = response['errors'];
+            this.isSubmitted = false;
+            return;
+          }
 
-        this.sentForm = true;
-        this.isSubmitted = false;
-        this.errors = [];
-      }),
-      (err) => {
-        throw err;
-      };
+          this.sentForm = true;
+          this.isSubmitted = false;
+          this.errors = [];
+        },
+        (err) => {
+          throw err;
+        },
+      );
 
     this.isSubmitted = true;
   }
 
-  private phoneValidator(control: FormControl) {
+  private _phoneValidator(control: FormControl) {
     const invalid = { invalidPhone: true };
 
     if (!control.value) {
@@ -108,5 +117,9 @@ export class BookApptComponent implements OnChanges {
     }
 
     return parsedNumber.isValid() ? null : invalid;
+  }
+
+  private _verifyCaptcha(): Observable<string> {
+    return this.recaptchaService.execute('homepage');
   }
 }

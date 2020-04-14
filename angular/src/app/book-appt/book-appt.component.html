@@ -172,15 +172,13 @@
                 <span class="text-danger">Message is required</span>
               </div>
             </div>
-            <div class="row pb-3">
-              <div class="col recaptcha-wrapper">
-                <re-captcha formControlName="captcha"> </re-captcha>
-              </div>
-            </div>
             <div class="row">
               <div class="col">
-                <div class="pb-4" *ngFor="let error of errors">
-                  <span class="text-danger">{{ error }}</span>
+                <div class="pb-4" *ngIf="errors.length > 0">
+                  <span class="text-danger"
+                    >An internal error occurred submitting the form,
+                    please try again.</span
+                  >
                 </div>
                 <mat-spinner
                   class="spinner"
