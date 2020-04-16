@@ -1,0 +1,43 @@
+@import '~bootstrap/scss/bootstrap';
+
+.container-fluid {
+  height: 100vh;
+  width: 100%;
+  background-image: url('../../assets/front.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#contact-modal {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  z-index: $zindex-modal;
+}
+
+#main-content {
+  position: relative;
+  height: 100px;
+  top: 23%;
+}
+
+.hide-scrollbar {
+  height: 0;
+  overflow: hidden;
+}
+
+.btn {
+  border-radius: 0;
+  border-width: 2px;
+  font-size: 1.2em;
+}
+
+@include media-breakpoint-down(xs) {
+  h5 {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 0.9em;
+  }
+}

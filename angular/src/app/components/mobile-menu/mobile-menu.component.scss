@@ -1,0 +1,38 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../styles.scss';
+
+.container-fluid {
+  background-color: $jcc-green;
+  overflow: auto;
+  height: calc(100vh - 100px); // 100 px is the height of the header
+}
+
+ul {
+  list-style: none;
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+}
+
+.card {
+  border-style: none;
+  background-color: transparent;
+}
+
+.dropdown-links {
+  font-size: 0.9rem;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+}
+
+.btn-link:focus {
+  text-decoration: none;
+}
+
+#close-btn {
+  font-size: 2em;
+}

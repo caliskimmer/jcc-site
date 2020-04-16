@@ -1,0 +1,49 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../styles.scss';
+
+.container-fluid {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.spinner {
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-secondary {
+  background-color: $jcc-green;
+}
+
+#datepicker {
+  border: solid rgb(206, 212, 218) 1px;
+}
+
+@include media-breakpoint-down(sm) {
+  .booking-wrapper {
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  /* Represents ReCaptcha visual */
+  ::ng-deep #captcha > div:first-child {
+    transform: scale(0.9);
+  }
+
+  .recaptcha-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
