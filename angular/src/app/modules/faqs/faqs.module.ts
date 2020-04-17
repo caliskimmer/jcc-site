@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { faqsRouter } from '@components/faqs/faqs.router';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, FaqsComponent, faqsRouter],
+  declarations: [FaqsComponent],
+  imports: [CommonModule, faqsRouter],
 })
 export class FaqsModule {}
