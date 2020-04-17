@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import '../../styles.scss';
+@import 'styles/variables';
 
 .nav {
   padding: 0;
@@ -8,7 +8,7 @@
 .logo {
   height: 100px;
   width: 100px;
-  background-image: url('../../assets/jcc-logo-md.png');
+  background-image: url('/assets/jcc-logo-md.png');
 }
 
 .navbar {
@@ -48,7 +48,7 @@ li {
 #hamburger {
   height: 40px;
   width: 40px;
-  background-image: url('../../assets/menu.png');
+  background-image: url('/assets/menu.png');
 }
 
 #hamburger:hover {
@@ -58,7 +58,7 @@ li {
 #telephone {
   height: 40px;
   width: 40px;
-  background-image: url('../../assets/phone-icon-sm-white.png');
+  background-image: url('/assets/phone-icon-sm-white.png');
 }
 
 .modal-open {
@@ -103,14 +103,14 @@ li {
   .logo {
     height: 75px;
     width: 75px;
-    background-image: url('../../assets/jcc-logo-sm-white.png');
+    background-image: url('/assets/jcc-logo-sm-white.png');
     margin-top: 10px;
   }
 
   .logo-detail {
     height: 75px;
     width: 75px;
-    background-image: url('../../assets/jcc-logo-sm-white.png');
+    background-image: url('/assets/jcc-logo-sm-white.png');
     margin-top: 10px;
   }
 

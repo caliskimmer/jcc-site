@@ -31,7 +31,17 @@ const router: Routes = [
     resolve: { content: DetailResolver },
   },
   {
-    path: 'new-patient-center/:patient-info',
+    path: 'new-patient-center/:option',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
+  {
+    path: 'about-us',
+    component: DetailComponent,
+    resolve: { content: DetailResolver },
+  },
+  {
+    path: 'about-us/:info',
     component: DetailComponent,
     resolve: { content: DetailResolver },
   },

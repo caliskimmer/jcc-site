@@ -8,8 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { BookingService } from '../booking-service/booking-service.service';
-import { environment } from '../../environments/environment.prod';
+import { BookingService } from '@services/booking.service';
+import { environment } from '@environments/environment.prod';
 
 @Component({
   selector: 'app-location',

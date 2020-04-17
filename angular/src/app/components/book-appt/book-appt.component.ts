@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
-import { BookingService } from '../booking-service/booking-service.service';
+import { BookingService } from '@services/booking.service';
 import { Observable } from 'rxjs';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';

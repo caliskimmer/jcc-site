@@ -25,6 +25,7 @@ export class DetailResolver implements Resolve<Observable<string>> {
       // load detail page
       fileLoc = `assets/docs/detail/${detailCategory}/${currentDetail}.html`;
     }
+
     const httpResponse = this.http.get(fileLoc, {
       responseType: 'html' as 'text',
     });

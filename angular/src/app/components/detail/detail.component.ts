@@ -13,7 +13,7 @@ export class DetailComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
+    this.route.data.subscribe((data) => {
       this.detailContent = data.content;
     });
   }

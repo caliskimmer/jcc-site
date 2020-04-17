@@ -1,12 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  Renderer2,
-} from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
-import { BookingService } from '../booking-service/booking-service.service';
+import { BookingService } from '@services/booking.service';
 import { animations } from './main.animations';
 
 @Component({

@@ -8,10 +8,8 @@ import { AppComponent } from '@components/app/app.component';
 import { BookApptComponent } from '@components/book-appt/book-appt.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { ContactComponent } from '@components/contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from '@components/footer/footer.component';
-import { HeaderComponent } from '@components/header/header.component';
 import { HeaderModule } from '@modules/header/header.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationComponent } from '@components/location/location.component';
@@ -24,10 +22,8 @@ import { environment } from '@environments/environment.prod';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     LocationComponent,
-    ContactComponent,
     BookApptComponent,
   ],
   imports: [

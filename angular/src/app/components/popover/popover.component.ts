@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { PopoverService } from './popover.service';
 import { Router } from '@angular/router';
-import { popoverSections } from '../data/navigation-links';
+import { popoverSections } from '@data/navigation-links';
 
 @Component({
   selector: 'app-popover',

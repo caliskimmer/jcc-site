@@ -6,5 +6,6 @@ import { aboutRouter } from '@components/about/about.router';
 @NgModule({
   declarations: [AboutComponent],
   imports: [CommonModule, aboutRouter],
+  providers: [],
 })
 export class AboutUsModule {}

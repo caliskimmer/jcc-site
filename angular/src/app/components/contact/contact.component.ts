@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
-import { BookingService } from '../booking-service/booking-service.service';
+import { BookingService } from '@services/booking.service';
 import { MainComponent } from '../main/main.component';
 import { Observable } from 'rxjs';
 import { ReCaptchaV3Service } from 'ng-recaptcha';

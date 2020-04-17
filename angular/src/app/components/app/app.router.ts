@@ -3,26 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 export const router: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    {
-      path: '**',
-      redirectTo: '/home',
-    },
-    {
-        path: '/home',
-        loadChildren: '@modules/home/home.module#HomeModule'
-    }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: '/about-us',
-    loadChildren: '@modules/about/about.module#AboutModule',
+    path: 'home',
+    loadChildren: '@modules/home/home.module#HomeModule',
   },
   {
-      path: '/faqs',
-      loadChildren: '@modules/faqs/faqs.module#FAQModule'
-  }
+    path: 'about-us/meet-the-team',
+    loadChildren: '@modules/about-us/about-us.module#AboutUsModule',
+  },
   {
-    path: '/',
-    loadChildren: '@modules/detail/detail.module#ServiceModule',
+    path: '',
+    loadChildren: '@modules/detail/detail.module#DetailModule',
+  },
+  {
+    path: 'faqs',
+    loadChildren: '@modules/faqs/faqs.module#FaqsModule',
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
   },
 ];
 

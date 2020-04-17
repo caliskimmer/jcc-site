@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import { Router } from '@angular/router';
-import { popoverSections } from '../data/navigation-links.js';
+import { popoverSections } from '@data/navigation-links.js';
 
 @Component({
   selector: 'app-footer',

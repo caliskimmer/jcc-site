@@ -3,7 +3,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { PopoverService } from '../popover/popover.service';
 import { animations } from './mobile-menu.animations';
-import { popoverSections } from '../data/navigation-links.js';
+import { popoverSections } from '@data/navigation-links.js';
 
 @Component({
   selector: 'app-mobile-menu',

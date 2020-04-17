@@ -59,13 +59,13 @@ export const animations = [
     state(
       '0',
       style({
-        'background-image': 'url(../../assets/jcc-logo-md-black.png)',
+        'background-image': 'url(/assets/jcc-logo-md-black.png)',
       }),
     ),
     state(
       '1',
       style({
-        'background-image': 'url(../../assets/jcc-logo-md.png)',
+        'background-image': 'url(/assets/jcc-logo-md.png)',
       }),
     ),
     transition('0 <=> 1', animate('300ms linear')),
@@ -74,13 +74,13 @@ export const animations = [
     state(
       '0',
       style({
-        'background-image': 'url(../../assets/jcc-logo-sm-black.png)',
+        'background-image': 'url(/assets/jcc-logo-sm-black.png)',
       }),
     ),
     state(
       '1',
       style({
-        'background-image': 'url(../../assets/jcc-logo-sm-white.png)',
+        'background-image': 'url(/assets/jcc-logo-sm-white.png)',
       }),
     ),
     transition('0 <=> 1', animate('300ms linear')),

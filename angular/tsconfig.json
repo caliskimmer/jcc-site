@@ -7,7 +7,8 @@
       "@modules/*": ["src/app/modules/*"],
       "@pipes/*": ["src/app/pipes/*"],
       "@environments/*": ["src/environments/*"],
-      "@services/*": ["src/app/services/*"]
+      "@services/*": ["src/app/services/*"],
+      "@data/*": ["src/app/data/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

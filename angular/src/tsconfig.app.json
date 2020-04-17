@@ -2,15 +2,10 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "es2015",
-    "types": [],
-    "paths": {
-      "@components/*": ["app/components/*"],
-      "@modules/*": ["app/modules/*"],
-      "@pipes/*": ["app/pipes/*"],
-      "@environments/*": ["src/environments/*"],
-      "@services/*": ["app/services/*"]
-    }
+    "module": "es2015"
   },
-  "exclude": ["src/test.ts", "**/*.spec.ts"]
+  "exclude": [
+    "app/components/admin/*",
+    "app/components/auth-services/*"
+  ]
 }
