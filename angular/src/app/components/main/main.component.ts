@@ -9,8 +9,8 @@ import { animations } from './main.animations';
   styleUrls: ['./main.component.scss'],
   animations: animations,
 })
-export class MainComponent implements OnInit {
-  contactState = '';
+export class MainComponent {
+  contactState = 'contact-form-off';
   contactClosed = true;
   main: MainComponent = this;
 
@@ -23,10 +23,8 @@ export class MainComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
-
   toggleBookingForm() {
-    const bookingState = this.bookingService.toggleBookingForm();
+    this.bookingService.toggleBookingForm();
   }
 
   toggleContactForm() {

@@ -1,5 +1,6 @@
 import {
   animate,
+  sequence,
   state,
   style,
   transition,
@@ -11,17 +12,32 @@ export const animations = [
     state(
       'contact-form-on',
       style({
-        visibility: 'visible',
         opacity: 1,
+        visibility: 'visible',
       }),
     ),
     state(
       'contact-form-off',
       style({
-        visibility: 'hidden',
         opacity: 0,
+        visibility: 'hidden',
       }),
     ),
-    transition('* => *', animate('300ms linear')),
+    transition('contact-form-on => contact-form-off', [
+      sequence([
+        animate('300ms linear', style({ opacity: 0 })),
+        style({
+          visibility: 'hidden',
+        }),
+      ]),
+    ]),
+    transition('contact-form-off => contact-form-on', [
+      sequence([
+        style({
+          visibility: 'visible',
+        }),
+        animate('300ms linear', style({ opacity: 1 })),
+      ]),
+    ]),
   ]),
 ];

@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class BookingService {
-  contactState = '';
-  bookingState = '';
+  contactState = 'contact-form-off';
+  bookingState = 'booking-form-off';
   emitChangeSource = new Subject<any>();
   changeEmitted = this.emitChangeSource.asObservable();
   renderer: Renderer2;
@@ -29,13 +29,10 @@ export class BookingService {
 
   toggleContactForm() {
     this.contactState =
-      this.contactState === 'contact-form-off' ||
-      this.contactState === ''
+      this.contactState === 'contact-form-off'
         ? 'contact-form-on'
         : 'contact-form-off';
     this.toggleScrollbar('contact');
-    this.emitChangeSource.next(this.contactState);
-
     return this.contactState;
   }
 

@@ -10,7 +10,7 @@ import { animations } from './app.animations';
   animations: animations,
 })
 export class AppComponent {
-  bookingState = '';
+  bookingState = 'booking-form-off';
   bookingClosed = true;
   title = 'Joga Chiropractic Center';
   routerOutletReady = false;
