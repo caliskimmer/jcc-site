@@ -2,6 +2,7 @@ import { Injectable, Renderer2 } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { environment } from '@environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -57,12 +58,12 @@ export class BookingService {
   sendForm(type: string, body) {
     if (type === 'contact') {
       return this.httpClient.post(
-        'http://localhost:8080/api/contact',
+        `https://${environment.api}/api/contact`,
         body,
       );
     } else if (type === 'booking') {
       return this.httpClient.post(
-        'http://localhost:8080/api/booking',
+        `https://${environment.api}/api/booking`,
         body,
       );
     }
