@@ -1,5 +1,6 @@
 import {
   animate,
+  sequence,
   state,
   style,
   transition,
@@ -22,6 +23,21 @@ export const animations = [
         opacity: 0,
       }),
     ),
-    transition('* => *', animate('300ms linear')),
+    transition('booking-form-on => booking-form-off', [
+      sequence([
+        animate('300ms linear', style({ opacity: 0 })),
+        style({
+          visibility: 'hidden',
+        }),
+      ]),
+    ]),
+    transition('booking-form-off => booking-form-on', [
+      sequence([
+        style({
+          visibility: 'visible',
+        }),
+        animate('300ms linear', style({ opacity: 1 })),
+      ]),
+    ]),
   ]),
 ];
