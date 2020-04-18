@@ -1,27 +1,28 @@
 <ng-container *ngTemplateOutlet="contactmodal"></ng-container>
-<div id="main" class="container-fluid">
+<div class="container-fluid">
   <div
-    class="text-center font-weight-bold justify-content-center"
-    id="main-content"
+    class="row main-content text-center font-weight-bold justify-content-center"
   >
-    <div id="main-quote" class="mb-4 text-white text-center">
-      <h1>Feel Great & Pain-free</h1>
-      <h5>Joga Chiropractic Welcomes You</h5>
+    <div class="col">
+      <div class="mb-4 text-white text-center">
+        <h1>Feel Great & Pain-free</h1>
+        <h5>Joga Chiropractic Welcomes You</h5>
+      </div>
+      <button
+        type="button"
+        (click)="toggleBookingForm()"
+        class="btn btn-outline-light mb-3 ml-1 mr-1"
+      >
+        Book Appointment
+      </button>
+      <button
+        type="button"
+        (click)="toggleContactForm()"
+        class="btn btn-outline-light mb-3 ml-1 mr-1"
+      >
+        Contact Us
+      </button>
     </div>
-    <button
-      type="button"
-      (click)="toggleBookingForm()"
-      class="btn btn-outline-light mb-3 ml-1 mr-1"
-    >
-      Book Appointment
-    </button>
-    <button
-      type="button"
-      (click)="toggleContactForm()"
-      class="btn btn-outline-light mb-3 ml-1 mr-1"
-    >
-      Contact Us
-    </button>
   </div>
 </div>
 

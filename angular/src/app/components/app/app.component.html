@@ -1,14 +1,16 @@
-<div class="container-fluid p-0">
-  <app-book-appt
-    [@show-booking-form]="bookingState"
-    (@show-booking-form.done)="animFinished()"
-    [isClosed]="bookingClosed"
-    id="book-appt-modal"
-  ></app-book-appt>
-  <app-header></app-header>
-  <router-outlet (activate)="routerOutletLoaded()"></router-outlet>
-  <div *ngIf="routerOutletReady">
-    <app-location></app-location>
-    <app-footer></app-footer>
+<div class="row no-gutters app-container">
+  <div class="col">
+    <app-book-appt
+      [@show-booking-form]="bookingState"
+      (@show-booking-form.done)="animFinished()"
+      [isClosed]="bookingClosed"
+      id="book-appt-modal"
+    ></app-book-appt>
+    <app-header></app-header>
+    <router-outlet (activate)="routerOutletLoaded()"></router-outlet>
+    <div *ngIf="routerOutletReady">
+      <app-location></app-location>
+      <app-footer></app-footer>
+    </div>
   </div>
 </div>

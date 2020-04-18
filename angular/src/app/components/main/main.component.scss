@@ -8,14 +8,14 @@
   background-repeat: no-repeat;
 }
 
-#contact-modal {
+.contact-modal {
   position: fixed;
   visibility: hidden;
   opacity: 0;
   z-index: $zindex-modal;
 }
 
-#main-content {
+.main-content {
   position: relative;
   height: 100px;
   top: 23%;

@@ -1,6 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'styles/variables';
 
+.container-fluid {
+  width: 100vw;
+}
+
 .nav {
   padding: 0;
 }

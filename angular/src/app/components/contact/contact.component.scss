@@ -17,6 +17,10 @@
   margin-bottom: 20px;
 }
 
+.close-btn {
+  font-size: 1.75rem;
+}
+
 @include media-breakpoint-down(sm) {
   .contact-wrapper {
     height: 100vh;

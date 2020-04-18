@@ -1,17 +1,18 @@
-<div class="container-fluid d-flex">
+<div class="container-fluid d-flex justify-content-center">
   <div class="row bg-dark">
-    <div
-      class="col bg-white justify-content-center p-0 pt-3 p-md-3 pt-md-0 contact-wrapper"
-    >
-      <div class="row pb-4 mt-md-4">
-        <div class="col text-center">
-          <h3 class="d-inline">Contact Us</h3>
-          <a class="float-right mt-2" id="close-btn" (click)="close()"
-            >&#10761;</a
-          >
+    <div class="col bg-white p-0 pt-3 p-md-3 pt-md-0 contact-wrapper">
+      <div class="row mx-3 pb-4 mt-md-4">
+        <div class="col d-flex align-items-center">
+          <h3 class="m-0">Contact Us</h3>
+        </div>
+        <div
+          class="col-3 d-flex close-btn justify-content-end align-items-center"
+          (click)="close()"
+        >
+          &#10761;
         </div>
       </div>
-      <div class="row pb-4 px-0 px-md-3">
+      <div class="row pb-4 mx-3">
         <div class="col">
           <form
             [formGroup]="contactForm"

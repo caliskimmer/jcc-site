@@ -1,5 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
+.container-fluid {
+  width: 100%;
+  width: 100vw;
+}
+
 #slider-text {
   position: absolute;
   font-size: 100px;
