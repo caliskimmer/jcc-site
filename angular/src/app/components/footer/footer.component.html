@@ -44,8 +44,7 @@
           <a
             *ngIf="list.key !== 'Blog'; else disabled"
             class="text-dark font-weight-bold"
-            routerLink="{{ urlName(list.key) }}/
-            {{ urlName(item) }}"
+            routerLink="{{ urlName(list.key) }}/{{ urlName(item) }}"
           >
             {{ item }}</a
           >
