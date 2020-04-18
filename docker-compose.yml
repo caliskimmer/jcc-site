@@ -18,6 +18,7 @@ services:
         depends_on:
             - express
         ports:
+           - 443:443
            - 80:80
         restart: always
         command: [nginx, '-g', 'daemon off;']
