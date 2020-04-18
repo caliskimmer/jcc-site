@@ -33,4 +33,4 @@ app.use('/api', routes);
 require('./services/passport')(app);
 
 // launch server
-app.listen(port, () => debug(`server listening on ${port}`));
+app.listen(port, () => debug('server booted up successfully'));
