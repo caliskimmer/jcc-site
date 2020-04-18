@@ -1,5 +1,3 @@
-import * as _ from 'lodash';
-
 import {
   Component,
   HostListener,
@@ -12,6 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { animations } from './header.animations';
+import throttle from 'lodash.throttle';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +28,7 @@ export class HeaderComponent implements OnInit {
   navListRight = ['New Patient Center', 'Blog'];
   navList: string[] = this.navListLeft.concat(this.navListRight);
   currPopIndex = -1;
-  private throttleMoveDown = _.throttle(this.moveDown, 500);
+  throttleMoveDown = throttle(this.moveDown, 500);
 
   @ViewChildren('p') popovers: QueryList<NgbPopover>;
 

@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationComponent } from '@components/location/location.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { appRouter } from '@components/app/app.router';
 import { environment } from '@environments/environment.prod';
 
@@ -36,7 +36,7 @@ import { environment } from '@environments/environment.prod';
     MatProgressSpinnerModule,
     RecaptchaV3Module,
     HeaderModule,
-    NgbModule,
+    NgbDatepickerModule,
     appRouter,
   ],
   providers: [

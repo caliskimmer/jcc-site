@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '@components/header/header.component';
 import { MobileMenuComponent } from '@components/mobile-menu/mobile-menu.component';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopoverComponent } from '@components/popover/popover.component';
 import { RouterModule } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     MobileMenuComponent,
     PopoverComponent,
   ],
-  imports: [CommonModule, NgbModule, RouterModule],
+  imports: [CommonModule, NgbPopoverModule, RouterModule],
   exports: [HeaderComponent],
 })
 export class HeaderModule {}
