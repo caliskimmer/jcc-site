@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from '@components/contact/contact.component';
 import { HomeComponent } from '@components/home/home.component';
@@ -15,6 +17,11 @@ import { homeRouter } from '@components/home/home.router';
     MainComponent,
     ContactComponent,
   ],
-  imports: [CommonModule, homeRouter],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    homeRouter,
+  ],
 })
 export class HomeModule {}
