@@ -58,12 +58,12 @@ export class BookingService {
   sendForm(type: string, body) {
     if (type === 'contact') {
       return this.httpClient.post(
-        `https://${environment.api}/api/contact`,
+        `https://${environment.api}/contact`,
         body,
       );
     } else if (type === 'booking') {
       return this.httpClient.post(
-        `https://${environment.api}/api/booking`,
+        `https://${environment.api}/booking`,
         body,
       );
     }
