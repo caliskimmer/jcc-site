@@ -6,4 +6,5 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
-RUN ls
+COPY /jogachiropractic_com/jogachiropractic_com.key /etc/ssl
+COPY /jogachiropractic_com/jogachiropractic_com.crt /etc/ssl 

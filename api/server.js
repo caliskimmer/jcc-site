@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const debug = require('debug')('server');
+const https = require('https');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.API_PORT;
@@ -33,4 +35,7 @@ app.use('/api', routes);
 require('./services/passport')(app);
 
 // launch server
-app.listen(port, () => debug('server booted up successfully'));
+https.createServer({
+    key: fs.readFileSync(`${process.env.SSL_PATH}/jogachiropractic_com.key`),
+    cert: fs.readFileSync(`${process.env.SSL_PATH}/jogachiropractic_com.crt`),
+}, app).listen(port, () => debug('server booted up successfully'));
