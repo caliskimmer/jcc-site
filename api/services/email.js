@@ -166,7 +166,7 @@ module.exports = function () {
     try {
       await transporter.sendMail({
         from: '"JCC Booking Form" <noreply@jogachiropractic.com>',
-        to: 'matasempakeris@gmail.com',
+        to: process.env.EMAIL,
         subject: 'A Patient Has Requested an Appointment!',
         text: messageText,
       });

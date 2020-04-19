@@ -76,7 +76,7 @@ export class BookApptComponent implements OnChanges {
       .pipe(
         switchMap((token) => {
           formBody['recaptchaToken'] = token;
-          return this.bookingService.sendForm('contact', formBody);
+          return this.bookingService.sendForm('booking', formBody);
         }),
       )
       .subscribe(

@@ -43,7 +43,7 @@ export class ServiceComponent {
     },
     {
       name: 'Rocktape',
-      id: 'rocktape',
+      id: 'rocktape-technique',
       quote: {
         text:
           'Never let a stumble in the road be the end of a journey',
