@@ -2,9 +2,7 @@
   <div class="row align-self-center">
     <div class="col text-center">
       <h1>Schedule an Appointment</h1>
-      <span class="d-block pb-1"
-        >Visit us at our Westchester location</span
-      >
+      <div class="pb-1">Visit us at our Westchester location</div>
       <button
         type="button"
         (click)="toggleBookingForm()"
@@ -12,12 +10,45 @@
       >
         Book Now
       </button>
-      <span class="d-block font-weight-bold"
-        >Joga Chiropractic Center</span
-      >
-      <span class="d-block pb-3 font-weight-bold"
-        >8929 S Sepulveda Blvd #100 Los Angeles, CA 90045</span
-      >
+      <div class="font-weight-bold">Joga Chiropractic Center</div>
+      <div class="pb-3 font-weight-bold">
+        8929 S Sepulveda Blvd #100 Los Angeles, CA 90045
+      </div>
+      <div class="pb-1 font-weight-bold">
+        Office Hours
+      </div>
+      <div class="pb-3">
+        <table class="m-auto">
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Mon</td>
+            <td class="text-right">8:00 am - 5:00 pm</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Tue</td>
+            <td class="text-right">8:00 am - 5:00 pm</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Wed</td>
+            <td class="text-right">8:00 am - 12:00 pm</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Thu</td>
+            <td class="text-right">8:00 am - 5:00 pm</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Fri</td>
+            <td class="text-right">8:00 am - 12:00 pm</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Sat</td>
+            <td class="text-right">Appointment Only</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold text-left pr-2">Sun</td>
+            <td class="text-right">Closed</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   <div id="map" class="row d-flex mx-auto mt-3" #map></div>
