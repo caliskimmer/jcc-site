@@ -6,8 +6,9 @@
   margin-top: 125px;
 }
 
-.main-content {
-  font-size: 0.9em;
+.text-content {
+  font-size: 0.9rem;
+  line-height: 2rem;
 }
 
 .main-rule {
@@ -16,23 +17,19 @@
   border-top-width: 2px;
 }
 
-.secondary-content {
-  font-size: 0.8em;
-}
-
 .employee-header {
   font-family: 'Philosopher', 'Raleway', 'Helvetica Neue', sans-serif;
+  line-height: 1.1rem;
 }
 
 .employee-bio {
   white-space: pre-line;
-  font-size: 1.3em;
   word-wrap: break-word;
 }
 
 @include media-breakpoint-down(md) {
   .employee-bio {
-    font-size: 1em;
-    line-height: 1em;
+    font-size: 0.9rem;
+    line-height: 1.75rem;
   }
 }
