@@ -57,6 +57,31 @@ module.exports = function () {
     return errors;
   };
 
+  // Naive date validation helper
+  let _validateDate = (date) => {
+    const dateArray = date.split('-');
+    const DATE_LENGTH = 3;
+    if (dateArray.length !== DATE_LENGTH) return false;
+
+    let month = parseInt(dateArray[0]);
+    if (isNaN(month)) return false;
+    if (month < 1 || month > 12) return false;
+
+    // for sake of simplicity, will naively accept
+    // 1 through 31 regardless of the month
+    let day = parseInt(dateArray[1]);
+    if (isNaN(day)) return false;
+    if (day < 1 || day > 31) return false;
+
+    // for sake of simplicity, will accept anything
+    // >= 2020
+    let year = parseInt(dateArray[2]);
+    if (isNaN(year)) return false;
+    if (year < 2020) return false;
+
+    return true;
+  };
+
   // Common form value validity check
   let checkCommonValidity = (req) => {
     let errors = [];
@@ -111,7 +136,7 @@ module.exports = function () {
 
     // Check for validity
     errors = errors.concat(checkCommonValidity(req));
-    if (!req.body.date.match(/^[0-9]-[0-9]{2}-20[0-9]{2}$/)) {
+    if (!_validateDate(req.body.date)) {
       errors.push('date is invalid');
     }
     if (!patientTypeOptions.includes(req.body.patientType)) {
