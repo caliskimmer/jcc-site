@@ -35,7 +35,16 @@ app.use('/api', routes);
 require('./services/passport')(app);
 
 // launch server
-https.createServer({
-    key: fs.readFileSync(`${process.env.SSL_PATH}/jogachiropractic_com.key`),
-    cert: fs.readFileSync(`${process.env.SSL_PATH}/jogachiropractic_com.crt`),
-}, app).listen(port, () => debug('server booted up successfully'));
+https
+  .createServer(
+    {
+      key: fs.readFileSync(
+        `${process.env.SSL_PATH}/jogachiropractic_com.key`,
+      ),
+      cert: fs.readFileSync(
+        `${process.env.SSL_PATH}/jogachiropractic_com.crt`,
+      ),
+    },
+    app,
+  )
+  .listen(port, () => debug('server booted up successfully'));
